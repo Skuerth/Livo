@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAB-hh-7Yn">
+                                <rect key="frame" x="121" y="479" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign In with Google"/>
+                                <connections>
+                                    <action selector="signInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W5x-D9-YU2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f7-21-CRd">
+                                <rect key="frame" x="157" y="561" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="04A-MY-ndf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="26.53673163418291"/>
+        </scene>
+        <!--Live Streaming View Controller-->
+        <scene sceneID="FJT-J7-zcp">
+            <objects>
+                <viewController storyboardIdentifier="LiveStreamingViewController" id="cp3-9h-FI8" customClass="LiveStreamingViewController" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bY8-qi-GKI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-M0-3iA" customClass="LFLivePreview">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azv-g7-VuV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-E4-jlA">
+                                                <rect key="frame" x="118" y="609" width="139" height="30"/>
+                                                <state key="normal" title="Start Live Broadcast"/>
+                                                <connections>
+                                                    <action selector="onClickPublish:" destination="cp3-9h-FI8" eventType="touchUpInside" id="Kcs-cd-gVp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWD-lh-saH">
+                                                <rect key="frame" x="326" y="28" width="37" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="close"/>
+                                                <connections>
+                                                    <action selector="closeButtonPressed:" destination="cp3-9h-FI8" eventType="touchUpInside" id="3b6-gC-NiF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="CKp-E4-jlA" firstAttribute="centerX" secondItem="Azv-g7-VuV" secondAttribute="centerX" id="3gt-9r-cYz"/>
+                                            <constraint firstAttribute="bottom" secondItem="CKp-E4-jlA" secondAttribute="bottom" constant="28" id="mdo-fC-eaf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Azv-g7-VuV" secondAttribute="bottom" id="LPJ-Y7-CHQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Azv-g7-VuV" secondAttribute="trailing" id="dr3-OD-oiy"/>
+                                    <constraint firstItem="Azv-g7-VuV" firstAttribute="top" secondItem="qXp-M0-3iA" secondAttribute="top" id="jRw-8E-iHB"/>
+                                    <constraint firstItem="Azv-g7-VuV" firstAttribute="leading" secondItem="qXp-M0-3iA" secondAttribute="leading" id="pSD-6B-I5L"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qXp-M0-3iA" firstAttribute="bottom" secondItem="nyW-p9-mUQ" secondAttribute="bottom" id="A01-Lg-CeM"/>
+                            <constraint firstItem="qXp-M0-3iA" firstAttribute="leading" secondItem="nyW-p9-mUQ" secondAttribute="leading" id="CWc-ca-PbV"/>
+                            <constraint firstItem="qXp-M0-3iA" firstAttribute="top" secondItem="bY8-qi-GKI" secondAttribute="top" id="ERw-tP-Mgi"/>
+                            <constraint firstItem="qXp-M0-3iA" firstAttribute="trailing" secondItem="nyW-p9-mUQ" secondAttribute="trailing" id="YcT-Oz-bI3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nyW-p9-mUQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="WWD-lh-saH" id="4NR-Df-ure"/>
+                        <outlet property="containerView" destination="Azv-g7-VuV" id="0GF-2B-B6b"/>
+                        <outlet property="lfView" destination="qXp-M0-3iA" id="UC0-2q-4pl"/>
+                        <outlet property="startLiveButton" destination="CKp-E4-jlA" id="L8F-ak-E20"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="STi-Yr-VRU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="27"/>
+        </scene>
+    </scenes>
+</document>

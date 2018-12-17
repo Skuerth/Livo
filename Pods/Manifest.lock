@@ -1,0 +1,70 @@
+PODS:
+  - Alamofire (4.8.0)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
+  - GTMSessionFetcher/Core (1.2.1)
+  - KeychainAccess (3.1.2)
+  - LFLiveKit (2.6)
+  - Moya (10.0.0):
+    - Moya/Core (= 10.0.0)
+  - Moya/Core (10.0.0):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Result (3.2.4)
+  - SwiftLint (0.29.1)
+  - SwiftyJSON (4.2.0)
+  - XCDYouTubeKit (2.7.1)
+  - YTLiveStreaming (0.2.7):
+    - KeychainAccess
+    - LFLiveKit
+    - Moya (= 10.0.0)
+    - SwiftyJSON
+
+DEPENDENCIES:
+  - GoogleSignIn
+  - SwiftLint
+  - XCDYouTubeKit (~> 2.5)
+  - YTLiveStreaming
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - KeychainAccess
+    - LFLiveKit
+    - Moya
+    - Result
+    - SwiftLint
+    - SwiftyJSON
+    - XCDYouTubeKit
+    - YTLiveStreaming
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  LFLiveKit: 2219563721f8aa0f188effc3395a06e2d53b23f2
+  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  XCDYouTubeKit: c8567fd5cb388a3099fa26eee4b30df2a467847d
+  YTLiveStreaming: 57b1643d204d5a2abfeb4ed8323dc32fd04513b3
+
+PODFILE CHECKSUM: d6d4f481c2a4caf88f9f8eb2f6653da1ac29a5f7
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		410439029CE0A6AD37961541 /* Pods_Livo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF274ADD44F896F3902302 /* Pods_Livo.framework */; };
+		F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8221C0AA5A001B88CA /* AppDelegate.swift */; };
+		F743CB8521C0AA5A001B88CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8421C0AA5A001B88CA /* ViewController.swift */; };
+		F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F743CB8621C0AA5A001B88CA /* Main.storyboard */; };
+		F743CB8A21C0AA5B001B88CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F743CB8921C0AA5B001B88CA /* Assets.xcassets */; };
+		F743CB8D21C0AA5B001B88CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */; };
+		F74E91D621C6C104006AFC03 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E91D521C6C103006AFC03 /* Credentials.swift */; };
+		F74E91E921C6C330006AFC03 /* YTLiveStreaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */; };
+		F794C3C821C3506000AE346B /* LiveStreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C3C721C3506000AE346B /* LiveStreamingViewController.swift */; };
+		F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = F794C3CA21C3520F00AE346B /* LFLivePreview.m */; };
+		F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */; };
+		F7F3F9A621C353EB00CF39DA /* UIView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F3F9A321C353EB00CF39DA /* UIView+YYAdd.m */; };
+		F7F3F9AB21C3B09000CF39DA /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7F3F9AA21C3B08F00CF39DA /* credentials.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		04CF274ADD44F896F3902302 /* Pods_Livo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Livo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.release.xcconfig"; sourceTree = "<group>"; };
+		90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.debug.xcconfig"; sourceTree = "<group>"; };
+		F743CB7F21C0AA5A001B88CA /* Livo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Livo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F743CB8221C0AA5A001B88CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F743CB8421C0AA5A001B88CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F743CB8721C0AA5A001B88CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F743CB8921C0AA5B001B88CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F743CB8C21C0AA5B001B88CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F743CB8E21C0AA5B001B88CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F74E91D521C6C103006AFC03 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YTLiveStreaming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F794C3C721C3506000AE346B /* LiveStreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamingViewController.swift; sourceTree = "<group>"; };
+		F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livo-Bridging-Header.h"; sourceTree = "<group>"; };
+		F794C3CA21C3520F00AE346B /* LFLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLivePreview.m; sourceTree = "<group>"; };
+		F794C3CB21C3520F00AE346B /* LFLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLivePreview.h; sourceTree = "<group>"; };
+		F7F3F9A121C353EB00CF39DA /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
+		F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+YYAdd.m"; sourceTree = "<group>"; };
+		F7F3F9A321C353EB00CF39DA /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
+		F7F3F9A421C353EB00CF39DA /* UIControl+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+YYAdd.h"; sourceTree = "<group>"; };
+		F7F3F9AA21C3B08F00CF39DA /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Livo.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F743CB7C21C0AA5A001B88CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F74E91E921C6C330006AFC03 /* YTLiveStreaming.framework in Frameworks */,
+				410439029CE0A6AD37961541 /* Pods_Livo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		301236CA4F40F5A925ABD695 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */,
+				04CF274ADD44F896F3902302 /* Pods_Livo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E52292A15A29DA4807F8AC4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */,
+				4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F743CB7621C0AA5A001B88CA = {
+			isa = PBXGroup;
+			children = (
+				F743CB8121C0AA5A001B88CA /* Livo */,
+				F743CB8021C0AA5A001B88CA /* Products */,
+				8E52292A15A29DA4807F8AC4 /* Pods */,
+				301236CA4F40F5A925ABD695 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F743CB8021C0AA5A001B88CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F743CB7F21C0AA5A001B88CA /* Livo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F743CB8121C0AA5A001B88CA /* Livo */ = {
+			isa = PBXGroup;
+			children = (
+				F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */,
+				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
+				F743CB8421C0AA5A001B88CA /* ViewController.swift */,
+				F743CB8621C0AA5A001B88CA /* Main.storyboard */,
+				F7F3F99E21C352CC00CF39DA /* LFLive */,
+				F743CB8921C0AA5B001B88CA /* Assets.xcassets */,
+				F7F3F9A721C3540500CF39DA /* category */,
+				F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */,
+				F743CB8E21C0AA5B001B88CA /* Info.plist */,
+				F7F3F9AA21C3B08F00CF39DA /* credentials.plist */,
+				F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */,
+			);
+			path = Livo;
+			sourceTree = "<group>";
+		};
+		F7F3F99E21C352CC00CF39DA /* LFLive */ = {
+			isa = PBXGroup;
+			children = (
+				F74E91D521C6C103006AFC03 /* Credentials.swift */,
+				F794C3C721C3506000AE346B /* LiveStreamingViewController.swift */,
+				F794C3CB21C3520F00AE346B /* LFLivePreview.h */,
+				F794C3CA21C3520F00AE346B /* LFLivePreview.m */,
+			);
+			path = LFLive;
+			sourceTree = "<group>";
+		};
+		F7F3F9A721C3540500CF39DA /* category */ = {
+			isa = PBXGroup;
+			children = (
+				F7F3F9A421C353EB00CF39DA /* UIControl+YYAdd.h */,
+				F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */,
+				F7F3F9A121C353EB00CF39DA /* UIView+YYAdd.h */,
+				F7F3F9A321C353EB00CF39DA /* UIView+YYAdd.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F743CB7E21C0AA5A001B88CA /* Livo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F743CB9121C0AA5B001B88CA /* Build configuration list for PBXNativeTarget "Livo" */;
+			buildPhases = (
+				21C3BDFAA453BEF824AA6296 /* [CP] Check Pods Manifest.lock */,
+				F743CB7B21C0AA5A001B88CA /* Sources */,
+				F743CB7C21C0AA5A001B88CA /* Frameworks */,
+				F743CB7D21C0AA5A001B88CA /* Resources */,
+				DAE28CE57BD2947EBE7A2FD1 /* [CP] Embed Pods Frameworks */,
+				9F7C8B69D2559B33F160633F /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Livo;
+			productName = Livo;
+			productReference = F743CB7F21C0AA5A001B88CA /* Livo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F743CB7721C0AA5A001B88CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Skuerth;
+				TargetAttributes = {
+					F743CB7E21C0AA5A001B88CA = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = F743CB7A21C0AA5A001B88CA /* Build configuration list for PBXProject "Livo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F743CB7621C0AA5A001B88CA;
+			productRefGroup = F743CB8021C0AA5A001B88CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F743CB7E21C0AA5A001B88CA /* Livo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F743CB7D21C0AA5A001B88CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F743CB8D21C0AA5B001B88CA /* LaunchScreen.storyboard in Resources */,
+				F7F3F9AB21C3B09000CF39DA /* credentials.plist in Resources */,
+				F743CB8A21C0AA5B001B88CA /* Assets.xcassets in Resources */,
+				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21C3BDFAA453BEF824AA6296 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Livo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F7C8B69D2559B33F160633F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Livo/Pods-Livo-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Livo/Pods-Livo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAE28CE57BD2947EBE7A2FD1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Livo/Pods-Livo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/LFLiveKit/LFLiveKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
+				"${BUILT_PRODUCTS_DIR}/YTLiveStreaming/YTLiveStreaming.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LFLiveKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTLiveStreaming.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Livo/Pods-Livo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F743CB7B21C0AA5A001B88CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */,
+				F743CB8521C0AA5A001B88CA /* ViewController.swift in Sources */,
+				F74E91D621C6C104006AFC03 /* Credentials.swift in Sources */,
+				F7F3F9A621C353EB00CF39DA /* UIView+YYAdd.m in Sources */,
+				F794C3C821C3506000AE346B /* LiveStreamingViewController.swift in Sources */,
+				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,
+				F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F743CB8621C0AA5A001B88CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F743CB8721C0AA5A001B88CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F743CB8C21C0AA5B001B88CA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F743CB8F21C0AA5B001B88CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F743CB9021C0AA5B001B88CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F743CB9221C0AA5B001B88CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Livo/Livo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5VJGX4R94;
+				INFOPLIST_FILE = Livo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.skuerth.Livo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Livo/Livo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F743CB9321C0AA5B001B88CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Livo/Livo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q5VJGX4R94;
+				INFOPLIST_FILE = Livo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.skuerth.Livo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Livo/Livo-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F743CB7A21C0AA5A001B88CA /* Build configuration list for PBXProject "Livo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F743CB8F21C0AA5B001B88CA /* Debug */,
+				F743CB9021C0AA5B001B88CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F743CB9121C0AA5B001B88CA /* Build configuration list for PBXNativeTarget "Livo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F743CB9221C0AA5B001B88CA /* Debug */,
+				F743CB9321C0AA5B001B88CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F743CB7721C0AA5A001B88CA /* Project object */;
+}
