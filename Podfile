@@ -10,5 +10,6 @@ target 'Livo' do
   pod 'GoogleSignIn'
   pod "XCDYouTubeKit", "~> 2.5"
   pod 'YTLiveStreaming'
+  pod 'YouTubePlayer', '~> 0.4'
 
 end

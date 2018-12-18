@@ -117,25 +117,10 @@
             </objects>
             <point key="canvasLocation" x="1546" y="27"/>
         </scene>
-        <!--Client Watch Page-->
-        <scene sceneID="jPL-ld-6fw">
-            <objects>
-                <viewController id="kDa-xo-CA8" customClass="ClientWatchPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QIY-tv-w6f">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="U3w-2U-D6i"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3i2-fm-5eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2261" y="29"/>
-        </scene>
-        <!--Live Event List Page-->
+        <!--Collection View Controller-->
         <scene sceneID="Baj-5Q-AdX">
             <objects>
-                <collectionViewController id="GWB-9j-SzH" customClass="LiveEventListPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="GWB-9j-SzH" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5VY-y6-XOC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

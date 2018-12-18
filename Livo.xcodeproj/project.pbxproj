@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		410439029CE0A6AD37961541 /* Pods_Livo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF274ADD44F896F3902302 /* Pods_Livo.framework */; };
+		F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F30F321C903280065F67B /* ClientWatchPage.swift */; };
 		F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8221C0AA5A001B88CA /* AppDelegate.swift */; };
 		F743CB8521C0AA5A001B88CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8421C0AA5A001B88CA /* ViewController.swift */; };
 		F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F743CB8621C0AA5A001B88CA /* Main.storyboard */; };
@@ -17,6 +18,9 @@
 		F74E91E921C6C330006AFC03 /* YTLiveStreaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */; };
 		F794C3C821C3506000AE346B /* LiveStreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F794C3C721C3506000AE346B /* LiveStreamingViewController.swift */; };
 		F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = F794C3CA21C3520F00AE346B /* LFLivePreview.m */; };
+		F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F521C8EE0600427873 /* LiveEventListPage.swift */; };
+		F7C741FA21C8EEB400427873 /* LiveEventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F821C8EEB400427873 /* LiveEventListCell.swift */; };
+		F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C741F921C8EEB400427873 /* LiveEventListCell.xib */; };
 		F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */; };
 		F7F3F9A621C353EB00CF39DA /* UIView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F3F9A321C353EB00CF39DA /* UIView+YYAdd.m */; };
 		F7F3F9AB21C3B09000CF39DA /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7F3F9AA21C3B08F00CF39DA /* credentials.plist */; };
@@ -26,6 +30,7 @@
 		04CF274ADD44F896F3902302 /* Pods_Livo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Livo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.release.xcconfig"; sourceTree = "<group>"; };
 		90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.debug.xcconfig"; sourceTree = "<group>"; };
+		F73F30F321C903280065F67B /* ClientWatchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWatchPage.swift; sourceTree = "<group>"; };
 		F743CB7F21C0AA5A001B88CA /* Livo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Livo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F743CB8221C0AA5A001B88CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F743CB8421C0AA5A001B88CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +44,9 @@
 		F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F794C3CA21C3520F00AE346B /* LFLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLivePreview.m; sourceTree = "<group>"; };
 		F794C3CB21C3520F00AE346B /* LFLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLivePreview.h; sourceTree = "<group>"; };
+		F7C741F521C8EE0600427873 /* LiveEventListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListPage.swift; sourceTree = "<group>"; };
+		F7C741F821C8EEB400427873 /* LiveEventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListCell.swift; sourceTree = "<group>"; };
+		F7C741F921C8EEB400427873 /* LiveEventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveEventListCell.xib; sourceTree = "<group>"; };
 		F7F3F9A121C353EB00CF39DA /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
 		F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+YYAdd.m"; sourceTree = "<group>"; };
 		F7F3F9A321C353EB00CF39DA /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
@@ -100,9 +108,12 @@
 			isa = PBXGroup;
 			children = (
 				F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */,
+				F74E91D521C6C103006AFC03 /* Credentials.swift */,
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
 				F743CB8421C0AA5A001B88CA /* ViewController.swift */,
+				F73F30F321C903280065F67B /* ClientWatchPage.swift */,
 				F743CB8621C0AA5A001B88CA /* Main.storyboard */,
+				F7C741F721C8EE1600427873 /* LiveEvent */,
 				F7F3F99E21C352CC00CF39DA /* LFLive */,
 				F743CB8921C0AA5B001B88CA /* Assets.xcassets */,
 				F7F3F9A721C3540500CF39DA /* category */,
@@ -114,10 +125,19 @@
 			path = Livo;
 			sourceTree = "<group>";
 		};
+		F7C741F721C8EE1600427873 /* LiveEvent */ = {
+			isa = PBXGroup;
+			children = (
+				F7C741F521C8EE0600427873 /* LiveEventListPage.swift */,
+				F7C741F821C8EEB400427873 /* LiveEventListCell.swift */,
+				F7C741F921C8EEB400427873 /* LiveEventListCell.xib */,
+			);
+			path = LiveEvent;
+			sourceTree = "<group>";
+		};
 		F7F3F99E21C352CC00CF39DA /* LFLive */ = {
 			isa = PBXGroup;
 			children = (
-				F74E91D521C6C103006AFC03 /* Credentials.swift */,
 				F794C3C721C3506000AE346B /* LiveStreamingViewController.swift */,
 				F794C3CB21C3520F00AE346B /* LFLivePreview.h */,
 				F794C3CA21C3520F00AE346B /* LFLivePreview.m */,
@@ -149,6 +169,7 @@
 				F743CB7D21C0AA5A001B88CA /* Resources */,
 				DAE28CE57BD2947EBE7A2FD1 /* [CP] Embed Pods Frameworks */,
 				9F7C8B69D2559B33F160633F /* [CP] Copy Pods Resources */,
+				F759751A21C7518A00E38C4D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -210,6 +231,7 @@
 				F7F3F9AB21C3B09000CF39DA /* credentials.plist in Resources */,
 				F743CB8A21C0AA5B001B88CA /* Assets.xcassets in Resources */,
 				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
+				F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +301,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/YTLiveStreaming/YTLiveStreaming.framework",
+				"${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -294,11 +317,29 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTLiveStreaming.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YouTubePlayer.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Livo/Pods-Livo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F759751A21C7518A00E38C4D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -308,10 +349,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */,
+				F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */,
 				F743CB8521C0AA5A001B88CA /* ViewController.swift in Sources */,
 				F74E91D621C6C104006AFC03 /* Credentials.swift in Sources */,
+				F7C741FA21C8EEB400427873 /* LiveEventListCell.swift in Sources */,
 				F7F3F9A621C353EB00CF39DA /* UIView+YYAdd.m in Sources */,
 				F794C3C821C3506000AE346B /* LiveStreamingViewController.swift in Sources */,
+				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,
 				F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */,
 			);

@@ -12,17 +12,12 @@ import GoogleSignIn
 
 class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
-
-
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 
         guard let token = user.authentication.accessToken else { return }
         GoogleOAuth2.sharedInstance.accessToken = token
 
-
-
     }
-
 
     @IBAction func signInButton(_ sender: UIButton) {
 
@@ -44,7 +39,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
 
-
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
 
         if let livePage = mainStoryBoard.instantiateViewController(withIdentifier: "LiveStreamingViewController") as? LiveStreamingViewController {
@@ -55,13 +49,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
         }
     }
-    
 
-//    let input: YTLiveStreaming
+    //    let input: YTLiveStreaming
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 }
-
