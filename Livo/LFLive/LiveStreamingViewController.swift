@@ -108,7 +108,6 @@ class LiveStreamingViewController: UIViewController, YTLiveStreamingDelegate {
             })
         } else {
 
-
         }
 
     }

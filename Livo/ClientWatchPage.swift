@@ -7,24 +7,39 @@
 //
 
 import UIKit
+import YouTubePlayer
 
 class ClientWatchPage: UIViewController {
+
+    @IBOutlet weak var displayView: YouTubePlayerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        let frame = self.view.frame
+
+//        self.displayView = YouTubePlayerView(frame: frame)
+
+        guard let url = URL(string: "https://www.youtube.com/watch?v=3YWIdXEF7tg") else { return }
+
+        displayView.playerVars = [
+            "playsinline": "1",
+            "controls": "0",
+            "showinfo": "0"
+            ] as YouTubePlayerView.YouTubePlayerParameters
+
+        displayView.loadVideoURL(url)
+
     }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func playButton(_ sender: UIButton) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if displayView.ready {
+            if displayView.playerState != YouTubePlayerState.Playing {
+                displayView.play()
+            } else {
+                displayView.pause()
+            }
+        }
     }
-    */
-
 }

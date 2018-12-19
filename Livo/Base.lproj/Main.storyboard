@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kDa-xo-CA8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -121,16 +121,37 @@
         <scene sceneID="jPL-ld-6fw">
             <objects>
                 <viewController id="kDa-xo-CA8" customClass="ClientWatchPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QIY-tv-w6f">
+                    <view key="view" contentMode="scaleToFill" id="QIY-tv-w6f" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-Fr-o2l" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIT-GJ-RT4">
+                                <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButton:" destination="kDa-xo-CA8" eventType="touchUpInside" id="aDR-sc-EWm"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wIT-GJ-RT4" firstAttribute="centerX" secondItem="QIY-tv-w6f" secondAttribute="centerX" id="Zs2-kL-MVq"/>
+                            <constraint firstItem="wIT-GJ-RT4" firstAttribute="centerY" secondItem="QIY-tv-w6f" secondAttribute="centerY" id="pbJ-CS-B4v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="U3w-2U-D6i"/>
                     </view>
+                    <connections>
+                        <outlet property="displayView" destination="KdE-Fr-o2l" id="2QN-jy-sde"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i2-fm-5eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="29"/>
+            <point key="canvasLocation" x="2260" y="28.335832083958024"/>
         </scene>
         <!--Live Event List Page-->
         <scene sceneID="Baj-5Q-AdX">
@@ -165,6 +186,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZj-ls-gvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="27"/>
+        </scene>
+        <!--Chat Room Page-->
+        <scene sceneID="hAe-pm-Ho6">
+            <objects>
+                <viewController id="M9o-82-GC1" customClass="ChatRoomPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OxM-Hr-1M1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QXw-vg-kz0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uty-ES-eSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="695.80209895052474"/>
         </scene>
     </scenes>
 </document>
