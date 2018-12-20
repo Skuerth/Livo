@@ -125,10 +125,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-Fr-o2l" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-Fr-o2l" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="yIX-Uy-UYR"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIT-GJ-RT4">
                                 <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
@@ -140,8 +142,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KdE-Fr-o2l" firstAttribute="top" secondItem="QIY-tv-w6f" secondAttribute="top" id="AV7-9j-uBQ"/>
+                            <constraint firstItem="KdE-Fr-o2l" firstAttribute="leading" secondItem="U3w-2U-D6i" secondAttribute="leading" id="P91-ab-tZL"/>
                             <constraint firstItem="wIT-GJ-RT4" firstAttribute="centerX" secondItem="QIY-tv-w6f" secondAttribute="centerX" id="Zs2-kL-MVq"/>
                             <constraint firstItem="wIT-GJ-RT4" firstAttribute="centerY" secondItem="QIY-tv-w6f" secondAttribute="centerY" id="pbJ-CS-B4v"/>
+                            <constraint firstItem="KdE-Fr-o2l" firstAttribute="trailing" secondItem="U3w-2U-D6i" secondAttribute="trailing" id="wZA-b8-o8S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U3w-2U-D6i"/>
                     </view>
@@ -187,10 +192,25 @@
             </objects>
             <point key="canvasLocation" x="817" y="27"/>
         </scene>
-        <!--Chat Room Page-->
+        <!--View Controller-->
+        <scene sceneID="Pdo-Bd-MTh">
+            <objects>
+                <viewController id="eWw-Zj-A6a" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wEi-4b-aN6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HOZ-A6-FE0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BjU-aa-Pgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2900" y="-640"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="hAe-pm-Ho6">
             <objects>
-                <viewController id="M9o-82-GC1" customClass="ChatRoomPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M9o-82-GC1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OxM-Hr-1M1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,7 +220,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uty-ES-eSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="695.80209895052474"/>
+            <point key="canvasLocation" x="3005.5999999999999" y="26.53673163418291"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9k4-pW-Zi5">
+            <objects>
+                <viewController id="HvW-MR-3aZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FrU-3Z-sHS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFm-vo-kcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3816" y="-293"/>
         </scene>
     </scenes>
 </document>

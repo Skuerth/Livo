@@ -9,9 +9,31 @@
 import UIKit
 import GoogleSignIn
 import YTLiveStreaming
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+
+
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+
+        GIDSignIn.sharedInstance()?.clientID = "228285399359-a8r38hm5eoead8ki3m5iso3o6ob5sanp.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.delegate = self
+
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+
+        return GIDSignIn.sharedInstance().handle(url as URL?,
+                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 
@@ -31,23 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             guard let token = idToken else { return }
             GoogleOAuth2.sharedInstance.accessToken = token
         }
-    }
-
-    var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        GIDSignIn.sharedInstance()?.clientID = "228285399359-a8r38hm5eoead8ki3m5iso3o6ob5sanp.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance()?.delegate = self
-
-        return true
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
     }
 
 }
