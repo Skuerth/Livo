@@ -12,11 +12,15 @@ import GoogleSignIn
 
 class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 
         guard let token = user.authentication.accessToken else { return }
         GoogleOAuth2.sharedInstance.accessToken = token
-
     }
 
     @IBAction func signInButton(_ sender: UIButton) {
@@ -48,12 +52,5 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
         } else {
 
         }
-    }
-
-    //    let input: YTLiveStreaming
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
     }
 }

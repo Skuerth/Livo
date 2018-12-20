@@ -108,14 +108,11 @@ class LiveStreamingViewController: UIViewController, YTLiveStreamingDelegate {
             })
         } else {
 
-
         }
 
     }
 
     func startBroadcast(liveBroadcastStreamModel: LiveBroadcastStreamModel) {
-
-//        guard let liveBroadcastStreamModel = self.liveBroadcastStreamModel else { return }
 
         self.input?.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
 
@@ -123,7 +120,6 @@ class LiveStreamingViewController: UIViewController, YTLiveStreamingDelegate {
                 let streamUrl = "\(streamURL)/\(streamName)"
 
                 self.lfView.startPublishing(withStreamURL: streamUrl)
-
             }
         })
     }

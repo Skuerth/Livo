@@ -11,5 +11,10 @@ target 'Livo' do
   pod "XCDYouTubeKit", "~> 2.5"
   pod 'YTLiveStreaming'
   pod 'YouTubePlayer', '~> 0.4'
+  pod 'MessageKit', '~> 2.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth', :inhibit_warnings => true
+
 
 end
