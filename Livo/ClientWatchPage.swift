@@ -14,14 +14,10 @@ import MessageKit
 class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelegate {
 
     @IBOutlet weak var displayView: YouTubePlayerView!
-
     let conversationViewController = ChatRoomPage()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
 
         conversationViewController.willMove(toParent: self)
         self.addChild(conversationViewController)
@@ -30,18 +26,19 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
         displayView.delegate = self
 
-
         guard let url = URL(string: "https://www.youtube.com/watch?v=3YWIdXEF7tg") else { return }
 
-//        displayView.playerVars = [
-//            "playsinline": "1",
-//            "controls": "0",
-//            "showinfo": "0"
-//            ] as YouTubePlayerView.YouTubePlayerParameters
+        displayView.playerVars = [
+            "playsinline": "1",
+            "controls": "1",
+            "showinfo": "0",
+            "autoplay": "0"
+            ] as YouTubePlayerView.YouTubePlayerParameters
 
         displayView.loadVideoURL(url)
 
         conversationViewController.messageInputBar.inputTextView.delegate = self
+
     }
 
 

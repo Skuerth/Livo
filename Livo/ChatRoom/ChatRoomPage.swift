@@ -30,13 +30,7 @@ class ChatRoomPage: MessagesViewController {
 
     var userUID: String?
     var channelID: String?
-
     var chatChannelRef: DatabaseReference?
-
-//    let rootRef = Database.database().reference()
-
-//    let chatChannelRef: DatabaseReference?
-
     var messages: [Message] = []
 
     override func viewDidLoad() {
@@ -49,9 +43,7 @@ class ChatRoomPage: MessagesViewController {
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
 
-//        self.channelID = "testID"
-        self.channelID = nil
-
+        self.channelID = "testID"
         self.fetchMessages()
     }
 
@@ -79,14 +71,12 @@ class ChatRoomPage: MessagesViewController {
                         let dateString = value["sentDate"] as? String,
                         let date = self.stringConvertToDate(dateString: dateString)
                     else {
-
                         return
                     }
 
-                    var messageKindnd = MessageKind.text(content)
-                    var sender = Sender(id: userID, displayName: name)
+                    let sender = Sender(id: userID, displayName: name)
 
-                    let message = Message(sender: sender, messageId: messageID, sentDate: date, kind: messageKindnd, content: content, kindString: kind)
+                    let message = Message(sender: sender, messageId: messageID, sentDate: date, kind: .text(content))
 
                     newMessages.append(message)
 
@@ -195,10 +185,7 @@ extension ChatRoomPage: MessageInputBarDelegate {
             let messageID = Database.database().reference(withPath: channelID).childByAutoId().key
         else {
 
-            if (self.presentedViewController == nil) {
-
-                ChatMessageConnetError.convertError.alert(with: self)
-            }
+//                ChatMessageConnetError.convertError.alert(with: self)
             return
         }
 
@@ -207,7 +194,9 @@ extension ChatRoomPage: MessageInputBarDelegate {
 
         let sender = Sender(id: id, displayName: "Phil")
 
-        let message = Message(sender: sender, messageId: messageID, sentDate: date, kind: MessageKind.text(text), content: text, kindString: "text")
+        var message = Message(sender: sender, messageId: messageID, sentDate: date, kind: MessageKind.text(text))
+
+
 
         let ref = Database.database().reference(withPath: "chatChannel").child(channelID).child(messageID)
         ref.setValue(message.toAnyObject())

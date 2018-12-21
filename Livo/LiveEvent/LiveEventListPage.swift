@@ -8,36 +8,59 @@
 
 import UIKit
 import YTLiveStreaming
-
-private let reuseIdentifier = "Cell"
+import Firebase
 
 class LiveEventListPage: UICollectionViewController {
+
+    var liveBroadcastStreamRef: DatabaseReference?
+    var liveStreamInfos: [LiveStreamInfo]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
+
+        self.liveBroadcastStreamRef?.queryOrdered(byChild: "status").queryEqual(toValue: LiveStatus.live.rawValue).observe(.value, with: { snapshot in
+
+            var newLiveStreamInfos: [LiveStreamInfo] = []
+
+            if snapshot.childrenCount > 0 {
+
+                for child in snapshot.children {
+
+                    guard
+                        let snapshot = child as? DataSnapshot,
+                        let liveStreamInfo = LiveStreamInfo(snapshot: snapshot)
+                    else {
+                        return
+                    }
+
+                    newLiveStreamInfos.append(liveStreamInfo)
+                }
+            }
+
+            self.liveStreamInfos = newLiveStreamInfos
+        })
+
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
 
     }
 
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+
         return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
+
         return 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+
         return cell
     }
-
 }

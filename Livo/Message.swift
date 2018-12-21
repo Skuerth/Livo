@@ -16,33 +16,40 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     var kind: MessageKind
-    var content: String
-    var kindString: String
 
-
-    init(sender: Sender, messageId: String, sentDate: Date, kind: MessageKind, content: String, kindString: String) {
+    init(sender: Sender, messageId: String, sentDate: Date, kind: MessageKind) {
         self.sender = sender
         self.messageId = messageId
         self.sentDate = sentDate
         self.kind = kind
-        self.content = content
-        self.kindString = kindString
     }
 
-
-
-    func toAnyObject() -> Any {
+    mutating func toAnyObject() -> Any {
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
         let dateString = dateFormatter.string(from: sentDate)
 
+        var kindConvertString = ""
+        var kindString = ""
+
+        switch kind {
+
+            case .text(let text):
+                kindConvertString = text
+                kindString = "text"
+
+            default:
+                break
+        }
+
         return [
             "publish_userID": self.sender.id,
             "publish_userName": self.sender.displayName,
             "sentDate": dateString,
-            "kind": kindString,
-            "content": self.content
+            "kind": kindConvertString,
+            "content": kindConvertString
+
         ]
     }
 }

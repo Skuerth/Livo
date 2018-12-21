@@ -163,7 +163,7 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // Updates a broadcast. For example, you could modify the broadcast settings defined in the liveBroadcast resource's contentDetails object.
     // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/update
     // PUT https://www.googleapis.com/youtube/v3/liveBroadcasts
