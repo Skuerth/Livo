@@ -15,12 +15,15 @@ class MainTabbarPage: UITabBarController {
 
     var userProfile: [String: String]?
     var liveStreamManager: LiveStreamManager?
+    var emailUserProfile: UserProfile?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.liveStreamManager = LiveStreamManager()
 
         GIDSignIn.sharedInstance()?.delegate = self
+
+        print("emailUserProfile",emailUserProfile)
     }
 }
 

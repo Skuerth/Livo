@@ -38,8 +38,6 @@ class AddLiveBraodcastStreamPage: UIViewController {
             return
         }
 
-        let accessToken = GoogleOAuth2.sharedInstance.accessToken
-
         self.liveStreamManager?.createLiveBroadcast(title: title, description: description)
     }
 }

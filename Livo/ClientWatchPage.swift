@@ -41,8 +41,6 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
     }
 
-
-
     func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
 
         if playerState.rawValue == "2" {

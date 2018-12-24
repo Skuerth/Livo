@@ -11,7 +11,7 @@ import YTLiveStreaming
 import Firebase
 import GoogleSignIn
 
-class LiveEventListPage: UICollectionViewController {
+class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
     let liveEventListCellID = "LiveEventListCell"
 
@@ -50,14 +50,37 @@ class LiveEventListPage: UICollectionViewController {
 
     }
 
-    @IBAction func googleSignOut(_ sender: UIBarButtonItem) {
+    // MARK: - IBAction Method
+    @IBAction func createNewLiveBroadcast(_ sender: UIBarButtonItem) {
 
-        GIDSignIn.sharedInstance()?.signOut()
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.scopes = [
+            "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.force-ssl"]
+        GIDSignIn.sharedInstance()?.signIn()
+    }
 
-        guard let loginPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginPage") as? LoginPage else { return }
+    @IBAction func emailSignOut(_ sender: UIBarButtonItem) {
 
-        guard let appDelegate = UIApplication.shared.delegate else { return }
-        appDelegate.window??.rootViewController = loginPage
+        do {
+            try Auth.auth().signOut()
+
+            let main = UIStoryboard(name: "Main", bundle: nil)
+
+            if
+                let loginPage = main.instantiateViewController(withIdentifier: "LoginPage") as? LoginPage,
+                let appDelegate = UIApplication.shared.delegate
+            {
+
+                dismiss(animated: true) {
+
+                    appDelegate.window??.rootViewController = loginPage
+                }
+            }
+        } catch let error {
+
+            print("\(error.localizedDescription)")
+        }
     }
 
     // MARK: UICollectionViewDataSource

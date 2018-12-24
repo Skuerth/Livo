@@ -17,7 +17,6 @@ protocol ListPageManagerDelegate: class{
 
 class ListPageManager {
 
-
     let liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
     var liveStreamInfos: [LiveStreamInfo] = []
 
