@@ -12,7 +12,12 @@ import YTLiveStreaming
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+
+        print("xxx")
+    }
 
     var window: UIWindow?
 
@@ -20,7 +25,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+        
         GIDSignIn.sharedInstance()?.clientID = LivoCredentials.oAuthClientID
+        GIDSignIn.sharedInstance()?.delegate = self
+
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+
+        if GIDSignIn.sharedInstance()?.hasAuthInKeychain() != nil {
+
+            if let mainTabbarPage = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
+
+                self.window?.rootViewController = mainTabbarPage
+            }
+
+        } else {
+
+            if let loginPage = mainStoryBoard.instantiateViewController(withIdentifier: "LoginPage") as? LoginPage {
+
+                self.window?.rootViewController = loginPage
+            }
+        }
 
         return true
     }

@@ -26,10 +26,6 @@ struct Message: MessageType {
 
     mutating func toAnyObject() -> Any {
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-        let dateString = dateFormatter.string(from: sentDate)
-
         var kindConvertString = ""
         var kindString = ""
 
@@ -46,7 +42,7 @@ struct Message: MessageType {
         return [
             "publish_userID": self.sender.id,
             "publish_userName": self.sender.displayName,
-            "sentDate": dateString,
+            "sentDate": sentDate.dateConvertToString,
             "kind": kindConvertString,
             "content": kindConvertString
 

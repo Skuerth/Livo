@@ -18,6 +18,7 @@ class AddLiveBraodcastStreamPage: UIViewController {
 
     var liveStreamManager: LiveStreamManager?
     var userProfile: [String: String] = [:]
+    var authCredential: AuthCredential?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class AddLiveBraodcastStreamPage: UIViewController {
         self.liveStreamManager = LiveStreamManager()
         self.liveStreamManager?.delegate = self
 
-        GIDSignIn.sharedInstance()?.delegate = self
+//        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     @IBAction func submitButton(_ sender: UIButton) {
@@ -39,33 +40,11 @@ class AddLiveBraodcastStreamPage: UIViewController {
 
         let accessToken = GoogleOAuth2.sharedInstance.accessToken
 
-        print("accessToken", accessToken)
-
         self.liveStreamManager?.createLiveBroadcast(title: title, description: description)
     }
 }
 
-extension AddLiveBraodcastStreamPage: GIDSignInDelegate {
-
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-
-        guard let token = user.authentication.accessToken else { return }
-
-        guard let userName = user.profile.name else { return }
-        guard let userUID = user.userID else { return }
-        guard let imageURL = user.profile.imageURL(withDimension: 150) else { return }
-
-        let imageURLString = imageURL.absoluteString
-
-        self.userProfile["userName"] = userName
-        self.userProfile["userUID"] = userUID
-        self.userProfile["imageURL"] = imageURLString
-        self.liveStreamManager?.userProfile = self.userProfile
-
-        GoogleOAuth2.sharedInstance.accessToken = token
-    }
-}
-
+// MARK: - LiveStreamManagerDelegate Method
 extension AddLiveBraodcastStreamPage: LiveStreamManagerDelegate {
 
     func finishCreateLiveBroadcastStream(_ manager: LiveStreamManager) {
@@ -88,12 +67,3 @@ extension AddLiveBraodcastStreamPage: LiveStreamManagerDelegate {
         }
     }
 }
-
-// Mark: - Firebase Method
-extension AddLiveBraodcastStreamPage {
-
-}
-
-
-
-

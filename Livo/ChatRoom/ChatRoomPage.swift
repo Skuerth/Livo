@@ -88,7 +88,6 @@ class ChatRoomPage: MessagesViewController {
                 self.messagesCollectionView.reloadData()
             }
         }
-
     }
 
     // MARK: - Helpers
