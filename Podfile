@@ -15,6 +15,4 @@ target 'Livo' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth', :inhibit_warnings => true
-
-
 end

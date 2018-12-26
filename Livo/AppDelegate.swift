@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         Database.database().isPersistenceEnabled = true
+
         GIDSignIn.sharedInstance()?.clientID = LivoCredentials.oAuthClientID
 
         return true

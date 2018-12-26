@@ -1,5 +1,5 @@
 //
-//  LiveStreamingHostPage.swift
+//  LiveBroadcastPage.swift
 //  Livo
 //
 //  Created by Skuerth on 2018/12/14.
@@ -9,8 +9,9 @@
 import Foundation
 import YTLiveStreaming
 import LFLiveKit
+import Firebase
 
-class LiveStreamingHostPage: UIViewController, LFLiveSessionDelegate {
+class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
     var liveStreamManager: LiveStreamManager?
 
@@ -36,16 +37,42 @@ class LiveStreamingHostPage: UIViewController, LFLiveSessionDelegate {
             self.lfView.prepareForUsing()
         }
     }
-    @IBAction func getID(_ sender: UIButton) {
-
-    }
-
     @IBAction func onClickPublish(_ sender: UIButton) {
 
-            startLiveButton.isSelected = false
-//            startLiveButton.setTitle("Stop live broadcast", for: .normal)
-            lfView.stopPublishing()
-            self.liveStreamManager?.stopLiveBroadcast()
+        guard
+            let liveStreamManager = self.liveStreamManager,
+            let id = liveStreamManager.liveBroadcastStreamModel?.id
+        else {
+            return
+
+        }
+
+        let liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
+
+        startLiveButton.isSelected = false
+        lfView.stopPublishing()
+        liveStreamManager.stopLiveBroadcast()
+
+        liveBroadcastStreamRef.queryOrderedByKey().queryEqual(toValue: id).observeSingleEvent(of: .value) { snapshot in
+
+            snapshot.ref.child(id).updateChildValues([
+
+                "status": LiveStatus.completed.rawValue
+                ])
+        }
+
+        let main = UIStoryboard(name: "Main", bundle: nil)
+
+        if
+            let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage,
+            let appDelegate = UIApplication.shared.delegate
+        {
+
+            dismiss(animated: true) {
+
+                appDelegate.window??.rootViewController = mainTabbarPage
+            }
+        }
     }
 
     @IBAction func closeButtonPressed(_ sender: UIButton) {

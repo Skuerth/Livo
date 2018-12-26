@@ -14,11 +14,13 @@ struct LiveStreamInfo {
     var userID: String
     var userName: String
     var imageURL: String
+    var image: UIImage?
     var title: String
     var status: LiveStatus
     var videoID: String
+    var startTime: String
 
-    init(userID: String, userName: String, imageURL: String, title: String, status: LiveStatus, videoID: String) {
+    init(userID: String, userName: String, imageURL: String, title: String, status: LiveStatus, videoID: String, startTime: String) {
 
         self.userID = userID
         self.userName = userName
@@ -26,6 +28,7 @@ struct LiveStreamInfo {
         self.title = title
         self.status = status
         self.videoID = videoID
+        self.startTime = startTime
     }
 
     init?(snapshot: DataSnapshot) {
@@ -36,7 +39,8 @@ struct LiveStreamInfo {
             let userName = value["userName"] as? String,
             let title = value["title"] as? String,
             let imageURL = value["imageURL"] as? String,
-            let status = value["status"] as? String
+            let status = value["status"] as? String,
+            let startTime = value["startTime"] as? String
         else {
             return nil
         }
@@ -46,7 +50,8 @@ struct LiveStreamInfo {
         self.title = title
         self.imageURL = imageURL
         self.videoID = snapshot.key
-        
+        self.startTime = startTime
+
         if status == "live" {
 
             self.status = LiveStatus.live
@@ -65,7 +70,8 @@ struct LiveStreamInfo {
                 "imageURL": self.imageURL,
                 "title": self.title,
                 "status": self.status.rawValue,
-                "videoID": self.videoID
+                "videoID": self.videoID,
+                "startTime": self.startTime
         ]
     }
 }
