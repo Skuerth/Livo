@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import GoogleSignIn
 
-class VideoListPage: UITableViewController {
+class VideoListPage: UITableViewController, GIDSignInUIDelegate {
 
     var manager: ListPageManager?
     var liveStreamInfos: [LiveStreamInfo]?
@@ -28,6 +29,16 @@ class VideoListPage: UITableViewController {
 
     }
 
+    @IBAction func insertVideo(_ sender: UIBarButtonItem) {
+
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.scopes.append("https://www.googleapis.com/auth/youtube")
+        GIDSignIn.sharedInstance()?.signIn()
+
+        
+    }
+
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,8 +47,6 @@ class VideoListPage: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        print("iveStreamInfos?.count", liveStreamInfos?.count)
 
         return liveStreamInfos?.count ?? 0
     }
@@ -71,7 +80,7 @@ class VideoListPage: UITableViewController {
 
             clientWatchPage.videoID = liveStreamInfos[indexPath.row].videoID
 
-            present(clientWatchPage, animated: true, completion: nil)
+            self.navigationController?.pushViewController(clientWatchPage, animated: true)
         }
     }
 }

@@ -24,7 +24,7 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
         super.viewDidLoad()
 
         self.containerView.backgroundColor = .clear
-        self.createLFSession()
+
         self.liveStreamManager?.startBroadcast(lfView: self.lfView)
     }
 
@@ -37,6 +37,7 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
             self.lfView.prepareForUsing()
         }
     }
+
     @IBAction func onClickPublish(_ sender: UIButton) {
 
         guard
@@ -73,23 +74,5 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
                 appDelegate.window??.rootViewController = mainTabbarPage
             }
         }
-    }
-
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
-
-    }
-
-    func createLFSession() {
-
-        var session: LFLiveSession = {
-
-            let audioConfiguration = LFLiveAudioConfiguration.default()
-            let videoConfiguration = LFLiveVideoConfiguration.defaultConfiguration(for: LFLiveVideoQuality.low3, outputImageOrientation: UIInterfaceOrientation.portrait)
-            let session = LFLiveSession(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)
-
-            session?.delegate = self
-            session?.preView = self.lfView
-            return session!
-        }()
     }
 }

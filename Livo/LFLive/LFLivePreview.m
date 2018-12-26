@@ -156,6 +156,8 @@ inline static NSString* formatedSpeed(float bytes, float elapsed_milli) {
 
 
         /***   Default resolution 368 * 640 Audio: 44.1 iphone6 above 48 dual-channel vertical screen direction ***/
+
+        /*
         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
         videoConfiguration.videoSize = CGSizeMake(1280, 720);
         videoConfiguration.videoBitRate = 800*1024;
@@ -163,10 +165,11 @@ inline static NSString* formatedSpeed(float bytes, float elapsed_milli) {
         videoConfiguration.videoMinBitRate = 500*1024;
         videoConfiguration.videoFrameRate = 24;
         videoConfiguration.videoMaxKeyframeInterval = 48;
-        videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+        videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeRight;
         videoConfiguration.autorotate = NO;
         videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:videoConfiguration captureType:LFLiveCaptureDefaultMask];
+         */
 
         /**    Customize your own mono  */
         /*
@@ -211,6 +214,7 @@ inline static NSString* formatedSpeed(float bytes, float elapsed_milli) {
         /**    自己定制高质量音频128K 分辨率设置为720*1280 方向竖屏 */
 
         /*
+
            LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
            audioConfiguration.numberOfChannels = 2;
            audioConfiguration.audioBitrate = LFLiveAudioBitRate_128Kbps;
@@ -223,33 +227,37 @@ inline static NSString* formatedSpeed(float bytes, float elapsed_milli) {
            videoConfiguration.videoMinBitRate = 500*1024;
            videoConfiguration.videoFrameRate = 15;
            videoConfiguration.videoMaxKeyframeInterval = 30;
-           videoConfiguration.landscape = NO;
+           videoConfiguration.landscape = NO ;
            videoConfiguration.sessionPreset = LFCaptureSessionPreset360x640;
 
            _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
+
          */
-
-
         /**    自己定制高质量音频128K 分辨率设置为720*1280 方向横屏  */
 
-        /*
            LFLiveAudioConfiguration *audioConfiguration = [LFLiveAudioConfiguration new];
            audioConfiguration.numberOfChannels = 2;
            audioConfiguration.audioBitrate = LFLiveAudioBitRate_128Kbps;
            audioConfiguration.audioSampleRate = LFLiveAudioSampleRate_44100Hz;
 
            LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
-           videoConfiguration.videoSize = CGSizeMake(1280, 720);
-           videoConfiguration.videoBitRate = 800*1024;
-           videoConfiguration.videoMaxBitRate = 1000*1024;
-           videoConfiguration.videoMinBitRate = 500*1024;
-           videoConfiguration.videoFrameRate = 15;
+//        videoConfiguration.videoSize = CGSizeMake(1280, 720);
+        videoConfiguration.videoSize = CGSizeMake(211, 375);
+//           videoConfiguration.videoBitRate = 800*1024;
+//           videoConfiguration.videoMaxBitRate = 1000*1024;
+//           videoConfiguration.videoMinBitRate = 500*1024;
+        videoConfiguration.videoBitRate = 1024*800;
+        videoConfiguration.videoMaxBitRate = 1024*1000;
+        videoConfiguration.videoMinBitRate = 1024*500;
+
+        videoConfiguration.videoFrameRate = 15;
            videoConfiguration.videoMaxKeyframeInterval = 30;
-           videoConfiguration.landscape = YES;
-           videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
+
+        videoConfiguration.outputImageOrientation = UIInterfaceOrientationPortrait;
+        videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
 
            _session = [[LFLiveSession alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration];
-        */
+
 
         _session.delegate = self;
         _session.showDebugInfo = NO;

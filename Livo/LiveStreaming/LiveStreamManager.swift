@@ -45,16 +45,19 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         guard let liveBroadcastStreamModel = self.liveBroadcastStreamModel else { return }
 
-        self.input.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
+        lfView.startPublishing(withStreamURL: "https://www.youtube.com/watch?v=mbbFAjp2tmc")
 
-            if let streamURL = streamUrl, let streamName = streamName {
-                let streamUrl = "\(streamURL)/\(streamName)"
-
-                lfView.startPublishing(withStreamURL: streamUrl)
-            } else {
-
-            }
-        })
+//        self.input.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
+//
+//            if let streamURL = streamUrl, let streamName = streamName {
+//                let streamUrl = "\(streamURL)/\(streamName)"
+//
+//                lfView.startPublishing(withStreamURL: streamUrl)
+//
+//            } else {
+//
+//            }
+//        })
     }
 
     func stopLiveBroadcast() {
@@ -87,6 +90,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         liveBroadcastStreamRef.child(videoID).setValue(liveStreamInfo.toAnyObject())
     }
+
 
     // MARK: - YTLiveStreamingDelegate Method
     func didTransitionToLiveStatus() {

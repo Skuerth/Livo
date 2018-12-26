@@ -113,7 +113,7 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
             clientWatchPage.videoID = liveStreamInfos[indexPath.item].videoID
 
-            present(clientWatchPage, animated: true, completion: nil)
+            self.navigationController?.pushViewController(clientWatchPage, animated: true)
         }
     }
 

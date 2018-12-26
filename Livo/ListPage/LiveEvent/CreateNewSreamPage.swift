@@ -31,6 +31,9 @@ class CreateNewSreamPage: UIViewController {
         self.presentingView.layer.cornerRadius = 10
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         GIDSignIn.sharedInstance()?.delegate = self
+
+        self.keyboardWillShowObserve()
+        self.keyboardWillHideObserve()
     }
 
     // MARK: - IBAction Method
@@ -52,6 +55,58 @@ class CreateNewSreamPage: UIViewController {
 
         self.liveStreamManager?.createLiveBroadcast(title: title, description: description)
     }
+
+    deinit {
+
+        NotificationCenter.default.removeObserver(self)
+    }
+
+}
+
+// MARK: - UITextField Method
+extension CreateNewSreamPage: UITextFieldDelegate {
+
+    func keyboardWillShowObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+    }
+
+    func keyboardWillHideObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+
+        presentingView.transform = CGAffineTransform(translationX: 0, y: -50)
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+
+        presentingView.transform = CGAffineTransform.identity
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        textField.resignFirstResponder()
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        self.view.endEditing(true)
+    }
+
 }
 
 // MARK: - LiveStreamManagerDelegate Method

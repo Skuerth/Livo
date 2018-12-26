@@ -40,8 +40,6 @@ class ChatRoomPage: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-//        scrollsToBottomOnKeyboardBeginsEditing = true
-//        maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.delegate = self
         self.fetchMessages()
     }

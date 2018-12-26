@@ -48,6 +48,20 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
     }
 
+    @IBAction func exit(_ sender: UIButton) {
+
+        if
+            let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage,
+            let appDelegate = UIApplication.shared.delegate
+        {
+
+            dismiss(animated: true) {
+
+                appDelegate.window??.rootViewController = mainTabbarPage
+            }
+            
+        }
+}
     // MARK: - Set Up InputBar
     func playerReady(_ videoPlayer: YouTubePlayerView) {
 

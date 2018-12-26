@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cp3-9h-FI8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -365,55 +365,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-M0-3iA" customClass="LFLivePreview">
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXp-M0-3iA" customClass="LFLivePreview">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="211" id="jpN-Sk-hIu"/>
+                                </constraints>
+                            </view>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azv-g7-VuV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azv-g7-VuV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-E4-jlA">
-                                                <rect key="frame" x="118.5" y="609" width="138" height="30"/>
-                                                <state key="normal" title="Stop Live Broadcast"/>
-                                                <connections>
-                                                    <action selector="onClickPublish:" destination="cp3-9h-FI8" eventType="touchUpInside" id="Kcs-cd-gVp"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWD-lh-saH">
-                                                <rect key="frame" x="330" y="28" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="X"/>
-                                                <connections>
-                                                    <action selector="closeButtonPressed:" destination="cp3-9h-FI8" eventType="touchUpInside" id="3b6-gC-NiF"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="CKp-E4-jlA" firstAttribute="centerX" secondItem="Azv-g7-VuV" secondAttribute="centerX" id="3gt-9r-cYz"/>
-                                            <constraint firstAttribute="bottom" secondItem="CKp-E4-jlA" secondAttribute="bottom" constant="28" id="mdo-fC-eaf"/>
-                                        </constraints>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-E4-jlA">
+                                        <rect key="frame" x="118.5" y="609" width="138" height="30"/>
+                                        <state key="normal" title="Stop Live Broadcast"/>
+                                        <connections>
+                                            <action selector="onClickPublish:" destination="cp3-9h-FI8" eventType="touchUpInside" id="Kcs-cd-gVp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Azv-g7-VuV" secondAttribute="bottom" id="LPJ-Y7-CHQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="Azv-g7-VuV" secondAttribute="trailing" id="dr3-OD-oiy"/>
-                                    <constraint firstItem="Azv-g7-VuV" firstAttribute="top" secondItem="qXp-M0-3iA" secondAttribute="top" id="jRw-8E-iHB"/>
-                                    <constraint firstItem="Azv-g7-VuV" firstAttribute="leading" secondItem="qXp-M0-3iA" secondAttribute="leading" id="pSD-6B-I5L"/>
+                                    <constraint firstItem="CKp-E4-jlA" firstAttribute="centerX" secondItem="Azv-g7-VuV" secondAttribute="centerX" id="3gt-9r-cYz"/>
+                                    <constraint firstAttribute="bottom" secondItem="CKp-E4-jlA" secondAttribute="bottom" constant="28" id="mdo-fC-eaf"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qXp-M0-3iA" firstAttribute="bottom" secondItem="nyW-p9-mUQ" secondAttribute="bottom" id="A01-Lg-CeM"/>
+                            <constraint firstItem="Azv-g7-VuV" firstAttribute="top" secondItem="bY8-qi-GKI" secondAttribute="top" id="Be0-nQ-49G"/>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="leading" secondItem="nyW-p9-mUQ" secondAttribute="leading" id="CWc-ca-PbV"/>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="top" secondItem="bY8-qi-GKI" secondAttribute="top" id="ERw-tP-Mgi"/>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="trailing" secondItem="nyW-p9-mUQ" secondAttribute="trailing" id="YcT-Oz-bI3"/>
+                            <constraint firstItem="Azv-g7-VuV" firstAttribute="leading" secondItem="nyW-p9-mUQ" secondAttribute="leading" id="dX1-hm-wEv"/>
+                            <constraint firstItem="Azv-g7-VuV" firstAttribute="trailing" secondItem="nyW-p9-mUQ" secondAttribute="trailing" id="jYO-Kz-gQa"/>
+                            <constraint firstItem="nyW-p9-mUQ" firstAttribute="bottom" secondItem="Azv-g7-VuV" secondAttribute="bottom" id="oqp-gL-RRf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyW-p9-mUQ"/>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="WWD-lh-saH" id="4NR-Df-ure"/>
                         <outlet property="containerView" destination="Azv-g7-VuV" id="0GF-2B-B6b"/>
                         <outlet property="lfView" destination="qXp-M0-3iA" id="UC0-2q-4pl"/>
                         <outlet property="startLiveButton" destination="CKp-E4-jlA" id="L8F-ak-E20"/>
@@ -438,22 +427,44 @@
                                     <constraint firstAttribute="height" constant="230" id="yIX-Uy-UYR"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaR-1a-mba" userLabel="Button View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="211"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODh-jl-tZH">
+                                        <rect key="frame" x="325" y="20" width="30" height="30"/>
+                                        <state key="normal" title="Exit"/>
+                                        <connections>
+                                            <action selector="exit:" destination="kDa-xo-CA8" eventType="touchUpInside" id="9wp-we-VGF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ODh-jl-tZH" firstAttribute="top" secondItem="WaR-1a-mba" secondAttribute="top" constant="20" id="Gd6-Nk-Fwy"/>
+                                    <constraint firstAttribute="trailing" secondItem="ODh-jl-tZH" secondAttribute="trailing" constant="20" id="Yk7-02-o20"/>
+                                    <constraint firstAttribute="height" constant="211" id="t2d-k5-IjT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WaR-1a-mba" firstAttribute="trailing" secondItem="U3w-2U-D6i" secondAttribute="trailing" id="0mN-aE-YfN"/>
+                            <constraint firstItem="WaR-1a-mba" firstAttribute="leading" secondItem="U3w-2U-D6i" secondAttribute="leading" id="1Tk-qf-iTk"/>
                             <constraint firstItem="KdE-Fr-o2l" firstAttribute="top" secondItem="QIY-tv-w6f" secondAttribute="top" id="AV7-9j-uBQ"/>
                             <constraint firstItem="KdE-Fr-o2l" firstAttribute="leading" secondItem="U3w-2U-D6i" secondAttribute="leading" id="P91-ab-tZL"/>
+                            <constraint firstItem="WaR-1a-mba" firstAttribute="top" secondItem="U3w-2U-D6i" secondAttribute="top" id="ZyG-iU-HsC"/>
                             <constraint firstItem="KdE-Fr-o2l" firstAttribute="trailing" secondItem="U3w-2U-D6i" secondAttribute="trailing" id="wZA-b8-o8S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U3w-2U-D6i"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0hK-hh-WaE"/>
                     <connections>
                         <outlet property="displayView" destination="KdE-Fr-o2l" id="2QN-jy-sde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i2-fm-5eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="-169"/>
+            <point key="canvasLocation" x="2709.5999999999999" y="-169.56521739130437"/>
         </scene>
         <!--Live Event List Page-->
         <scene sceneID="Baj-5Q-AdX">
@@ -507,11 +518,54 @@
                             <outlet property="delegate" destination="gvV-oU-yGf" id="5V3-JR-VzD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Z1m-on-UO7"/>
+                    <navigationItem key="navigationItem" id="Z1m-on-UO7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="grR-wg-bLm">
+                            <connections>
+                                <action selector="insertVideo:" destination="gvV-oU-yGf" id="DVG-Ab-Mbr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gwp-gw-iPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1900" y="-168.6656671664168"/>
+        </scene>
+        <!--Insert Video Page-->
+        <scene sceneID="9JH-5X-YMg">
+            <objects>
+                <viewController storyboardIdentifier="InsertVideoPage" id="ayV-wh-3QN" customClass="InsertVideoPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KlL-kR-WwP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HuR-3h-9RX">
+                                <rect key="frame" x="50" y="70" width="275" height="547"/>
+                                <color key="backgroundColor" red="0.45085787770000002" green="0.98829740290000001" blue="0.83763033149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FvW-5W-Se3">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y6x-LA-oDx" firstAttribute="trailing" secondItem="HuR-3h-9RX" secondAttribute="trailing" constant="50" id="1Hq-Q4-NlK"/>
+                            <constraint firstItem="HuR-3h-9RX" firstAttribute="leading" secondItem="y6x-LA-oDx" secondAttribute="leading" constant="50" id="MaM-kk-x2s"/>
+                            <constraint firstItem="y6x-LA-oDx" firstAttribute="bottom" secondItem="HuR-3h-9RX" secondAttribute="bottom" constant="50" id="c32-CB-H6A"/>
+                            <constraint firstItem="HuR-3h-9RX" firstAttribute="top" secondItem="y6x-LA-oDx" secondAttribute="top" constant="50" id="tki-dL-qZg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y6x-LA-oDx"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="HuR-3h-9RX" id="CAd-9m-ZTd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xbF-dq-lhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="527"/>
         </scene>
         <!--Live-->
         <scene sceneID="anD-dh-kUF">
