@@ -19,7 +19,8 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     var liveStreamInfos: [LiveStreamInfo]?
     var listPageManager: ListPageManager?
 
-    let spaceing: CGFloat = 20
+    let spaceing: CGFloat = 18
+    let cellInset: CGFloat = 12
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,12 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
                                         left: CGFloat(spaceing),
                                         bottom: CGFloat(spaceing),
                                         right: CGFloat(spaceing))
-        layout.minimumLineSpacing = CGFloat(spaceing)
-        layout.minimumInteritemSpacing = CGFloat(27)
 
-        layout.estimatedItemSize = CGSize(width: CGFloat(154) ,
-                                          height: CGFloat(160))
+        layout.minimumLineSpacing = CGFloat(cellInset)
+        layout.minimumInteritemSpacing = CGFloat(cellInset)
+
+        layout.estimatedItemSize = CGSize(width: CGFloat(157) ,
+                                          height: CGFloat(151))
 
         self.collectionView.collectionViewLayout = layout
 
@@ -58,6 +60,15 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
             "https://www.googleapis.com/auth/youtube",
             "https://www.googleapis.com/auth/youtube.force-ssl"]
         GIDSignIn.sharedInstance()?.signIn()
+
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let createNewSreamPage = mainStoryBoard.instantiateViewController(withIdentifier: "CreateNewSreamPage") as? CreateNewSreamPage {
+
+            addChild(createNewSreamPage)
+            self.view.addSubview(createNewSreamPage.view)
+            createNewSreamPage.didMove(toParent: self)
+        }
+
     }
 
     @IBAction func emailSignOut(_ sender: UIBarButtonItem) {
@@ -93,6 +104,17 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return self.liveStreamInfos?.count ?? 0
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        if let clientWatchPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ClientWatchPage") as? ClientWatchPage,
+            let liveStreamInfos = self.liveStreamInfos {
+
+            clientWatchPage.videoID = liveStreamInfos[indexPath.item].videoID
+
+            present(clientWatchPage, animated: true, completion: nil)
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

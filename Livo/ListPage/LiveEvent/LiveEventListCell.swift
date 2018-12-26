@@ -27,11 +27,6 @@ class LiveEventListCell: UICollectionViewCell {
     func labelTextAtributesText(label: UILabel) {
 
         label.textColor = .black
-//        label.shadowColor = .gray
-//        label.layer.shadowRadius = 0.5
-//        label.layer.shadowOpacity = 0.5
-//        label.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        label.layer.masksToBounds = false
     }
 
     func attributesImageContainer(view: UIView) {

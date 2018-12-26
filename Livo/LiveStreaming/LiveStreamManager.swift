@@ -69,20 +69,15 @@ class LiveStreamManager: YTLiveStreamingDelegate {
         }
     }
 
-    func saveLiveBroadcastStream() {
-
-        let rootRef = Database.database().reference()
+    func saveLiveBroadcastStream(userUID: String, userName: String) {
 
         let liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
 
         guard
             let liveBroadcastStreamModel = self.liveBroadcastStreamModel,
-            let userProfile = self.userProfile,
-            let userUID = userProfile["userUID"],
-            let userName = userProfile["userName"],
-            let startTime = self.liveBroadcastStreamModel?.snipped.scheduledStartTime.dateConvertToString(),
+           let startTime = self.liveBroadcastStreamModel?.snipped.scheduledStartTime.dateConvertToString(),
             let imageURL = self.liveBroadcastStreamModel?.snipped.thumbnails.medium.url
-            else {
+        else {
             return
         }
 

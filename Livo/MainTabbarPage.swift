@@ -22,8 +22,6 @@ class MainTabbarPage: UITabBarController {
         self.liveStreamManager = LiveStreamManager()
 
         GIDSignIn.sharedInstance()?.delegate = self
-
-        print("emailUserProfile",emailUserProfile)
     }
 }
 

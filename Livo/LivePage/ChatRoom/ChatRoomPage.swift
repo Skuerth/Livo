@@ -17,6 +17,7 @@ enum ChatMessageConnetError: Error {
 }
 
 extension ChatMessageConnetError: CustomStringConvertible {
+
     var description: String {
 
         switch self {
@@ -36,36 +37,33 @@ class ChatRoomPage: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.chatChannelRef = Database.database().reference(withPath: "chatChannel").child("testID")
-
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+//        scrollsToBottomOnKeyboardBeginsEditing = true
+//        maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.delegate = self
-
-        self.channelID = "testID"
         self.fetchMessages()
     }
 
     func fetchMessages() {
 
-        guard let chatChannelRef = self.chatChannelRef else {
-            ChatMessageConnetError.dbError.alert(with: self)
-        return}
+        guard let channelID = self.channelID else { return }
+
+        let chatChannelRef = Database.database().reference(withPath: "chatChannel").child(channelID)
+        var newMessages: [Message] = []
 
         chatChannelRef.observe(.value) { dataSnapshot in
-
-            var newMessages: [Message] = []
 
             for child in dataSnapshot.children {
 
                 if let sanpshot = child as? DataSnapshot {
 
+                    let messageID = sanpshot.key
+
                     guard
                         let value = sanpshot.value as? [String: Any],
-                        let messageID = sanpshot.key as? String,
                         let content = value["content"] as? String,
-                        let kind = value["kind"] as? String,
                         let userID = value["publish_userID"] as? String,
                         let name = value["publish_userName"] as? String,
                         let dateString = value["sentDate"] as? String,
@@ -86,8 +84,10 @@ class ChatRoomPage: MessagesViewController {
 
                 self.messages = newMessages
                 self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
+
     }
 
     // MARK: - Helpers
@@ -120,12 +120,22 @@ class ChatRoomPage: MessagesViewController {
             }
         }
     }
+
 }
 
 extension ChatRoomPage: MessagesDataSource {
 
     func currentSender() -> Sender {
-        return Sender(id: "uuuuuiiiid", displayName: "Phil Lu")
+
+        guard
+            let emailLoginUID = Auth.auth().currentUser?.uid,
+            let name = Auth.auth().currentUser?.displayName
+        else {
+
+            return Sender(id: "", displayName: "")
+        }
+
+        return Sender(id: emailLoginUID, displayName: name)
     }
 
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -137,9 +147,21 @@ extension ChatRoomPage: MessagesDataSource {
 
         return messages.count
     }
+
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+
+        let displayName = messages[indexPath.item].sender.displayName
+
+        return NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+    }
 }
 
-//MARK: - MessagesLayoutDelegate
+// MARK: - MessagesLayoutDelegate
+
+extension ChatRoomPage: UITextFieldDelegate {
+
+}
+// MARK: - MessagesLayoutDelegate
 extension ChatRoomPage: MessagesLayoutDelegate {
 
     func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
@@ -156,9 +178,14 @@ extension ChatRoomPage: MessagesLayoutDelegate {
 
         return 0
     }
+
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+
+        return 20
+    }
 }
 
-//MARK: - MessagesDisplayDelegate
+// MARK: - MessagesDisplayDelegate
 
 extension ChatRoomPage: MessagesDisplayDelegate {
 
@@ -181,23 +208,19 @@ extension ChatRoomPage: MessageInputBarDelegate {
 
         guard
             let channelID = self.channelID,
-            let messageID = Database.database().reference(withPath: channelID).childByAutoId().key
+            let messageID = Database.database().reference(withPath: channelID).childByAutoId().key,
+            let emailLoginUID = Auth.auth().currentUser?.uid,
+            let name = Auth.auth().currentUser?.displayName
         else {
-
-//                ChatMessageConnetError.convertError.alert(with: self)
             return
         }
 
-        let date = Date()
-        let id = "userID"
+        let sender = Sender(id: emailLoginUID, displayName: name)
 
-        let sender = Sender(id: id, displayName: "Phil")
-
-        var message = Message(sender: sender, messageId: messageID, sentDate: date, kind: MessageKind.text(text))
-
-
+        var message = Message(sender: sender, messageId: messageID, sentDate: Date(), kind: MessageKind.text(text))
 
         let ref = Database.database().reference(withPath: "chatChannel").child(channelID).child(messageID)
+
         ref.setValue(message.toAnyObject())
 
 //        self.insertNewMessage(message)
@@ -205,5 +228,8 @@ extension ChatRoomPage: MessageInputBarDelegate {
         inputBar.inputTextView.text = String()
 
         messagesCollectionView.scrollToBottom(animated: true)
+
+        inputBar.inputTextView.resignFirstResponder()
+
     }
 }

@@ -66,7 +66,6 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
     @IBAction func emailSignUpButton(_ sender: UIButton) {
 
-
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         if let signUpPage = mainStoryBoard.instantiateViewController(withIdentifier: "SignUpPage") as? SignUpPage {
 

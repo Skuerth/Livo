@@ -47,6 +47,7 @@
                                     <constraint firstItem="0fK-oi-7d9" firstAttribute="top" secondItem="PcI-OT-Xri" secondAttribute="top" id="D4u-o2-vJO"/>
                                     <constraint firstItem="0fK-oi-7d9" firstAttribute="leading" secondItem="PcI-OT-Xri" secondAttribute="leading" id="Na0-Gj-9n9"/>
                                     <constraint firstAttribute="trailing" secondItem="0fK-oi-7d9" secondAttribute="trailing" id="YIW-cR-re4"/>
+                                    <constraint firstAttribute="width" constant="153" id="ceU-Gq-8Pc"/>
                                     <constraint firstAttribute="height" constant="115" id="vKX-HU-x6b"/>
                                 </constraints>
                             </view>

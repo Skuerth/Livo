@@ -51,7 +51,7 @@ struct LiveStreamInfo {
         self.imageURL = imageURL
         self.videoID = snapshot.key
         self.startTime = startTime
-        
+
         if status == "live" {
 
             self.status = LiveStatus.live

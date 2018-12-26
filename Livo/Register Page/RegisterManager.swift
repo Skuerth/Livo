@@ -16,7 +16,7 @@ protocol RegisterManagerDelegate: class{
 
 class RegisterManager {
 
-    var delegate: RegisterManagerDelegate?
+    weak var delegate: RegisterManagerDelegate?
 
     func emailSignIn(email: String, password: String) {
 

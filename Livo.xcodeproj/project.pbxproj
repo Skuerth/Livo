@@ -26,11 +26,14 @@
 		F782733821D0B33D00022E6B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733721D0B33D00022E6B /* UserProfile.swift */; };
 		F7909A4921D0D56900E73062 /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7909A4821D0D56900E73062 /* RegisterManager.swift */; };
 		F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = F794C3CA21C3520F00AE346B /* LFLivePreview.m */; };
+		F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0221D219280065A114 /* VideoListPage.swift */; };
+		F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0521D21B540065A114 /* VideoListCell.swift */; };
+		F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7AB1B0621D21B540065A114 /* VideoListCell.xib */; };
 		F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */; };
 		F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37221CB11320050A3B6 /* Error+Extension.swift */; };
-		F7B7C37521CB4A8D0050A3B6 /* AddLiveBraodcastStreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37421CB4A8D0050A3B6 /* AddLiveBraodcastStreamPage.swift */; };
+		F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */; };
 		F7B7C37721CB4EEA0050A3B6 /* LiveStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */; };
-		F7B7C37A21CB513C0050A3B6 /* LiveStreamingHostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37821CB51120050A3B6 /* LiveStreamingHostPage.swift */; };
+		F7B7C37A21CB513C0050A3B6 /* LiveBroadcastPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37821CB51120050A3B6 /* LiveBroadcastPage.swift */; };
 		F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F521C8EE0600427873 /* LiveEventListPage.swift */; };
 		F7C741FA21C8EEB400427873 /* LiveEventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F821C8EEB400427873 /* LiveEventListCell.swift */; };
 		F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C741F921C8EEB400427873 /* LiveEventListCell.xib */; };
@@ -65,11 +68,14 @@
 		F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F794C3CA21C3520F00AE346B /* LFLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLivePreview.m; sourceTree = "<group>"; };
 		F794C3CB21C3520F00AE346B /* LFLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLivePreview.h; sourceTree = "<group>"; };
+		F7AB1B0221D219280065A114 /* VideoListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListPage.swift; sourceTree = "<group>"; };
+		F7AB1B0521D21B540065A114 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
+		F7AB1B0621D21B540065A114 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
 		F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamData.swift; sourceTree = "<group>"; };
 		F7B7C37221CB11320050A3B6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
-		F7B7C37421CB4A8D0050A3B6 /* AddLiveBraodcastStreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLiveBraodcastStreamPage.swift; sourceTree = "<group>"; };
+		F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSreamPage.swift; sourceTree = "<group>"; };
 		F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamManager.swift; sourceTree = "<group>"; };
-		F7B7C37821CB51120050A3B6 /* LiveStreamingHostPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamingHostPage.swift; sourceTree = "<group>"; };
+		F7B7C37821CB51120050A3B6 /* LiveBroadcastPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveBroadcastPage.swift; sourceTree = "<group>"; };
 		F7C741F521C8EE0600427873 /* LiveEventListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListPage.swift; sourceTree = "<group>"; };
 		F7C741F821C8EEB400427873 /* LiveEventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListCell.swift; sourceTree = "<group>"; };
 		F7C741F921C8EEB400427873 /* LiveEventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveEventListCell.xib; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				F72733D321CA1B01002C1492 /* ChatRoomPage.swift */,
+				F72733D521CA1F9F002C1492 /* Message.swift */,
 			);
 			path = ChatRoom;
 			sourceTree = "<group>";
@@ -156,12 +163,9 @@
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
 				F75EC2A321CF750200E40252 /* MainTabbarPage.swift */,
 				F74E91D521C6C103006AFC03 /* LivoCredentials.swift */,
-				F73F30F321C903280065F67B /* ClientWatchPage.swift */,
-				F72733D521CA1F9F002C1492 /* Message.swift */,
-				F7B7C37421CB4A8D0050A3B6 /* AddLiveBraodcastStreamPage.swift */,
 				F782733421D08BD700022E6B /* Register Page */,
-				F72733DA21CA2143002C1492 /* ChatRoom */,
 				F7B2A6CA21CCE75800D3257A /* LiveStreaming */,
+				F7B8354721D32DC900BE8E84 /* LivePage */,
 				F75EC2A121CF515B00E40252 /* ListPage */,
 				F7F3F99E21C352CC00CF39DA /* LFLive */,
 				F743CB8921C0AA5B001B88CA /* Assets.xcassets */,
@@ -188,6 +192,9 @@
 		F75EC2A221CF517800E40252 /* VideoEventListPage */ = {
 			isa = PBXGroup;
 			children = (
+				F7AB1B0221D219280065A114 /* VideoListPage.swift */,
+				F7AB1B0521D21B540065A114 /* VideoListCell.swift */,
+				F7AB1B0621D21B540065A114 /* VideoListCell.xib */,
 			);
 			path = VideoEventListPage;
 			sourceTree = "<group>";
@@ -206,11 +213,21 @@
 		F7B2A6CA21CCE75800D3257A /* LiveStreaming */ = {
 			isa = PBXGroup;
 			children = (
-				F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */,
-				F7B7C37821CB51120050A3B6 /* LiveStreamingHostPage.swift */,
 				F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */,
+				F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */,
+				F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */,
 			);
 			path = LiveStreaming;
+			sourceTree = "<group>";
+		};
+		F7B8354721D32DC900BE8E84 /* LivePage */ = {
+			isa = PBXGroup;
+			children = (
+				F7B7C37821CB51120050A3B6 /* LiveBroadcastPage.swift */,
+				F73F30F321C903280065F67B /* ClientWatchPage.swift */,
+				F72733DA21CA2143002C1492 /* ChatRoom */,
+			);
+			path = LivePage;
 			sourceTree = "<group>";
 		};
 		F7C741F721C8EE1600427873 /* LiveEvent */ = {
@@ -317,6 +334,7 @@
 				F743CB8D21C0AA5B001B88CA /* LaunchScreen.storyboard in Resources */,
 				F743CB8A21C0AA5B001B88CA /* Assets.xcassets in Resources */,
 				F714DCEA21CD4AD5004FF11B /* GoogleService-Info.plist in Resources */,
+				F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */,
 				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
 				F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */,
 			);
@@ -448,9 +466,11 @@
 				F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */,
 				F75EC2A421CF750200E40252 /* MainTabbarPage.swift in Sources */,
 				F75EC2A021CF514A00E40252 /* ListPageManager.swift in Sources */,
+				F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */,
 				F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */,
 				F782733821D0B33D00022E6B /* UserProfile.swift in Sources */,
 				F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */,
+				F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */,
 				F743CB8521C0AA5A001B88CA /* LoginPage.swift in Sources */,
 				F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */,
 				F7909A4921D0D56900E73062 /* RegisterManager.swift in Sources */,
@@ -463,10 +483,10 @@
 				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F72733D621CA1F9F002C1492 /* Message.swift in Sources */,
 				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,
-				F7B7C37521CB4A8D0050A3B6 /* AddLiveBraodcastStreamPage.swift in Sources */,
+				F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */,
 				F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */,
 				F7D900CF21CEAB4A002A0C6F /* Date+Extention.swift in Sources */,
-				F7B7C37A21CB513C0050A3B6 /* LiveStreamingHostPage.swift in Sources */,
+				F7B7C37A21CB513C0050A3B6 /* LiveBroadcastPage.swift in Sources */,
 				F782733621D08C0F00022E6B /* SignUpPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

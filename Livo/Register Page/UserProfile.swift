@@ -24,3 +24,39 @@ struct UserProfile {
         self.emailLogInUID = emailLogInUID
     }
 }
+
+class GoogleSignInUserCreator {
+
+    private static var shareInstance: GoogleSignInUserCreator?
+
+    static func createShareInstance() -> GoogleSignInUserCreator {
+
+        if shareInstance == nil {
+            self.shareInstance = GoogleSignInUserCreator()
+        }
+
+        return shareInstance!
+    }
+
+    var googleSignInUser: GoogleSignInUser?
+
+    func currentGoogleSignInUser (uid: String, name: String, imageURL: String) {
+
+        let googleSignInUser = GoogleSignInUser(uid: uid, name: name, imageURL: imageURL)
+
+        self.googleSignInUser = googleSignInUser
+    }
+}
+
+struct GoogleSignInUser {
+
+    var uid: String
+    var name: String
+    var imageURL: String
+
+    init(uid: String, name: String, imageURL: String) {
+        self.uid = uid
+        self.name = name
+        self.imageURL = imageURL
+    }
+}

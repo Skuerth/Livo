@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-protocol ListPageManagerDelegate: class{
+protocol ListPageManagerDelegate: class {
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo])
     func didLoadimage(manager: ListPageManager, liveStreamInfo: LiveStreamInfo, indexPath: Int)
@@ -25,7 +25,17 @@ class ListPageManager {
     // MARK: Firebase Method
     func fetchStreamInfo(status: LiveStatus) {
 
-        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: LiveStatus.live.rawValue).observe(.value, with: { snapshot in
+        var statusString = ""
+
+        switch status {
+        case .live:
+            statusString = LiveStatus.live.rawValue
+
+        case .completed:
+            statusString = LiveStatus.completed.rawValue
+        }
+
+        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: statusString).observe(.value, with: { snapshot in
 
             var newLiveStreamInfos: [LiveStreamInfo] = []
 
