@@ -45,7 +45,9 @@ class VideoManager {
                     title: liveBroadcastStreamModel.snipped.title,
                     status: LiveStatus.completed,
                     videoID: liveBroadcastStreamModel.id,
-                    startTime: liveBroadcastStreamModel.snipped.scheduledStartTime.dateConvertToString())
+                    startTime: liveBroadcastStreamModel.snipped.scheduledStartTime.dateConvertToString(),
+                    description: liveBroadcastStreamModel.snipped.description
+                    )
 
                 newLiveStreamInfos.append(liveStreamInfo)
             }

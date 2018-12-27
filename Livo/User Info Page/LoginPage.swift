@@ -35,13 +35,13 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
             let name = user?.displayName
 
-            let userProfile = UserProfile(name: name, email: email, password: nil, emailLogInUID: uid)
+            let userProfile = UserProfile(name: name, email: email, password: nil, emailLogInUID: uid, photo: nil)
 
             let main = UIStoryboard(name: "Main", bundle: nil)
 
             if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-                mainTabbarPage.emailUserProfile = userProfile
+//                mainTabbarPage.emailUserProfile = userProfile
                 self.present(mainTabbarPage, animated: true, completion: nil)
 
             } else {
@@ -119,7 +119,7 @@ extension LoginPage: RegisterManagerDelegate {
 
         if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-            mainTabbarPage.emailUserProfile = userProfile
+//            mainTabbarPage.emailUserProfile = userProfile
             self.present(mainTabbarPage, animated: true, completion: nil)
         }
     }

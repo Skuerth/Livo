@@ -45,19 +45,19 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         guard let liveBroadcastStreamModel = self.liveBroadcastStreamModel else { return }
 
-        lfView.startPublishing(withStreamURL: "https://www.youtube.com/watch?v=mbbFAjp2tmc")
+//        lfView.startPublishing(withStreamURL: "https://www.youtube.com/watch?v=mbbFAjp2tmc")
 
-//        self.input.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
-//
-//            if let streamURL = streamUrl, let streamName = streamName {
-//                let streamUrl = "\(streamURL)/\(streamName)"
-//
-//                lfView.startPublishing(withStreamURL: streamUrl)
-//
-//            } else {
-//
-//            }
-//        })
+        self.input.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
+
+            if let streamURL = streamUrl, let streamName = streamName {
+                let streamUrl = "\(streamURL)/\(streamName)"
+
+                lfView.startPublishing(withStreamURL: streamUrl)
+
+            } else {
+
+            }
+        })
     }
 
     func stopLiveBroadcast() {
@@ -78,19 +78,19 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         guard
             let liveBroadcastStreamModel = self.liveBroadcastStreamModel,
-           let startTime = self.liveBroadcastStreamModel?.snipped.scheduledStartTime.dateConvertToString(),
-            let imageURL = self.liveBroadcastStreamModel?.snipped.thumbnails.medium.url
+            let startTime = self.liveBroadcastStreamModel?.snipped.scheduledStartTime.dateConvertToString(),
+            let imageURL = self.liveBroadcastStreamModel?.snipped.thumbnails.medium.url,
+            let description = self.liveBroadcastStreamModel?.snipped.description
         else {
             return
         }
 
         let videoID = liveBroadcastStreamModel.id
 
-        let liveStreamInfo = LiveStreamInfo(userID: userUID, userName: userName, imageURL: imageURL, title: liveBroadcastStreamModel.snipped.title, status: LiveStatus.live, videoID: videoID, startTime: startTime)
+        let liveStreamInfo = LiveStreamInfo(userID: userUID, userName: userName, imageURL: imageURL, title: liveBroadcastStreamModel.snipped.title, status: LiveStatus.live, videoID: videoID, startTime: startTime, description: description)
 
         liveBroadcastStreamRef.child(videoID).setValue(liveStreamInfo.toAnyObject())
     }
-
 
     // MARK: - YTLiveStreamingDelegate Method
     func didTransitionToLiveStatus() {

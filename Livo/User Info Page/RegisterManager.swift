@@ -27,9 +27,9 @@ class RegisterManager {
                 let displayName = result?.user.displayName
                 else {
                     return
-            }
+            }   
 
-            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid)
+            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid, photo: nil)
 
             self.delegate?.didEmailSignIn(manager: self, userProfile: userProfile)
 

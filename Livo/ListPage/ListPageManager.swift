@@ -8,11 +8,14 @@
 
 import Foundation
 import Firebase
+import YTLiveStreaming
 
 protocol ListPageManagerDelegate: class {
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo])
     func didLoadimage(manager: ListPageManager, liveStreamInfo: LiveStreamInfo, indexPath: Int)
+    func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo])
+
 }
 
 class ListPageManager {
@@ -21,6 +24,46 @@ class ListPageManager {
     var liveStreamInfos: [LiveStreamInfo] = []
 
     weak var delegate: ListPageManagerDelegate?
+    var input = YTLiveStreaming()
+
+
+    // MARK: Live Sreaming Method
+    func fetchAllVideo() {
+
+        guard
+            let name = Auth.auth().currentUser?.displayName,
+            let uid = Auth.auth().currentUser?.uid
+            else {
+                return
+        }
+
+        self.input.getCompletedBroadcasts { liveBroadcastStreamModels in
+
+            guard let liveBroadcastStreamModels = liveBroadcastStreamModels else { return }
+
+            var newLiveStreamInfos: [LiveStreamInfo] = []
+
+            for liveBroadcastStreamModel in liveBroadcastStreamModels {
+
+                let liveStreamInfo = LiveStreamInfo(
+                    userID: uid,
+                    userName: name,
+                    imageURL: liveBroadcastStreamModel.snipped.thumbnails.medium.url,
+                    title: liveBroadcastStreamModel.snipped.title,
+                    status: LiveStatus.completed,
+                    videoID: liveBroadcastStreamModel.id,
+                    startTime: liveBroadcastStreamModel.snipped.scheduledStartTime.dateConvertToString(),
+                    description: liveBroadcastStreamModel.snipped.description
+                    )
+
+                newLiveStreamInfos.append(liveStreamInfo)
+            }
+
+            self.liveStreamInfos = newLiveStreamInfos
+            self.delegate?.didFetchAllVideo(self, liveStreamInfos: newLiveStreamInfos)
+        }
+    }
+
 
     // MARK: Firebase Method
     func fetchStreamInfo(status: LiveStatus) {
@@ -35,7 +78,7 @@ class ListPageManager {
             statusString = LiveStatus.completed.rawValue
         }
 
-        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: statusString).observe(.value, with: { snapshot in
+        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: "live").observe(.value, with: { snapshot in
 
             var newLiveStreamInfos: [LiveStreamInfo] = []
 

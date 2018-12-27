@@ -8,7 +8,23 @@
 
 import Foundation
 
+class UserShareInstance {
+
+    private static var share: UserShareInstance?
+
+    static func sharedInstance() -> UserShareInstance {
+        if share == nil {
+            share = UserShareInstance()
+
+        }
+        return share!
+    }
+
+    var user: UserProfile?
+}
+
 struct UserProfile {
+
 
     var name: String?
     var email: String
@@ -16,12 +32,12 @@ struct UserProfile {
     var emailLogInUID: String
     var photo: UIImage?
 
-
-    init(name: String?, email: String, password: String?, emailLogInUID: String) {
+    init(name: String?, email: String, password: String?, emailLogInUID: String, photo: UIImage?) {
         self.name = name
         self.email = email
         self.password = password
         self.emailLogInUID = emailLogInUID
+        self.photo = photo
     }
 }
 

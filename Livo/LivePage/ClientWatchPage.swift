@@ -22,6 +22,7 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         super.viewDidLoad()
 
         self.conversationViewController.channelID = self.videoID
+        self.conversationViewController.view.backgroundColor = .white
 
         conversationViewController.willMove(toParent: self)
         self.addChild(conversationViewController)
@@ -39,13 +40,25 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
         displayView.playerVars = [
             "playsinline": "1",
-            "controls": "1",
-            "showinfo": "0",
-            "autoplay": "0"
+            "controls": "0",
+            "showinfo": "0"
             ] as YouTubePlayerView.YouTubePlayerParameters
 
         displayView.loadVideoURL(url)
 
+//        self.tabBarController?.tabBar.layer.zPosition = -1
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    @IBAction func playButton(_ sender: UIButton) {
+    }
+
+    @IBAction func pauseButton(_ sender: Any) {
     }
 
     @IBAction func exit(_ sender: UIButton) {
@@ -59,7 +72,6 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
                 appDelegate.window??.rootViewController = mainTabbarPage
             }
-            
         }
 }
     // MARK: - Set Up InputBar
@@ -70,12 +82,12 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         tapGesture.numberOfTapsRequired = 2
 
         conversationViewController.view.addGestureRecognizer(tapGesture)
+
+        videoPlayer.play()
     }
 
     @objc func didPressDisplayView(_ sender: UITapGestureRecognizer) {
 
-//        let webView = displayView.subviews[0] as? UIWebView
-//        webView?.scrollView.resignFirstResponder()
         view.resignFirstResponder()
         conversationViewController.becomeFirstResponder()
         conversationViewController.messageInputBar.inputTextViewDidBeginEditing()
@@ -92,7 +104,12 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let height = view.frame.height - displayView.frame.height
-        conversationViewController.view.frame = CGRect(x: 0, y: displayView.frame.height, width: view.frame.width, height: height)
+
+
+        let displayViewHeight = displayView.frame.height
+        let topMargin = view.layoutMargins.top
+        let height = view.frame.height - displayViewHeight - topMargin
+
+         conversationViewController.view.frame = CGRect(x: 0, y: displayView.frame.height + topMargin, width: view.frame.width, height: height)
     }
 }

@@ -61,6 +61,7 @@ class SignUpPage: UIViewController {
 
                 let changeRequest = user.createProfileChangeRequest()
 
+
                 changeRequest.displayName = name
 
                 changeRequest.commitChanges(completion: { (error) in
@@ -96,13 +97,11 @@ class SignUpPage: UIViewController {
                     return
             }
 
-            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid)
+            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid, photo: nil)
 
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-            if let mainTabbarPage = mainStoryboard.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
-
-                mainTabbarPage.emailUserProfile = userProfile
+//                mainTabbarPage.emailUserProfile = userProfile
 
                 self.present(mainTabbarPage, animated: true, completion: nil)
             }

@@ -8,14 +8,30 @@
 
 import UIKit
 import GoogleSignIn
+import YTLiveStreaming
 
-class VideoListPage: UITableViewController, GIDSignInUIDelegate {
+class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var manager: ListPageManager?
     var liveStreamInfos: [LiveStreamInfo]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 30, y: 0, width: 20, height: 20)
+        button.setImage(UIImage(named: "profile-icon"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
+
+        let barButton = UIBarButtonItem(customView: button)
+
+        let currWidth = barButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        currWidth?.isActive = true
+        let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        currHeight?.isActive = true
+
+        self.navigationItem.rightBarButtonItem = barButton
 
         self.manager = ListPageManager()
         self.manager?.fetchStreamInfo(status: LiveStatus.completed)
@@ -29,14 +45,40 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    @objc func didTouchProfileButton() {
+
+        guard let profilePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage") as? ProfilePage else { return }
+
+        self.navigationController?.pushViewController(profilePage, animated: true)
+    }
+
     @IBAction func insertVideo(_ sender: UIBarButtonItem) {
 
         GIDSignIn.sharedInstance()?.uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.scopes.append("https://www.googleapis.com/auth/youtube")
+        GIDSignIn.sharedInstance()?.scopes.append("https://www.googleapis.com/auth/youtube.readonly")
         GIDSignIn.sharedInstance()?.signIn()
-
-        
     }
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+
+        if user != nil {
+
+            guard let token = user.authentication.accessToken else { return }
+            GoogleOAuth2.sharedInstance.accessToken = token
+
+            guard let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage else { return }
+
+            present(insertVideoPage, animated: true, completion: nil)
+        }
+    }
+
 
 
     // MARK: - Table view data source
@@ -61,9 +103,10 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate {
 
         guard let liveStreamInfos = liveStreamInfos else { return  cell }
 
+        print("liveStreamInfos[indexPath.row]", liveStreamInfos[indexPath.row])
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
-        cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime
+        cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.longDateStringConvertToshort()
 
         if let image = liveStreamInfos[indexPath.item].image {
 
@@ -86,6 +129,10 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate {
 }
 
 extension VideoListPage: ListPageManagerDelegate {
+
+    func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
+
+    }
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 
