@@ -73,22 +73,9 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
             self.view.addSubview(createNewSreamPage.view)
             createNewSreamPage.didMove(toParent: self)
         }
-
     }
-
-    @IBAction func emailSignOut(_ sender: UIBarButtonItem) {
-
-    }
-
-    @IBAction func gidSignOut(_ sender: UIBarButtonItem) {
-
-        GIDSignIn.sharedInstance()?.uiDelegate
-        GIDSignIn.sharedInstance()?.signOut()
-    }
-    
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         return 1
@@ -136,7 +123,6 @@ extension LiveEventListPage: ListPageManagerDelegate {
 
     func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 
-        
     }
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {

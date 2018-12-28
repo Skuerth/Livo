@@ -32,12 +32,10 @@ class LiveEventListCell: UICollectionViewCell {
     func attributesImageContainer(view: UIView) {
 
         view.layer.shadowColor = UIColor.black.cgColor
-
         view.layer.shadowRadius = 2
         view.layer.shadowOpacity = 0.7
         view.layer.shadowOffset = CGSize(width: 2, height: 2)
         view.layer.masksToBounds = false
-
     }
 
 }

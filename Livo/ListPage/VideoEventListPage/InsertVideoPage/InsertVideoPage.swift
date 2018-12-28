@@ -7,17 +7,40 @@
 //
 
 import UIKit
+import Firebase
 
 class InsertVideoPage: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var background: UIView!
+
+    let spacing: CGFloat = 10
+    let cellInset: CGFloat = 10
+    var preScreenShot: UIImage?
 
     var manager: ListPageManager?
 
     var liveStreamInfos: [LiveStreamInfo]?
+    var selectedLiveStreams: [Int] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+
+        if preScreenShot != nil {
+
+            imageView.image = preScreenShot
+            view.addSubview(imageView)
+        }
+
+        self.background.addBlurEffect()
+
+        view.sendSubviewToBack(imageView)
 
         self.manager = ListPageManager()
         self.manager?.delegate = self
@@ -29,12 +52,49 @@ class InsertVideoPage: UIViewController {
 
         self.collectionView.register(UINib(nibName: "InsertVideoPageCell", bundle: nil), forCellWithReuseIdentifier: "InsertVideoPageCell")
 
+        setUpCollectionLayout()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = true
+
+    }
+
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
+
+        if selectedLiveStreams.count > 0,
+            let liveStreamInfos = liveStreamInfos {
+
+            for selectedLiveStreamIndex in selectedLiveStreams {
+
+                guard
+                    let name = Auth.auth().currentUser?.displayName,
+                    let uid = Auth.auth().currentUser?.uid
+                    else {
+                        return
+                }
+
+                self.manager?.sendSelectedLiveStreamToFirebase(uid: uid, name: name, index: selectedLiveStreamIndex)
+            }
+
+        } else {
+
+        }
+    }
+
+    func setUpCollectionLayout() {
+
         let layout = UICollectionViewFlowLayout()
 
-        layout.setUpFlowLayout(spacing: 5, cellInset: 5, itemWidth: 125, itemHeight: 150)
+        let collcollectionViewWidth = collectionView.frame.width
+        let itemWidth = (collcollectionViewWidth - (spacing * 2) - cellInset) / 2
 
-        self.collectionView.collectionViewLayout = layout
-    }
+        layout.setUpFlowLayout(spacing: spacing, cellInset: cellInset, itemWidth: itemWidth, itemHeight: itemWidth * 0.967)
+
+        collectionView.collectionViewLayout = layout
+        collectionView.showsVerticalScrollIndicator = false
+   }
 }
 
 extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -59,8 +119,26 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
 
         return cell
     }
-}
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell
+
+        if selectedLiveStreams.contains(indexPath.item) {
+
+            selectedLiveStreams = selectedLiveStreams.filter() { $0 != indexPath.item }
+
+            let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell
+            cell?.layer.backgroundColor = UIColor.white.cgColor
+
+        } else {
+
+            selectedLiveStreams.append(indexPath.item)
+
+            cell?.layer.backgroundColor = UIColor.red.cgColor
+        }
+    }
+}
 
 extension InsertVideoPage: ListPageManagerDelegate {
 

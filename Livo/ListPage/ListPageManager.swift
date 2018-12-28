@@ -15,7 +15,6 @@ protocol ListPageManagerDelegate: class {
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo])
     func didLoadimage(manager: ListPageManager, liveStreamInfo: LiveStreamInfo, indexPath: Int)
     func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo])
-
 }
 
 class ListPageManager {
@@ -26,15 +25,14 @@ class ListPageManager {
     weak var delegate: ListPageManagerDelegate?
     var input = YTLiveStreaming()
 
-
     // MARK: Live Sreaming Method
     func fetchAllVideo() {
 
         guard
             let name = Auth.auth().currentUser?.displayName,
             let uid = Auth.auth().currentUser?.uid
-            else {
-                return
+        else {
+            return
         }
 
         self.input.getCompletedBroadcasts { liveBroadcastStreamModels in
@@ -64,7 +62,6 @@ class ListPageManager {
         }
     }
 
-
     // MARK: Firebase Method
     func fetchStreamInfo(status: LiveStatus) {
 
@@ -78,7 +75,7 @@ class ListPageManager {
             statusString = LiveStatus.completed.rawValue
         }
 
-        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: "live").observe(.value, with: { snapshot in
+        liveBroadcastStreamRef.queryOrdered(byChild: "status").queryEqual(toValue: statusString).observe(.value, with: { snapshot in
 
             var newLiveStreamInfos: [LiveStreamInfo] = []
 
@@ -106,6 +103,26 @@ class ListPageManager {
                 self.delegate?.didFetchStreamInfo(manager: self, liveStreamInfos: self.liveStreamInfos)
             }
         })
+    }
+
+    func sendSelectedLiveStreamToFirebase(uid: String, name: String, index: Int) {
+
+        if (liveStreamInfos.count - 1) >= index {
+
+            let liveStreamInfo = liveStreamInfos[index]
+
+            let liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
+
+            let videoID = liveStreamInfo.videoID
+
+            liveBroadcastStreamRef.queryOrderedByKey().queryEqual(toValue: videoID).observeSingleEvent(of: .value) { dataSnapshot in
+
+                if !dataSnapshot.exists() {
+
+                    liveBroadcastStreamRef.child(videoID).setValue(liveStreamInfo.toAnyObject())
+                }
+            }
+        }
     }
 
     func loadImage(imageURL: String, indexPath: Int) {

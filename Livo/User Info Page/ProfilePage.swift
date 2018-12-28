@@ -10,7 +10,7 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
-class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
+class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControllerDelegate , UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,6 +19,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         if let name = Auth.auth().currentUser?.displayName {
 
@@ -42,7 +43,33 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
         self.tabBarController?.tabBar.isHidden = true
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "showChangePasswordView" {
+
+            let popover = segue.destination as? ChangePasswordPop
+            popover?.preferredContentSize = CGSize(width: 200, height: 100)
+            popover?.delegate = self
+
+            let controller = popover?.popoverPresentationController
+
+            if controller != nil {
+
+                controller?.delegate = self
+
+            }
+        }
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+
+        return UIModalPresentationStyle.none
+    }
+
     @IBAction func changeEmailSignInPassword(_ sender: UIButton) {
+
+        performSegue(withIdentifier: "showChangePasswordView", sender: nil)
 
     }
 
@@ -89,13 +116,13 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
 
             DispatchQueue.main.async {
 
                 let userShare = UserShareInstance.sharedInstance()
 
+                print("userShare.user?.photo", userShare.user?.photo)
                 if var user = userShare.user {
 
                     user.photo = image
@@ -114,7 +141,6 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
                     userShare.user = UserProfile(name: name, email: email, password: nil, emailLogInUID: uid, photo: image)
                 }
-
 
                 self.userPhoto.image = image
                 self.userPhoto.contentMode = .scaleAspectFit
@@ -150,10 +176,30 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         view.layer.shadowOpacity = 0.7
         view.layer.masksToBounds = false
     }
+
     func makeCircleView(view: UIView) {
 
         view.layer.masksToBounds = true
         view.layer.cornerRadius = view.frame.height/2
         view.clipsToBounds = true
+    }
+}
+
+extension ProfilePage: ChangePasswordPopDelegate {
+
+    func didChangePassword(password: String) {
+
+        if Auth.auth().currentUser != nil {
+
+            Auth.auth().currentUser?.updatePassword(to: password, completion: { error in
+
+                if let error = error {
+
+                    print("error", error)
+                }
+
+                print("password has changed")
+            })
+        }
     }
 }

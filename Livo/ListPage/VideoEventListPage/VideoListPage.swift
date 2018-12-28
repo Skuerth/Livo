@@ -31,7 +31,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         currHeight?.isActive = true
 
-        self.navigationItem.rightBarButtonItem = barButton
+        self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
 
         self.manager = ListPageManager()
         self.manager?.fetchStreamInfo(status: LiveStatus.completed)
@@ -57,6 +57,8 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         self.navigationController?.pushViewController(profilePage, animated: true)
     }
 
+
+
     @IBAction func insertVideo(_ sender: UIBarButtonItem) {
 
         GIDSignIn.sharedInstance()?.uiDelegate = self
@@ -70,16 +72,45 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
 
         if user != nil {
 
-            guard let token = user.authentication.accessToken else { return }
+            guard
+                let token = user.authentication.accessToken
+            else {
+                return
+            }
+
             GoogleOAuth2.sharedInstance.accessToken = token
 
             guard let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage else { return }
 
-            present(insertVideoPage, animated: true, completion: nil)
+            insertVideoPage.preScreenShot = takeScreenshot()
+
+            self.navigationController?.pushViewController(insertVideoPage, animated: true)
         }
     }
 
+    func takeScreenshot() -> UIImage? {
 
+//        UIGraphicsBeginImageContext(view.frame.size)
+//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
+//        guard
+//            let image = UIGraphicsGetImageFromCurrentImageContext()
+//        else {
+//            return nil
+//        }
+//        UIGraphicsEndImageContext()
+//
+//        return image
+
+        var screenshotImage :UIImage?
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else {return nil}
+        layer.render(in:context)
+        screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return screenshotImage
+    }
 
     // MARK: - Table view data source
 

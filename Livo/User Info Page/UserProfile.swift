@@ -13,9 +13,10 @@ class UserShareInstance {
     private static var share: UserShareInstance?
 
     static func sharedInstance() -> UserShareInstance {
-        if share == nil {
-            share = UserShareInstance()
 
+        if share == nil {
+
+            share = UserShareInstance()
         }
         return share!
     }
