@@ -20,4 +20,19 @@ extension Date {
     }
 }
 
+extension String {
 
+    func longDateStringConvertToshort() -> String {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+
+        guard let date = dateFormatter.date(from: self) else { return  ""}
+
+        dateFormatter.dateFormat = "MMM-dd-yyyy HH:mm:ss"
+
+        let newDateString = dateFormatter.string(from: date)
+
+        return newDateString
+    }
+}

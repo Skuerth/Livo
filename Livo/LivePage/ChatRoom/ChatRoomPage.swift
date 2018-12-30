@@ -49,9 +49,12 @@ class ChatRoomPage: MessagesViewController {
         guard let channelID = self.channelID else { return }
 
         let chatChannelRef = Database.database().reference(withPath: "chatChannel").child(channelID)
-        var newMessages: [Message] = []
 
         chatChannelRef.observe(.value) { dataSnapshot in
+
+            var newMessages: [Message] = []
+
+            print("dataSnapshot.childrenCount", dataSnapshot.childrenCount)
 
             for child in dataSnapshot.children {
 
@@ -79,13 +82,12 @@ class ChatRoomPage: MessagesViewController {
                 } else {
 
                 }
-
-                self.messages = newMessages
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToBottom(animated: true)
             }
-        }
 
+            self.messages = newMessages
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToBottom(animated: true)
+        }
     }
 
     // MARK: - Helpers
@@ -99,25 +101,25 @@ class ChatRoomPage: MessagesViewController {
         return date
     }
 
-    private func insertNewMessage(_ message: Message) {
+//    private func insertNewMessage(_ message: Message) {
 
 //        guard !messages.contains(message) else {
 //            return
 //        }
-        messages.append(message)
-        messages.sort()
-
-        let isLastMessage: Bool = messages.index(of: message) == (messages.count - 1)
-        let shouldScrollToBottom: Bool = messagesCollectionView.isAtBottom && isLastMessage
-
-        messagesCollectionView.reloadData()
-
-        if shouldScrollToBottom {
-            DispatchQueue.main.async {
-                self.messagesCollectionView.scrollToBottom(animated: true)
-            }
-        }
-    }
+//        messages.append(message)
+//        messages.sort()
+//
+//        let isLastMessage: Bool = messages.index(of: message) == (messages.count - 1)
+//        let shouldScrollToBottom: Bool = messagesCollectionView.isAtBottom && isLastMessage
+//
+//        messagesCollectionView.reloadData()
+//
+//        if shouldScrollToBottom {
+//            DispatchQueue.main.async {
+//                self.messagesCollectionView.scrollToBottom(animated: true)
+//            }
+//        }
+//    }
 
 }
 
@@ -148,7 +150,7 @@ extension ChatRoomPage: MessagesDataSource {
 
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
 
-        let displayName = messages[indexPath.item].sender.displayName
+        let displayName = messages[indexPath.section].sender.displayName
 
         return NSAttributedString(string: displayName, attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
     }
@@ -187,6 +189,10 @@ extension ChatRoomPage: MessagesLayoutDelegate {
 
 extension ChatRoomPage: MessagesDisplayDelegate {
 
+    //setup sender
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+
+    }
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
 
         return isFromCurrentSender(message: message) ? .orange : .lightGray
@@ -224,10 +230,8 @@ extension ChatRoomPage: MessageInputBarDelegate {
 //        self.insertNewMessage(message)
 
         inputBar.inputTextView.text = String()
-
         messagesCollectionView.scrollToBottom(animated: true)
 
         inputBar.inputTextView.resignFirstResponder()
-
     }
 }

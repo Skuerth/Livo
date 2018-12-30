@@ -52,6 +52,11 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     // MARK: - IBAction Method
     @IBAction func createNewLiveBroadcast(_ sender: UIBarButtonItem) {
 
@@ -68,34 +73,9 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
             self.view.addSubview(createNewSreamPage.view)
             createNewSreamPage.didMove(toParent: self)
         }
-
-    }
-
-    @IBAction func emailSignOut(_ sender: UIBarButtonItem) {
-
-        do {
-            try Auth.auth().signOut()
-
-            let main = UIStoryboard(name: "Main", bundle: nil)
-
-            if
-                let loginPage = main.instantiateViewController(withIdentifier: "LoginPage") as? LoginPage,
-                let appDelegate = UIApplication.shared.delegate
-            {
-
-                dismiss(animated: true) {
-
-                    appDelegate.window??.rootViewController = loginPage
-                }
-            }
-        } catch let error {
-
-            print("\(error.localizedDescription)")
-        }
     }
 
     // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         return 1
@@ -140,6 +120,10 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 }
 
 extension LiveEventListPage: ListPageManagerDelegate {
+
+    func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
+
+    }
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 

@@ -17,7 +17,7 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
 
     var manager: RegisterManager?
-    var userProfile: UserProfile?
+    var userProfile: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,19 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
             guard
                 let uid = user?.uid,
-                let email = user?.email
+                let email = user?.email,
+                let name = user?.displayName
             else {
                 return
             }
 
-            let name = user?.displayName
-
-            let userProfile = UserProfile(name: name, email: email, password: nil, emailLogInUID: uid)
+            let userProfile = User(name: name, email: email, emailLogInUID: uid, photo: nil)
 
             let main = UIStoryboard(name: "Main", bundle: nil)
 
             if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-                mainTabbarPage.emailUserProfile = userProfile
+//                mainTabbarPage.emailUserProfile = userProfile
                 self.present(mainTabbarPage, animated: true, completion: nil)
 
             } else {
@@ -113,13 +112,12 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
 extension LoginPage: RegisterManagerDelegate {
 
-    func didEmailSignIn(manager: RegisterManager, userProfile: UserProfile) {
+    func didEmailSignIn(manager: RegisterManager) {
 
         let main = UIStoryboard(name: "Main", bundle: nil)
 
         if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-            mainTabbarPage.emailUserProfile = userProfile
             self.present(mainTabbarPage, animated: true, completion: nil)
         }
     }

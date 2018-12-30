@@ -13,33 +13,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InsertVideoPage" id="gTV-IL-0wX" customClass="InsertVideoPageCell" customModule="Livo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOI-tt-xdZ" userLabel="Container View">
-                        <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="de9-Ur-5Ok">
-                                <rect key="frame" x="2" y="0.0" width="121" height="125"/>
+                                <rect key="frame" x="3" y="0.0" width="149" height="123.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="m4f-KJ-hyw"/>
+                                    <constraint firstAttribute="width" secondItem="de9-Ur-5Ok" secondAttribute="height" multiplier="151:125" id="5j4-rU-Qal"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYB-JI-9I0">
-                                <rect key="frame" x="2" y="130" width="31" height="15"/>
+                                <rect key="frame" x="2" y="128.5" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="de9-Ur-5Ok" firstAttribute="top" secondItem="vOI-tt-xdZ" secondAttribute="top" id="1sE-GO-g8C"/>
-                            <constraint firstAttribute="trailing" secondItem="de9-Ur-5Ok" secondAttribute="trailing" constant="2" id="gl3-kH-XEx"/>
-                            <constraint firstItem="de9-Ur-5Ok" firstAttribute="leading" secondItem="vOI-tt-xdZ" secondAttribute="leading" constant="2" id="iWa-Op-NFa"/>
+                            <constraint firstAttribute="trailing" secondItem="de9-Ur-5Ok" secondAttribute="trailing" constant="3" id="gl3-kH-XEx"/>
+                            <constraint firstItem="de9-Ur-5Ok" firstAttribute="leading" secondItem="vOI-tt-xdZ" secondAttribute="leading" constant="3" id="iWa-Op-NFa"/>
                             <constraint firstItem="gYB-JI-9I0" firstAttribute="leading" secondItem="vOI-tt-xdZ" secondAttribute="leading" constant="2" id="mCI-MR-Khh"/>
                             <constraint firstItem="gYB-JI-9I0" firstAttribute="top" secondItem="de9-Ur-5Ok" secondAttribute="bottom" constant="5" id="wGr-ka-2yG"/>
                         </constraints>

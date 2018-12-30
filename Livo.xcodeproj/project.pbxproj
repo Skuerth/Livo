@@ -8,9 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		410439029CE0A6AD37961541 /* Pods_Livo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF274ADD44F896F3902302 /* Pods_Livo.framework */; };
+		F704A45E21D5F91400EBB83B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A45D21D5F91400EBB83B /* Helper.swift */; };
+		F704A46021D60CBF00EBB83B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */; };
+		F704A46221D6608F00EBB83B /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A46121D6608F00EBB83B /* UIImage+Scale.swift */; };
+		F70EAC7221D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */; };
 		F72733D421CA1B01002C1492 /* ChatRoomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D321CA1B01002C1492 /* ChatRoomPage.swift */; };
 		F72733D621CA1F9F002C1492 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D521CA1F9F002C1492 /* Message.swift */; };
 		F72733D921CA2025002C1492 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */; };
+		F72EFC4421D50CF200DBB85F /* ChangePasswordPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */; };
 		F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F30F321C903280065F67B /* ClientWatchPage.swift */; };
 		F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8221C0AA5A001B88CA /* AppDelegate.swift */; };
 		F743CB8521C0AA5A001B88CA /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8421C0AA5A001B88CA /* LoginPage.swift */; };
@@ -22,9 +27,10 @@
 		F75EC2A021CF514A00E40252 /* ListPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75EC29F21CF514A00E40252 /* ListPageManager.swift */; };
 		F75EC2A421CF750200E40252 /* MainTabbarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75EC2A321CF750200E40252 /* MainTabbarPage.swift */; };
 		F782733621D08C0F00022E6B /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733521D08C0F00022E6B /* SignUpPage.swift */; };
-		F782733821D0B33D00022E6B /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733721D0B33D00022E6B /* UserProfile.swift */; };
+		F782733821D0B33D00022E6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733721D0B33D00022E6B /* User.swift */; };
 		F7909A4921D0D56900E73062 /* RegisterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7909A4821D0D56900E73062 /* RegisterManager.swift */; };
 		F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = F794C3CA21C3520F00AE346B /* LFLivePreview.m */; };
+		F7A049FA21D4AA6C001451A2 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A049F921D4AA6C001451A2 /* ProfilePage.swift */; };
 		F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0221D219280065A114 /* VideoListPage.swift */; };
 		F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0521D21B540065A114 /* VideoListCell.swift */; };
 		F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7AB1B0621D21B540065A114 /* VideoListCell.xib */; };
@@ -50,9 +56,14 @@
 		04CF274ADD44F896F3902302 /* Pods_Livo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Livo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.release.xcconfig"; sourceTree = "<group>"; };
 		90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.debug.xcconfig"; sourceTree = "<group>"; };
+		F704A45D21D5F91400EBB83B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F704A46121D6608F00EBB83B /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Extension.swift"; sourceTree = "<group>"; };
 		F72733D321CA1B01002C1492 /* ChatRoomPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPage.swift; sourceTree = "<group>"; };
 		F72733D521CA1F9F002C1492 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
+		F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPop.swift; sourceTree = "<group>"; };
 		F73F30F321C903280065F67B /* ClientWatchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWatchPage.swift; sourceTree = "<group>"; };
 		F743CB7F21C0AA5A001B88CA /* Livo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Livo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F743CB8221C0AA5A001B88CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,11 +77,12 @@
 		F75EC29F21CF514A00E40252 /* ListPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageManager.swift; sourceTree = "<group>"; };
 		F75EC2A321CF750200E40252 /* MainTabbarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarPage.swift; sourceTree = "<group>"; };
 		F782733521D08C0F00022E6B /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
-		F782733721D0B33D00022E6B /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F782733721D0B33D00022E6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F7909A4821D0D56900E73062 /* RegisterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterManager.swift; sourceTree = "<group>"; };
 		F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Livo-Bridging-Header.h"; sourceTree = "<group>"; };
 		F794C3CA21C3520F00AE346B /* LFLivePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFLivePreview.m; sourceTree = "<group>"; };
 		F794C3CB21C3520F00AE346B /* LFLivePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFLivePreview.h; sourceTree = "<group>"; };
+		F7A049F921D4AA6C001451A2 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
 		F7AB1B0221D219280065A114 /* VideoListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListPage.swift; sourceTree = "<group>"; };
 		F7AB1B0521D21B540065A114 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		F7AB1B0621D21B540065A114 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
@@ -130,8 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */,
+				F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */,
+				F704A46121D6608F00EBB83B /* UIImage+Scale.swift */,
 				F7B7C37221CB11320050A3B6 /* Error+Extension.swift */,
 				F7D900CE21CEAB4A002A0C6F /* Date+Extention.swift */,
+				F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -171,7 +186,8 @@
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
 				F75EC2A321CF750200E40252 /* MainTabbarPage.swift */,
 				F74E91D521C6C103006AFC03 /* LivoCredentials.swift */,
-				F782733421D08BD700022E6B /* Register Page */,
+				F704A45D21D5F91400EBB83B /* Helper.swift */,
+				F782733421D08BD700022E6B /* User Info Page */,
 				F7B2A6CA21CCE75800D3257A /* LiveStreaming */,
 				F7B8354721D32DC900BE8E84 /* LivePage */,
 				F75EC2A121CF515B00E40252 /* ListPage */,
@@ -209,15 +225,17 @@
 			path = VideoEventListPage;
 			sourceTree = "<group>";
 		};
-		F782733421D08BD700022E6B /* Register Page */ = {
+		F782733421D08BD700022E6B /* User Info Page */ = {
 			isa = PBXGroup;
 			children = (
-				F782733721D0B33D00022E6B /* UserProfile.swift */,
+				F782733721D0B33D00022E6B /* User.swift */,
+				F7A049F921D4AA6C001451A2 /* ProfilePage.swift */,
+				F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */,
 				F7909A4821D0D56900E73062 /* RegisterManager.swift */,
 				F743CB8421C0AA5A001B88CA /* LoginPage.swift */,
 				F782733521D08C0F00022E6B /* SignUpPage.swift */,
 			);
-			path = "Register Page";
+			path = "User Info Page";
 			sourceTree = "<group>";
 		};
 		F7B2A6CA21CCE75800D3257A /* LiveStreaming */ = {
@@ -484,17 +502,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F704A46021D60CBF00EBB83B /* UIView+Extension.swift in Sources */,
+				F70EAC7221D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift in Sources */,
 				F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */,
 				F75EC2A421CF750200E40252 /* MainTabbarPage.swift in Sources */,
 				F75EC2A021CF514A00E40252 /* ListPageManager.swift in Sources */,
 				F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */,
+				F704A46221D6608F00EBB83B /* UIImage+Scale.swift in Sources */,
 				F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */,
-				F782733821D0B33D00022E6B /* UserProfile.swift in Sources */,
+				F782733821D0B33D00022E6B /* User.swift in Sources */,
+				F704A45E21D5F91400EBB83B /* Helper.swift in Sources */,
 				F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */,
 				F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */,
 				F743CB8521C0AA5A001B88CA /* LoginPage.swift in Sources */,
 				F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */,
 				F7909A4921D0D56900E73062 /* RegisterManager.swift in Sources */,
+				F7A049FA21D4AA6C001451A2 /* ProfilePage.swift in Sources */,
 				F72733D421CA1B01002C1492 /* ChatRoomPage.swift in Sources */,
 				F74E91D621C6C104006AFC03 /* LivoCredentials.swift in Sources */,
 				F7F0AEE821D38C73009A3D85 /* InsertVideoPage.swift in Sources */,
@@ -503,6 +526,7 @@
 				F72733D921CA2025002C1492 /* UICollectionView+Additions.swift in Sources */,
 				F7B7C37721CB4EEA0050A3B6 /* LiveStreamManager.swift in Sources */,
 				F7F0AEE621D38671009A3D85 /* VideoManager.swift in Sources */,
+				F72EFC4421D50CF200DBB85F /* ChangePasswordPop.swift in Sources */,
 				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F72733D621CA1F9F002C1492 /* Message.swift in Sources */,
 				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,

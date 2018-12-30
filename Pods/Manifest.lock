@@ -11,6 +11,9 @@ PODS:
   - Firebase/Database (5.15.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (= 5.0.4)
+  - Firebase/Storage (5.15.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.3)
   - FirebaseAnalytics (5.4.0):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.3)
@@ -36,6 +39,10 @@ PODS:
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
+  - FirebaseStorage (3.0.3):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.1)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (5.4.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -104,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Storage
   - GoogleSignIn
   - MessageKit (~> 2.0)
   - SwiftLint
@@ -121,6 +129,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleSignIn
     - GoogleToolboxForMac
@@ -149,6 +158,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 35747502d9e8c6ee217385ad04446c7c2aaf9c5c
   FirebaseDatabase: 0621689f77528d62b47e1c06ca737c4c19275d1a
   FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  FirebaseStorage: 3d22c041370593e639fba013d1eb698a8dae2881
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
@@ -168,6 +178,6 @@ SPEC CHECKSUMS:
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
   YTLiveStreaming: 57b1643d204d5a2abfeb4ed8323dc32fd04513b3
 
-PODFILE CHECKSUM: c63cbddb3fd762dcae5531828344742d885c30cc
+PODFILE CHECKSUM: dbb4fc22cd7f13a904572e270b2a9b86123d37a7
 
 COCOAPODS: 1.5.3

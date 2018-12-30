@@ -144,6 +144,9 @@ extension CreateNewSreamPage: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
 
-        GoogleOAuth2.sharedInstance.accessToken = user.authentication.accessToken
+        if user != nil {
+
+            GoogleOAuth2.sharedInstance.accessToken = user.authentication.accessToken
+        }
     }
 }
