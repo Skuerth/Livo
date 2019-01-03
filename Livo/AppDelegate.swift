@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         GIDSignIn.sharedInstance()?.clientID = LivoCredentials.oAuthClientID
 
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+
+
         return true
     }
 

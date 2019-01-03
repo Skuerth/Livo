@@ -22,17 +22,9 @@ class RegisterManager {
 
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
 
-//            guard
-//                let uid = result?.user.uid,
-//                let displayName = result?.user.displayName
-//                else {
-//                    return
-//
-//            }
-//            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid, photo: nil)
+            guard result?.user.uid != nil else { return }
 
             self.delegate?.didEmailSignIn(manager: self)
-
         })
     }
 

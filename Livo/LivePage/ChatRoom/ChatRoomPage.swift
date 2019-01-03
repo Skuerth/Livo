@@ -54,8 +54,6 @@ class ChatRoomPage: MessagesViewController {
 
             var newMessages: [Message] = []
 
-            print("dataSnapshot.childrenCount", dataSnapshot.childrenCount)
-
             for child in dataSnapshot.children {
 
                 if let sanpshot = child as? DataSnapshot {
@@ -99,6 +97,24 @@ class ChatRoomPage: MessagesViewController {
         let date = dateFormatter.date(from: dateString)
 
         return date
+    }
+
+    func saveImageToLocal(image: UIImage, uid: String) {
+
+        if let imageData = image.jpegData(compressionQuality: 0.9) {
+
+            let filePath = NSTemporaryDirectory() + "\(uid).jpg"
+            let fileURL = URL(fileURLWithPath: filePath)
+
+            do {
+
+                try imageData.write(to: fileURL)
+
+            } catch let error {
+
+                print(error.localizedDescription)
+            }
+        }
     }
 
 //    private func insertNewMessage(_ message: Message) {
@@ -192,10 +208,57 @@ extension ChatRoomPage: MessagesDisplayDelegate {
     //setup sender
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
 
+        let uid = message.sender.id
+        let name = message.sender.displayName
+
+        let filePath = NSTemporaryDirectory() + "\(uid).jpg"
+
+        if let image = UIImage(contentsOfFile: filePath) {
+
+            let avatar = Avatar(image: image, initials: name)
+            avatarView.set(avatar: avatar)
+
+        } else {
+
+            let imageRef = Database.database().reference(withPath: "chatUser").child(uid)
+
+            imageRef.observeSingleEvent(of: .value) { (snapshot) in
+
+                if let imageURL = snapshot.value as? String {
+
+                    DispatchQueue.global().async {
+
+                        guard let url = URL(string: imageURL) else { return }
+
+                        if let data = try? Data(contentsOf: url) {
+
+                            guard let image = UIImage(data: data) else { return }
+
+                            DispatchQueue.main.async {
+
+                                let avatar = Avatar(image: image, initials: name)
+                                avatarView.set(avatar: avatar)
+
+                                self.saveImageToLocal(image: image, uid: uid)
+                            }
+                        }
+                    }
+
+                } else {
+
+                    if let image = UIImage(named: "user_placeholder") {
+
+                        let avatar = Avatar(image: image, initials: name)
+                        avatarView.set(avatar: avatar)
+                    }
+                }
+            }
+        }
+
     }
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
 
-        return isFromCurrentSender(message: message) ? .orange : .lightGray
+        return isFromCurrentSender(message: message) ? UIColor(red: 0, green: 16, blue: 172).withAlphaComponent(0.7) : UIColor.white.withAlphaComponent(0.7)
     }
 
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -203,6 +266,11 @@ extension ChatRoomPage: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? MessageStyle.TailCorner.bottomRight : MessageStyle.TailCorner.bottomLeft
 
         return MessageStyle.bubbleTail(corner, MessageStyle.TailStyle.curved)
+    }
+
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+
+        return isFromCurrentSender(message: message) ? .white : UIColor(red: 0, green: 16, blue: 172)
     }
 }
 

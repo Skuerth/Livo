@@ -19,16 +19,19 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         super.viewDidLoad()
 
         let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 30, y: 0, width: 20, height: 20)
-        button.setImage(UIImage(named: "profile-icon"), for: .normal)
+        button.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        button.setImage(UIImage(named: "profile-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.imageView?.tintColor = UIColor.white
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
 
+        self.navigationItem.title = "LIVO"
+
         let barButton = UIBarButtonItem(customView: button)
 
-        let currWidth = barButton.customView?.widthAnchor.constraint(equalToConstant: 30)
+        let currWidth = barButton.customView?.widthAnchor.constraint(equalToConstant: 25)
         currWidth?.isActive = true
-        let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 30)
+        let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 25)
         currHeight?.isActive = true
 
         self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
@@ -37,7 +40,8 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         self.manager?.fetchStreamInfo(status: LiveStatus.completed)
         self.manager?.delegate = self
 
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 120
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 75, bottom: 0, right: 0)
 
         tableView.rowHeight = UITableView.automaticDimension
 
@@ -90,23 +94,12 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
 
     func takeScreenshot() -> UIImage? {
 
-//        UIGraphicsBeginImageContext(view.frame.size)
-//        view.layer.render(in: UIGraphicsGetCurrentContext()!)
-//        guard
-//            let image = UIGraphicsGetImageFromCurrentImageContext()
-//        else {
-//            return nil
-//        }
-//        UIGraphicsEndImageContext()
-//
-//        return image
-
-        var screenshotImage :UIImage?
-        let layer = UIApplication.shared.keyWindow!.layer
+        var screenshotImage: UIImage?
+        let layer = view.layer
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
         guard let context = UIGraphicsGetCurrentContext() else {return nil}
-        layer.render(in:context)
+        layer.render(in: context)
         screenshotImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return screenshotImage

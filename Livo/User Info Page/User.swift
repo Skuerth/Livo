@@ -21,27 +21,40 @@ class UserShareInstance {
         return share!
     }
 
-    var currentUser: User?
+    var currentUser: CurrentUser?
 
     func createUser(name: String, email: String, emailLogInUID: String, photo: UIImage?) {
 
-        let user = User(name: name, email: email, emailLogInUID: email, photo: photo)
-
-        self.currentUser = user
+        let currentUser = CurrentUser(name: name, emailLogInUID: emailLogInUID, email: email, photo: nil)
+        self.currentUser = currentUser
     }
 }
 
 struct User {
 
     var name: String
-    var email: String
     var emailLogInUID: String
     var photo: UIImage?
 
-    init(name: String , email: String, emailLogInUID: String, photo: UIImage?) {
+    init(name: String, emailLogInUID: String, photo: UIImage?) {
         self.name = name
-        self.email = email
         self.emailLogInUID = emailLogInUID
+        self.photo = photo
+    }
+}
+
+struct CurrentUser {
+
+    var name: String
+    var emailLogInUID: String
+    var email:String
+    var photo: UIImage?
+
+
+    init(name: String, emailLogInUID: String, email: String, photo: UIImage?) {
+        self.name = name
+        self.emailLogInUID = emailLogInUID
+        self.email = email
         self.photo = photo
     }
 }

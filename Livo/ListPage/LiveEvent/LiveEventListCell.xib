@@ -23,13 +23,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="157" height="151"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DW-6b-891">
-                                <rect key="frame" x="3" y="118" width="31" height="15"/>
+                                <rect key="frame" x="3" y="120" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFQ-RW-zy3">
-                                <rect key="frame" x="3" y="136" width="31" height="15"/>
+                                <rect key="frame" x="3" y="138" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,10 +60,8 @@
                             <constraint firstItem="BFQ-RW-zy3" firstAttribute="top" secondItem="5DW-6b-891" secondAttribute="bottom" constant="3" id="dsP-Pq-daJ"/>
                             <constraint firstItem="5DW-6b-891" firstAttribute="leading" secondItem="BFQ-RW-zy3" secondAttribute="leading" id="eZ9-r0-XBj"/>
                             <constraint firstItem="BFQ-RW-zy3" firstAttribute="leading" secondItem="2L0-6n-igJ" secondAttribute="leading" constant="3" id="er4-ep-U0o"/>
-                            <constraint firstItem="BFQ-RW-zy3" firstAttribute="top" secondItem="5DW-6b-891" secondAttribute="bottom" constant="3" id="h5c-EC-Wcn"/>
-                            <constraint firstItem="5DW-6b-891" firstAttribute="top" secondItem="PcI-OT-Xri" secondAttribute="bottom" constant="3" id="k7r-e5-Wcz"/>
+                            <constraint firstItem="5DW-6b-891" firstAttribute="top" secondItem="PcI-OT-Xri" secondAttribute="bottom" constant="5" id="k7r-e5-Wcz"/>
                             <constraint firstItem="5DW-6b-891" firstAttribute="leading" secondItem="2L0-6n-igJ" secondAttribute="leading" constant="3" id="sfk-tS-hJY"/>
-                            <constraint firstItem="5DW-6b-891" firstAttribute="top" secondItem="PcI-OT-Xri" secondAttribute="bottom" constant="3" id="uB2-nO-oYe"/>
                             <constraint firstItem="PcI-OT-Xri" firstAttribute="leading" secondItem="2L0-6n-igJ" secondAttribute="leading" constant="2" id="zyE-xh-cn7"/>
                         </constraints>
                     </view>

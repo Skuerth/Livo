@@ -14,18 +14,28 @@ import Firebase
 class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
     var liveStreamManager: LiveStreamManager?
+    var videoID: String?
+    let conversationViewController = ChatRoomPage()
 
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var startLiveButton: UIButton!
     @IBOutlet weak var lfView: LFLivePreview!
-    @IBOutlet weak var containerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.containerView.backgroundColor = .clear
+        self.conversationViewController.channelID = self.videoID
+
+        conversationViewController.willMove(toParent: self)
+        self.addChild(conversationViewController)
+        view.addSubview(conversationViewController.view)
+        conversationViewController.didMove(toParent: self)
 
         self.liveStreamManager?.startBroadcast(lfView: self.lfView)
+
+        conversationViewController.messagesCollectionView.backgroundColor = .clear
+        conversationViewController.view.backgroundColor = .clear
+
+        view.sendSubviewToBack(conversationViewController.view)
+        view.sendSubviewToBack(lfView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +48,17 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
         }
     }
 
-    @IBAction func onClickPublish(_ sender: UIButton) {
+    override var canBecomeFirstResponder: Bool {
+
+        return true
+    }
+
+    override var inputAccessoryView: UIView? {
+
+        return conversationViewController.inputAccessoryView
+    }
+
+    @IBAction func stopPublish(_ sender: UIButton) {
 
         guard
             let liveStreamManager = self.liveStreamManager,
@@ -50,9 +70,10 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
         let liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
 
-        startLiveButton.isSelected = false
         lfView.stopPublishing()
         liveStreamManager.stopLiveBroadcast()
+
+        let videoID = liveStreamManager.liveBroadcastStreamModel?.id
 
         liveBroadcastStreamRef.queryOrderedByKey().queryEqual(toValue: id).observeSingleEvent(of: .value) { snapshot in
 

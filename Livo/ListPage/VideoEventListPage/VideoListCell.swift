@@ -14,13 +14,12 @@ class VideoListCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         photoView.layer.masksToBounds = false
-        photoView.layer.cornerRadius = photoView.frame.height/2
+        photoView.layer.cornerRadius = 10
         photoView.clipsToBounds = true
     }
 

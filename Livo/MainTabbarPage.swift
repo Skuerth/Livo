@@ -13,39 +13,8 @@ class MainTabbarPage: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tabBar.unselectedItemTintColor = .lightGray
+        self.tabBar.tintColor = UIColor(red: 0/255, green: 16/255, blue: 172/255, alpha: 1)
+        self.tabBar.tintColor = UIColor(red: 0, green: 16, blue: 172)
     }
 }
-
-// MARK: - GIDSignInDelegate Method
-//extension MainTabbarPage: GIDSignInDelegate {
-//
-//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-//
-//        guard let token = user.authentication.accessToken else { return }
-//
-//        let credential = GoogleAuthProvider.credential(withIDToken: user.authentication.idToken, accessToken: token)
-//        Auth.auth().signInAndRetrieveData(with: credential) { authDataResult, error in
-//
-//            if let error = error {
-//                print("error", error)
-//                return
-//            }
-//
-//            guard
-//                let userName = user.profile.name,
-//                let userUID = user.userID,
-//                let imageURL = user.profile.imageURL(withDimension: 150),
-//                var userProfile = self.userProfile
-//            else { return }
-//
-//            let imageURLString = imageURL.absoluteString
-//
-//            userProfile["userName"] = userName
-//            userProfile["userUID"] = userUID
-//            userProfile["imageURL"] = imageURLString
-//            self.liveStreamManager?.userProfile = userProfile
-//
-//            GoogleOAuth2.sharedInstance.accessToken = token
-//        }
-//    }
-//}

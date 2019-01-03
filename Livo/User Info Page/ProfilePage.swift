@@ -11,7 +11,7 @@ import GoogleSignIn
 import Firebase
 import FirebaseStorage
 
-class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControllerDelegate , UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
+class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var userPhoto: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,19 +21,55 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let name = Auth.auth().currentUser?.displayName {
+        if let currentUser = Auth.auth().currentUser {
 
-            nameLabel.text = name
-        }
+            nameLabel.text = currentUser.displayName
 
-        if let userImage = UserShareInstance.sharedInstance().currentUser?.photo {
+            let uid = currentUser.uid
 
-            userPhoto.image = userImage
+            let filePath = NSTemporaryDirectory() + "\(uid).jpg"
+
+            if let image = UIImage(contentsOfFile: filePath) {
+
+                self.loadUserPhoto(image: image, uid: uid)
+
+            } else {
+
+                let imageRef = Database.database().reference(withPath: "chatUser").child(uid)
+
+                imageRef.observeSingleEvent(of: .value) { (snapshot) in
+
+                    if let imageURL = snapshot.value as? String {
+
+                        DispatchQueue.global().async {
+
+                            guard let url = URL(string: imageURL) else { return }
+
+                            if let data = try? Data(contentsOf: url) {
+
+                                guard let image = UIImage(data: data) else { return }
+
+                                DispatchQueue.main.async {
+
+                                    self.loadUserPhoto(image: image, uid: uid)
+                                }
+                            }
+                        }
+
+                    } else {
+
+                        if let image = UIImage(named: "user_placeholder") {
+
+                            self.loadUserPhoto(image: image, uid: uid)
+                        }
+                    }
+                }
+            }
         }
 
         self.checkIsConnectGoogleAcoount()
 
-        makeCircleView(view: photoView)
+        makeCircleView(view: userPhoto)
         addShadow(view: photoView)
     }
 
@@ -42,8 +78,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         self.tabBarController?.tabBar.isHidden = true
         self.userPhoto.contentMode = .scaleAspectFit
 
-        addShadow(view: userPhoto)
         makeCircleView(view: userPhoto)
+        addShadow(view: photoView)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,7 +143,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     @IBAction func editPhoto(_ sender: UIButton) {
 
-        var imageController = UIImagePickerController()
+        let imageController = UIImagePickerController()
         imageController.delegate = self
         imageController.sourceType = .savedPhotosAlbum
         imageController.allowsEditing = true
@@ -116,9 +152,37 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func loadUserPhoto(image: UIImage, uid: String) {
 
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        userPhoto.image = image
+
+        makeCircleView(view: userPhoto)
+        addShadow(view: photoView)
+
+        self.saveImageToLocal(image: image, uid: uid)
+    }
+
+    func saveImageToLocal(image: UIImage, uid: String) {
+
+        if let imageData = image.jpegData(compressionQuality: 0.9) {
+
+            let filePath = NSTemporaryDirectory() + "\(uid).jpg"
+            let fileURL = URL(fileURLWithPath: filePath)
+
+            do {
+
+                try imageData.write(to: fileURL)
+
+            } catch let error {
+
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
 
             guard
                 let currentUser = Auth.auth().currentUser,
@@ -131,51 +195,48 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
             let uid = currentUser.uid
             let share = UserShareInstance.sharedInstance()
 
+            self.saveImageToLocal(image: image, uid: uid)
+
             if share.currentUser != nil {
 
                 share.currentUser?.photo = image
 
             } else {
 
-                share.currentUser = User(name: name, email: email, emailLogInUID: uid, photo: image)
+                share.currentUser = CurrentUser(name: name, emailLogInUID: uid, email: email, photo: image)
             }
 
             DispatchQueue.main.async {
 
                 self.userPhoto.image = image
             }
+
             let imageRef = Storage.storage().reference().child("photos").child("\(uid).jpg")
 
             let scaleImage = image.scale(newWidth: 640.0)
-
             guard let imageData = scaleImage.jpegData(compressionQuality: 0.9) else { return }
 
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpg"
 
-            let uploadTask = imageRef.putData(imageData, metadata: metadata)
+            imageRef.putData(imageData, metadata: metadata).observe(.success) { (snapshop) in
 
-            imageRef.downloadURL(completion: { (url, error) in
+                imageRef.downloadURL(completion: { (url, error) in
 
-                if let url = url {
+                    if error != nil {
 
-                    let request = currentUser.createProfileChangeRequest()
+                        print(error?.localizedDescription)
+                    }
+                    if let downloadUrl = url {
 
-                    request.photoURL = url
+                        let chatUserRef = Database.database().reference(withPath: "chatUser").child(uid)
+                        chatUserRef.setValue(downloadUrl.absoluteString)
 
-                    request.commitChanges(completion: { (error) in
+                    } else {
 
-                        if let error = error {
-
-                            print("fail to requesting chane displayNme with error(\(error.localizedDescription))")
-                        }
-                    })
-
-                } else {
-
-                }
-            })
-
+                    }
+                })
+            }
         }
 
         dismiss(animated: true, completion: nil)
@@ -204,12 +265,13 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         view.layer.shadowRadius = 3
         view.layer.shadowOpacity = 0.7
         view.layer.masksToBounds = false
+        view.layer.cornerRadius = view.frame.width / 2.0
     }
 
     func makeCircleView(view: UIView) {
 
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = view.frame.height/2
+//        view.layer.masksToBounds = true
+        view.layer.cornerRadius = view.frame.width / 2.0
         view.clipsToBounds = true
     }
 }

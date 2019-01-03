@@ -15,12 +15,25 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var labelTextFieldContainer: UIView!
 
     var manager: RegisterManager?
     var userProfile: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.keyboardWillShowObserve()
+        self.keyboardWillHideObserve()
+
+        setupButtonStyle(button: signInButton)
+        setupButtonStyle(button: signUpButton)
+        titleLabel.addCharacterSpacing(kernValue: 5)
+
+        passwordTextField.isSecureTextEntry = true
 
         self.manager = RegisterManager()
 
@@ -34,7 +47,7 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
                 return
             }
 
-            let userProfile = User(name: name, email: email, emailLogInUID: uid, photo: nil)
+//            let userProfile = User(name: name, email: email, emailLogInUID: uid, photo: nil)
 
             let main = UIStoryboard(name: "Main", bundle: nil)
 
@@ -49,6 +62,8 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
             }
         }
     }
+
+
 
     @IBAction func emailSignInButton(_ sender: UIButton) {
 
@@ -74,39 +89,16 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
         }
     }
 
-    @IBAction func signInButton(_ sender: UIButton) {
+    func setupButtonStyle(button: UIButton) {
 
-        GIDSignIn.sharedInstance()?.uiDelegate = self
-        GIDSignIn.sharedInstance()?.scopes = [
-            "https://www.googleapis.com/auth/youtube",
-            "https://www.googleapis.com/auth/youtube.force-ssl"]
-        GIDSignIn.sharedInstance()?.signIn()
+        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderWidth = 0.5
+        button.layer.cornerRadius = 8
     }
 
-    @IBAction func signOutButton(_ sender: UIButton) {
+    deinit {
 
-        GIDSignIn.sharedInstance()?.uiDelegate = self
-        GIDSignIn.sharedInstance()?.signOut()
-    }
-
-    func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
-
-        if error != nil {
-
-            print("signing in someting wrong")
-            return
-
-        } else {
-
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-
-            if let mainTabbarPage = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
-
-                present(mainTabbarPage, animated: true, completion: nil)
-            } else {
-
-            }
-        }
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -120,5 +112,51 @@ extension LoginPage: RegisterManagerDelegate {
 
             self.present(mainTabbarPage, animated: true, completion: nil)
         }
+    }
+}
+
+extension LoginPage: UITextFieldDelegate {
+
+    func keyboardWillShowObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+    }
+
+    func keyboardWillHideObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+
+        labelTextFieldContainer.transform = CGAffineTransform(translationX: 0, y: -120)
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+
+        labelTextFieldContainer.transform = CGAffineTransform.identity
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        self.view.endEditing(true)
     }
 }

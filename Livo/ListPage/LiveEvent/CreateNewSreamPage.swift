@@ -129,8 +129,10 @@ extension CreateNewSreamPage: LiveStreamManagerDelegate {
 
             manager.saveLiveBroadcastStream(userUID: uid, userName: name)
 
-            DispatchQueue.main.async {
+            liveBroadcastPage.videoID = manager.liveBroadcastStreamModel?.id
 
+            DispatchQueue.main.async {
+                
                 self.present(liveBroadcastPage, animated: true, completion: nil)
             }
 

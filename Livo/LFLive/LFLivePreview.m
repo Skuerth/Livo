@@ -242,7 +242,7 @@ inline static NSString* formatedSpeed(float bytes, float elapsed_milli) {
 
            LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
 //        videoConfiguration.videoSize = CGSizeMake(1280, 720);
-        videoConfiguration.videoSize = CGSizeMake(211, 375);
+        videoConfiguration.videoSize = CGSizeMake(375, 667);
 //           videoConfiguration.videoBitRate = 800*1024;
 //           videoConfiguration.videoMaxBitRate = 1000*1024;
 //           videoConfiguration.videoMinBitRate = 500*1024;

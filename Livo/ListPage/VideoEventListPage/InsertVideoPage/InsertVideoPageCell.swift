@@ -12,11 +12,13 @@ class InsertVideoPageCell: UICollectionViewCell {
 
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var imageContainerView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        attributesImageContainer(view: image)
+        attributesImageContainer(imageView: image)
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -30,15 +32,9 @@ class InsertVideoPageCell: UICollectionViewCell {
         return layoutAttributes
     }
 
-    func attributesImageContainer(view: UIView) {
+    func attributesImageContainer(imageView: UIView) {
 
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowRadius = 2
-        view.layer.shadowOpacity = 0.7
-        view.layer.shadowOffset = CGSize(width: 2, height: 2)
-        view.layer.cornerRadius = 7
-        view.layer.masksToBounds = false
-        view.clipsToBounds = true
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 7
     }
-
 }

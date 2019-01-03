@@ -71,7 +71,7 @@ class InsertVideoPage: UIViewController {
                 guard
                     let name = Auth.auth().currentUser?.displayName,
                     let uid = Auth.auth().currentUser?.uid
-                    else {
+                else {
                         return
                 }
 
@@ -81,6 +81,8 @@ class InsertVideoPage: UIViewController {
         } else {
 
         }
+
+        self.navigationController?.popViewController(animated: true)
     }
 
     func setUpCollectionLayout() {
@@ -122,21 +124,35 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell
+        guard let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell else { return }
 
         if selectedLiveStreams.contains(indexPath.item) {
 
             selectedLiveStreams = selectedLiveStreams.filter() { $0 != indexPath.item }
 
-            let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell
-            cell?.layer.backgroundColor = UIColor.white.cgColor
+            cell.imageContainerView.layer.shadowColor = UIColor.clear.cgColor
+            cell.title.textColor = .black
 
         } else {
 
             selectedLiveStreams.append(indexPath.item)
-
-            cell?.layer.backgroundColor = UIColor.red.cgColor
+            cell.imageContainerView.pulsate()
+            cell.title.textColor = UIColor(red: 27/255, green: 112/255, blue: 250/255, alpha: 1)
+            attributesImageContainer(imageView: cell.image, containerView: cell.imageContainerView)
         }
+    }
+
+    func attributesImageContainer(imageView: UIView, containerView: UIView) {
+
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowRadius = 2
+        containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
+
+        containerView.layer.shadowOpacity = 0.7
+        containerView.layer.cornerRadius = 7
+
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 7
     }
 }
 

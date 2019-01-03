@@ -26,6 +26,8 @@ class SignUpPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        passwordTextField.isSecureTextEntry = true
+
         self.presentingView.backgroundColor = .white
         self.presentingView.layer.cornerRadius = 10
 
@@ -61,9 +63,7 @@ class SignUpPage: UIViewController {
 
                 let changeRequest = user.createProfileChangeRequest()
 
-
                 changeRequest.displayName = name
-
                 changeRequest.commitChanges(completion: { (error) in
 
                     if let error = error {
@@ -90,12 +90,12 @@ class SignUpPage: UIViewController {
 
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
 
-//            guard
-//                let uid = result?.user.uid,
-//                let displayName = result?.user.displayName
-//                else {
-//                    return
-//            }
+            guard
+                let uid = result?.user.uid,
+                let displayName = result?.user.displayName
+                else {
+                    return
+            }
 
 //            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid, photo: nil)
 
@@ -106,6 +106,22 @@ class SignUpPage: UIViewController {
                 self.present(mainTabbarPage, animated: true, completion: nil)
             }
         })
+    }
+}
 
+extension SignUpPage: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
+
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        self.view.endEditing(true)
     }
 }

@@ -45,6 +45,10 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
             ] as YouTubePlayerView.YouTubePlayerParameters
 
         displayView.loadVideoURL(url)
+        view.sendSubviewToBack(displayView)
+        conversationViewController.messagesCollectionView.backgroundColor = .clear
+        conversationViewController.view.backgroundColor = .clear
+
 
 //        self.tabBarController?.tabBar.layer.zPosition = -1
 
@@ -105,11 +109,10 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-
-        let displayViewHeight = displayView.frame.height
-        let topMargin = view.layoutMargins.top
-        let height = view.frame.height - displayViewHeight - topMargin
-
-         conversationViewController.view.frame = CGRect(x: 0, y: displayView.frame.height + topMargin, width: view.frame.width, height: height)
+//        let displayViewHeight = displayView.frame.height
+//        let topMargin = view.layoutMargins.top
+//        let height = view.frame.height - displayViewHeight - topMargin
+//
+//         conversationViewController.view.frame = CGRect(x: 0, y: displayView.frame.height + topMargin, width: view.frame.width, height: height)
     }
 }
