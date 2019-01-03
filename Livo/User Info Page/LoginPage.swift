@@ -63,8 +63,6 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
         }
     }
 
-
-
     @IBAction func emailSignInButton(_ sender: UIButton) {
 
         guard

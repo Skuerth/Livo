@@ -14,6 +14,7 @@
 		F70D9A3521DDB67600358025 /* TextfieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70D9A3421DDB67600358025 /* TextfieldManager.swift */; };
 		F70EA4D821DBC5B200A4F39F /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA4D721DBC5B200A4F39F /* UIImageView+Animation.swift */; };
 		F70EAC7221D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */; };
+		F7232AB421DE0B8C002B553D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7232AB621DE0B8C002B553D /* Localizable.strings */; };
 		F72733D421CA1B01002C1492 /* ChatRoomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D321CA1B01002C1492 /* ChatRoomPage.swift */; };
 		F72733D621CA1F9F002C1492 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D521CA1F9F002C1492 /* Message.swift */; };
 		F72733D921CA2025002C1492 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */; };
@@ -67,8 +68,13 @@
 		F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F704A46121D6608F00EBB83B /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		F70D9A3421DDB67600358025 /* TextfieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldManager.swift; sourceTree = "<group>"; };
+		F70D9A3621DDEA4800358025 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F70EA4D721DBC5B200A4F39F /* UIImageView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Extension.swift"; sourceTree = "<group>"; };
+		F7232AB021DE0B3D002B553D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		F7232AB121DE0B3E002B553D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		F7232AB521DE0B8C002B553D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F7232AB721DE0B9E002B553D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F72733D321CA1B01002C1492 /* ChatRoomPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPage.swift; sourceTree = "<group>"; };
 		F72733D521CA1F9F002C1492 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
@@ -79,7 +85,6 @@
 		F743CB8421C0AA5A001B88CA /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		F743CB8721C0AA5A001B88CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F743CB8C21C0AA5B001B88CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F743CB8E21C0AA5B001B88CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F74E91D521C6C103006AFC03 /* LivoCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivoCredentials.swift; sourceTree = "<group>"; };
 		F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YTLiveStreaming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75EC29F21CF514A00E40252 /* ListPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageManager.swift; sourceTree = "<group>"; };
@@ -98,7 +103,6 @@
 		F7AE583521DCC25900FBF718 /* NavigationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage.swift; sourceTree = "<group>"; };
 		F7AE583721DCE13F00FBF718 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
 		F7AE583921DCE4B000FBF718 /* UIColor+RGBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBValue.swift"; sourceTree = "<group>"; };
-		F7AE583B21DCEE1200FBF718 /* Exo2-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Light.otf"; sourceTree = "<group>"; };
 		F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Light.otf"; sourceTree = "<group>"; };
 		F7AE583E21DD073700FBF718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamData.swift; sourceTree = "<group>"; };
@@ -216,10 +220,11 @@
 				F7AE583E21DD073700FBF718 /* Assets.xcassets */,
 				F7F3F9A721C3540500CF39DA /* category */,
 				F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */,
-				F743CB8E21C0AA5B001B88CA /* Info.plist */,
+				F70D9A3621DDEA4800358025 /* Info.plist */,
 				F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */,
 				F7F0AEE321D36FD4009A3D85 /* GoogleService-Info.plist */,
 				F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */,
+				F7232AB621DE0B8C002B553D /* Localizable.strings */,
 			);
 			path = Livo;
 			sourceTree = "<group>";
@@ -312,7 +317,6 @@
 		F7F3F9A721C3540500CF39DA /* category */ = {
 			isa = PBXGroup;
 			children = (
-				F7AE583B21DCEE1200FBF718 /* Exo2-Light.otf */,
 				F7F3F9A421C353EB00CF39DA /* UIControl+YYAdd.h */,
 				F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */,
 				F7F3F9A121C353EB00CF39DA /* UIView+YYAdd.h */,
@@ -376,6 +380,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = F743CB7621C0AA5A001B88CA;
 			productRefGroup = F743CB8021C0AA5A001B88CA /* Products */;
@@ -396,6 +401,7 @@
 				F743CB8D21C0AA5B001B88CA /* LaunchScreen.storyboard in Resources */,
 				F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */,
 				F7F0AEF321D38DF1009A3D85 /* InsertVideoPageCell.xib in Resources */,
+				F7232AB421DE0B8C002B553D /* Localizable.strings in Resources */,
 				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
 				F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */,
 				F7AE583F21DD073700FBF718 /* Assets.xcassets in Resources */,
@@ -510,6 +516,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputFileListPaths = (
 			);
@@ -572,10 +579,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F7232AB621DE0B8C002B553D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7232AB521DE0B8C002B553D /* en */,
+				F7232AB721DE0B9E002B553D /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F743CB8621C0AA5A001B88CA /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F743CB8721C0AA5A001B88CA /* Base */,
+				F7232AB021DE0B3D002B553D /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -584,6 +601,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F743CB8C21C0AA5B001B88CA /* Base */,
+				F7232AB121DE0B3E002B553D /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -595,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -656,6 +675,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -715,6 +735,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Livo/Livo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q5VJGX4R94;
 				INFOPLIST_FILE = Livo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -738,6 +759,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Livo/Livo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q5VJGX4R94;
 				INFOPLIST_FILE = Livo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

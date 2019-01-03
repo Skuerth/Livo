@@ -26,6 +26,8 @@ class InsertVideoPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = "Add Video"
+
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
 
@@ -119,12 +121,27 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
             cell.image.image = image
         }
 
+        if liveStreamInfos[indexPath.row].isPressed == true {
+
+            cell.blurEffectView.isHidden = false
+            
+        } else {
+
+            cell.blurEffectView.isHidden = true
+        }
+
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell else { return }
+        guard
+            let cell = collectionView.cellForItem(at: indexPath) as? InsertVideoPageCell,
+            var liveStreamInfos = liveStreamInfos
+        else {
+            return
+        }
 
         if selectedLiveStreams.contains(indexPath.item) {
 
@@ -133,13 +150,21 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
             cell.imageContainerView.layer.shadowColor = UIColor.clear.cgColor
             cell.title.textColor = .black
 
+            liveStreamInfos[indexPath.row].isPressed = false
+            cell.blurEffectView.isHidden = true
+
         } else {
 
             selectedLiveStreams.append(indexPath.item)
             cell.imageContainerView.pulsate()
             cell.title.textColor = UIColor(red: 27/255, green: 112/255, blue: 250/255, alpha: 1)
             attributesImageContainer(imageView: cell.image, containerView: cell.imageContainerView)
+
+            liveStreamInfos[indexPath.row].isPressed = true
+            cell.blurEffectView.isHidden = false
         }
+
+        self.liveStreamInfos = liveStreamInfos
     }
 
     func attributesImageContainer(imageView: UIView, containerView: UIView) {

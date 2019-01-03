@@ -9,6 +9,7 @@
 import UIKit
 import GoogleSignIn
 import YTLiveStreaming
+import Firebase
 
 class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -25,7 +26,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
 
-        self.navigationItem.title = "LIVO"
+        self.navigationItem.title = "Video List"
 
         let barButton = UIBarButtonItem(customView: button)
 
@@ -60,8 +61,6 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
 
         self.navigationController?.pushViewController(profilePage, animated: true)
     }
-
-
 
     @IBAction func insertVideo(_ sender: UIBarButtonItem) {
 
@@ -118,7 +117,6 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as? VideoListCell else {
 
@@ -131,6 +129,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
         cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.longDateStringConvertToshort()
+        cell.selectionStyle = .none
 
         if let image = liveStreamInfos[indexPath.item].image {
 
@@ -148,6 +147,24 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
             clientWatchPage.videoID = liveStreamInfos[indexPath.row].videoID
 
             self.navigationController?.pushViewController(clientWatchPage, animated: true)
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        if editingStyle == .delete {
+
+            self.liveStreamInfos?.remove(at: indexPath.row)
+
+            guard let videoID = self.manager?.liveStreamInfos[indexPath.row].videoID else { return }
+
+            self.manager?.liveStreamInfos.remove(at: indexPath.row)
+
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+
+            let videoRef = Database.database().reference(withPath: "liveBroadcastStream")
+
+            videoRef.child(videoID).removeValue()
         }
     }
 }

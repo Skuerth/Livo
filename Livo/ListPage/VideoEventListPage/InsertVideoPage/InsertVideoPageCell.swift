@@ -14,11 +14,17 @@ class InsertVideoPageCell: UICollectionViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var blurEffectView: UIVisualEffectView!
+    @IBOutlet weak var checkButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
         attributesImageContainer(imageView: image)
+        blurEffectView.layer.cornerRadius = blurEffectView.frame.width / 2.0
+        blurEffectView.layer.masksToBounds = true
+        checkButton.setImage(UIImage(named: "check-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        checkButton.tintColor = UIColor(red: 9, green: 9, blue: 92, alpha: 0.9)
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

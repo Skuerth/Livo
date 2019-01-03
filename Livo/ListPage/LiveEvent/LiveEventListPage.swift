@@ -25,7 +25,7 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "LIVO"
+        self.navigationItem.title = "Live Video"
 
         self.listPageManager = ListPageManager()
         self.listPageManager?.delegate = self

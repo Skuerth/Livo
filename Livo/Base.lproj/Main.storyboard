@@ -577,7 +577,7 @@
                         <viewLayoutGuide key="safeArea" id="y6x-LA-oDx"/>
                     </view>
                     <navigationItem key="navigationItem" id="S07-pJ-OYa">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fmi-fX-yCz">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="fmi-fX-yCz">
                             <connections>
                                 <action selector="saveButton:" destination="ayV-wh-3QN" id="Jaz-Um-a0Z"/>
                             </connections>

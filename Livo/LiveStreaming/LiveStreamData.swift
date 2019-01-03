@@ -20,6 +20,7 @@ struct LiveStreamInfo {
     var videoID: String
     var startTime: String
     var description: String
+    var isPressed: Bool = false
 
     init(userID: String, userName: String, imageURL: String, title: String, status: LiveStatus, videoID: String, startTime: String, description: String) {
 

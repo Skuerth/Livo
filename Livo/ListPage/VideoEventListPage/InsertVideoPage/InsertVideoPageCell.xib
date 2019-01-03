@@ -34,6 +34,30 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="de9-Ur-5Ok">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="115"/>
                                     </imageView>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57S-k8-dk3">
+                                        <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Kx9-oX-WRx">
+                                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lwy-im-fYQ">
+                                                    <rect key="frame" x="2" y="2" width="16" height="16"/>
+                                                    <state key="normal" title="Button" image="check-icon"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lwy-im-fYQ" firstAttribute="leading" secondItem="Kx9-oX-WRx" secondAttribute="leading" constant="2" id="Epy-lf-3H2"/>
+                                                <constraint firstItem="Lwy-im-fYQ" firstAttribute="top" secondItem="Kx9-oX-WRx" secondAttribute="top" constant="2" id="LsP-hc-cg7"/>
+                                                <constraint firstAttribute="bottom" secondItem="Lwy-im-fYQ" secondAttribute="bottom" constant="2" id="pZ6-Gx-2bm"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lwy-im-fYQ" secondAttribute="trailing" constant="2" id="uVf-dd-R9D"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Kvk-Oz-Eqn"/>
+                                            <constraint firstAttribute="width" constant="20" id="u2e-uX-kNz"/>
+                                        </constraints>
+                                        <blurEffect style="extraLight"/>
+                                    </visualEffectView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -41,6 +65,8 @@
                                     <constraint firstItem="de9-Ur-5Ok" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="top" id="4UN-Be-Zgn"/>
                                     <constraint firstAttribute="trailing" secondItem="de9-Ur-5Ok" secondAttribute="trailing" id="Ie0-dU-YNH"/>
                                     <constraint firstItem="de9-Ur-5Ok" firstAttribute="leading" secondItem="64o-2V-4c4" secondAttribute="leading" id="KHf-DC-j3m"/>
+                                    <constraint firstItem="57S-k8-dk3" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="top" constant="5" id="RIX-VM-qVg"/>
+                                    <constraint firstItem="57S-k8-dk3" firstAttribute="leading" secondItem="64o-2V-4c4" secondAttribute="leading" constant="5" id="mtt-pU-g4g"/>
                                     <constraint firstAttribute="bottom" secondItem="de9-Ur-5Ok" secondAttribute="bottom" id="vIt-XY-kGl"/>
                                 </constraints>
                             </view>
@@ -66,6 +92,8 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="blurEffectView" destination="57S-k8-dk3" id="6UF-Ap-Xg1"/>
+                <outlet property="checkButton" destination="Lwy-im-fYQ" id="p7c-6y-gU3"/>
                 <outlet property="containerView" destination="vOI-tt-xdZ" id="dIy-wn-Eqd"/>
                 <outlet property="image" destination="de9-Ur-5Ok" id="DqB-jI-rhX"/>
                 <outlet property="imageContainerView" destination="64o-2V-4c4" id="d6T-b9-rXR"/>
@@ -74,4 +102,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="152.02398800599701"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="check-icon" width="28" height="28"/>
+    </resources>
 </document>
