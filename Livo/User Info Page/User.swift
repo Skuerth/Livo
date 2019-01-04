@@ -47,9 +47,8 @@ struct CurrentUser {
 
     var name: String
     var emailLogInUID: String
-    var email:String
+    var email: String
     var photo: UIImage?
-
 
     init(name: String, emailLogInUID: String, email: String, photo: UIImage?) {
         self.name = name

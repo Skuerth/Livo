@@ -25,7 +25,7 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Live Video"
+        self.navigationItem.title = NSLocalizedString("LiveVideo", comment: "")
 
         self.listPageManager = ListPageManager()
         self.listPageManager?.delegate = self
@@ -85,6 +85,10 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
+        if liveStreamInfos?.count == 0 {
+
+            AlertHelper.customerAlert.rawValue.alert(message: "There is no Live Stream")
+        }
         return self.liveStreamInfos?.count ?? 0
     }
 

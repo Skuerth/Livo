@@ -53,7 +53,6 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
             if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
-//                mainTabbarPage.emailUserProfile = userProfile
                 self.present(mainTabbarPage, animated: true, completion: nil)
 
             } else {
@@ -66,9 +65,17 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
     @IBAction func emailSignInButton(_ sender: UIButton) {
 
         guard
-            let email = emailTextField.text,
+            emailTextField.text != "",
+            let email = emailTextField.text
+        else {
+            UserInfoError.infoError.alert(message: "required email")
+            return
+        }
+        guard
+            passwordTextField.text != "",
             let password = passwordTextField.text
         else {
+            UserInfoError.infoError.alert(message: "required password")
             return
         }
 

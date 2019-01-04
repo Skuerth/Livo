@@ -22,6 +22,7 @@ class ChangePasswordPop: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        passwordTextField.isSecureTextEntry = true
     }
 
     @IBAction func submit(_ sender: UIButton) {

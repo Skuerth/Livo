@@ -21,6 +21,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.title = NSLocalizedString("Profile", comment: "")
+
         if let currentUser = Auth.auth().currentUser {
 
             nameLabel.text = currentUser.displayName
@@ -69,15 +71,18 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
         self.checkIsConnectGoogleAcoount()
 
-        makeCircleView(view: userPhoto)
-        addShadow(view: photoView)
+//        makeCircleView(view: userPhoto)
+//        addShadow(view: photoView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true
-        self.userPhoto.contentMode = .scaleAspectFit
+    }
 
+    override func viewWillLayoutSubviews() {
+
+        self.userPhoto.contentMode = .scaleAspectFit
         makeCircleView(view: userPhoto)
         addShadow(view: photoView)
     }
@@ -130,7 +135,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
             }
         } catch let error {
 
-            print("\(error.localizedDescription)")
+            UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
         }
     }
 
@@ -175,7 +180,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
             } catch let error {
 
-                print(error.localizedDescription)
+                UserInfoError.saveImageError.alert(message: "\(error.localizedDescription)")
             }
         }
     }
@@ -189,6 +194,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
                 let name = currentUser.displayName,
                 let email = currentUser.email
             else {
+
+                UserInfoError.authorizationError.alert(message: "fail to get current user infomation")
                 return
             }
 
@@ -225,8 +232,9 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
                     if error != nil {
 
-                        print(error?.localizedDescription)
+                        UserInfoError.authorizationError.alert(message: "\(error?.localizedDescription)")
                     }
+
                     if let downloadUrl = url {
 
                         let chatUserRef = Database.database().reference(withPath: "chatUser").child(uid)
@@ -286,10 +294,10 @@ extension ProfilePage: ChangePasswordPopDelegate {
 
                 if let error = error {
 
-                    print("error", error)
+                    UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
                 }
 
-                print("password has changed")
+                AlertHelper.customerAlert.rawValue.alert(message: "Successful password change")
             })
         }
     }

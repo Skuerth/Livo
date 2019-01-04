@@ -26,7 +26,7 @@ class InsertVideoPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Add Video"
+        self.navigationItem.title = NSLocalizedString("Youtube Video", comment: "")
 
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
@@ -74,14 +74,17 @@ class InsertVideoPage: UIViewController {
                     let name = Auth.auth().currentUser?.displayName,
                     let uid = Auth.auth().currentUser?.uid
                 else {
-                        return
+
+                    UserInfoError.authorizationError.alert()
+                    return
                 }
 
                 self.manager?.sendSelectedLiveStreamToFirebase(uid: uid, name: name, index: selectedLiveStreamIndex)
             }
 
-        } else {
+        } else if selectedLiveStreams.count == 0 {
 
+            AlertHelper.customerAlert.rawValue.alert(message: "There is no selected video")
         }
 
         self.navigationController?.popViewController(animated: true)
@@ -104,6 +107,11 @@ class InsertVideoPage: UIViewController {
 extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        if liveStreamInfos?.count == 0 {
+
+            AlertHelper.customerAlert.rawValue.alert(message: "There's no video in your youtube")
+        }
 
         return liveStreamInfos?.count ?? 0
     }

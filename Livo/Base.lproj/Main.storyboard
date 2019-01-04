@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="descriptionTextField" destination="3Ie-6E-hF6" id="zMR-xH-5CM"/>
                         <outlet property="presentingView" destination="aKM-Bd-YZE" id="eQ1-MZ-IeR"/>
+                        <outlet property="submitButton" destination="KgM-gY-hyw" id="DMh-qt-0XL"/>
                         <outlet property="titleTextField" destination="eUB-hq-HaJ" id="CtZ-10-GLM"/>
                     </connections>
                 </viewController>
@@ -421,7 +422,9 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-E4-jlA">
                                 <rect key="frame" x="118.5" y="40" width="138" height="30"/>
-                                <state key="normal" title="Stop Live Broadcast"/>
+                                <state key="normal" title="Stop Live Broadcast">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="stopPublish:" destination="cp3-9h-FI8" eventType="touchUpInside" id="DlM-Mj-aGu"/>
                                 </connections>
@@ -770,7 +773,6 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="FpP-fJ-V8Y" secondAttribute="trailing" constant="30" id="10B-41-NMW"/>
                                             <constraint firstItem="FpP-fJ-V8Y" firstAttribute="leading" secondItem="8cx-Zm-MOf" secondAttribute="leading" constant="30" id="AFo-ru-JXd"/>
@@ -778,16 +780,16 @@
                                             <constraint firstItem="dVU-Z3-aaa" firstAttribute="top" secondItem="8cx-Zm-MOf" secondAttribute="top" id="Tgs-vo-yaa"/>
                                             <constraint firstAttribute="bottom" secondItem="dVU-Z3-aaa" secondAttribute="bottom" id="UvJ-m5-XaF"/>
                                             <constraint firstAttribute="trailing" secondItem="dVU-Z3-aaa" secondAttribute="trailing" id="d2a-yF-ikA"/>
-                                            <constraint firstAttribute="width" secondItem="8cx-Zm-MOf" secondAttribute="height" multiplier="1:1" id="lxp-TX-J0z"/>
                                             <constraint firstItem="dVU-Z3-aaa" firstAttribute="leading" secondItem="8cx-Zm-MOf" secondAttribute="leading" id="tEo-an-Xvj"/>
+                                            <constraint firstAttribute="width" secondItem="8cx-Zm-MOf" secondAttribute="height" multiplier="1:1" id="uYN-OU-0My"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="8cx-Zm-MOf" firstAttribute="centerY" secondItem="SyC-gn-2Tm" secondAttribute="centerY" id="99J-XO-R71"/>
                                     <constraint firstItem="8cx-Zm-MOf" firstAttribute="centerX" secondItem="SyC-gn-2Tm" secondAttribute="centerX" id="EkA-yI-cFv"/>
-                                    <constraint firstItem="8cx-Zm-MOf" firstAttribute="width" secondItem="SyC-gn-2Tm" secondAttribute="width" multiplier="200:375" id="fwS-aU-9h6"/>
-                                    <constraint firstItem="8cx-Zm-MOf" firstAttribute="centerY" secondItem="SyC-gn-2Tm" secondAttribute="centerY" id="rJW-KU-iao"/>
+                                    <constraint firstItem="8cx-Zm-MOf" firstAttribute="width" secondItem="SyC-gn-2Tm" secondAttribute="width" multiplier="200:375" id="bAT-vq-L0E"/>
                                 </constraints>
                             </view>
                         </subviews>

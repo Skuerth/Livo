@@ -9,19 +9,12 @@
 import UIKit
 import Firebase
 
-enum SignUpError: Error {
-
-    case noInput
-}
-
 class SignUpPage: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var presentingView: UIView!
-
-    @IBOutlet weak var blueEffectView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +25,6 @@ class SignUpPage: UIViewController {
         self.presentingView.layer.cornerRadius = 10
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-
-//        let blueEffect = UIBlurEffect(style: .dark)
-//        let blueView = UIVisualEffectView(effect: blueEffect)
-//        blueView.frame.size = CGSize(width: view.frame.width, height: view.frame.height)
-//        self.blueEffectView.addSubview(blueView)
     }
 
     @IBAction func signUpButton(_ sender: UIButton) {
@@ -47,7 +35,8 @@ class SignUpPage: UIViewController {
             let name = self.nameTextField.text
         else {
 
-            print("Plese fill up necessary information")
+            UserInfoError.infoError.alert(message: "Plese fill up required information")
+
             return
         }
 
@@ -55,7 +44,7 @@ class SignUpPage: UIViewController {
 
             if let error = error {
 
-                print(error.localizedDescription)
+                UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
                 return
             }
 
@@ -68,8 +57,7 @@ class SignUpPage: UIViewController {
 
                     if let error = error {
 
-                        print("fail to requesting chane displayNme with error(\(error.localizedDescription))")
-
+                        UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
                     } else {
 
                         self.emailSignIn(email: email, password: password)
@@ -94,14 +82,12 @@ class SignUpPage: UIViewController {
                 let uid = result?.user.uid,
                 let displayName = result?.user.displayName
                 else {
+
+                    UserInfoError.authorizationError.alert(message: "fail to get user infomation ")
                     return
             }
 
-//            let userProfile = UserProfile(name: displayName, email: email, password: password, emailLogInUID: uid, photo: nil)
-
             if let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
-
-//                mainTabbarPage.emailUserProfile = userProfile
 
                 self.present(mainTabbarPage, animated: true, completion: nil)
             }

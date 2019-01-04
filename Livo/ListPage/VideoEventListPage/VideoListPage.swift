@@ -26,7 +26,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
 
-        self.navigationItem.title = "Video List"
+        self.navigationItem.title = NSLocalizedString("VideoList", comment: "")
 
         let barButton = UIBarButtonItem(customView: button)
 
@@ -88,6 +88,9 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
             insertVideoPage.preScreenShot = takeScreenshot()
 
             self.navigationController?.pushViewController(insertVideoPage, animated: true)
+        } else {
+
+            UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
         }
     }
 
@@ -112,6 +115,11 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        if liveStreamInfos?.count == 0 {
+
+            AlertHelper.customerAlert.rawValue.alert(message: "There is no video")
+        }
 
         return liveStreamInfos?.count ?? 0
     }
@@ -150,23 +158,28 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         }
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-        if editingStyle == .delete {
-
-            self.liveStreamInfos?.remove(at: indexPath.row)
-
-            guard let videoID = self.manager?.liveStreamInfos[indexPath.row].videoID else { return }
-
-            self.manager?.liveStreamInfos.remove(at: indexPath.row)
-
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-
-            let videoRef = Database.database().reference(withPath: "liveBroadcastStream")
-
-            videoRef.child(videoID).removeValue()
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        if editingStyle == .delete {
+//
+//            self.liveStreamInfos?.remove(at: indexPath.row)
+//
+//            guard
+//                let videoID = self.manager?.liveStreamInfos[indexPath.row].videoID
+//            else {
+//                DatabaseError.connectionError.alert()
+//                return
+//            }
+//
+//            self.manager?.liveStreamInfos.remove(at: indexPath.row)
+//
+//            self.tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//            let videoRef = Database.database().reference(withPath: "liveBroadcastStream")
+//
+//            videoRef.child(videoID).removeValue()
+//        }
+//    }
 }
 
 extension VideoListPage: ListPageManagerDelegate {

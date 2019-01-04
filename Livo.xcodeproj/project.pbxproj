@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		410439029CE0A6AD37961541 /* Pods_Livo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04CF274ADD44F896F3902302 /* Pods_Livo.framework */; };
-		F704A45E21D5F91400EBB83B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A45D21D5F91400EBB83B /* Helper.swift */; };
 		F704A46021D60CBF00EBB83B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */; };
 		F704A46221D6608F00EBB83B /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A46121D6608F00EBB83B /* UIImage+Scale.swift */; };
-		F70D9A3521DDB67600358025 /* TextfieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70D9A3421DDB67600358025 /* TextfieldManager.swift */; };
 		F70EA4D821DBC5B200A4F39F /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EA4D721DBC5B200A4F39F /* UIImageView+Animation.swift */; };
 		F70EAC7221D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */; };
 		F7232AB421DE0B8C002B553D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F7232AB621DE0B8C002B553D /* Localizable.strings */; };
@@ -37,6 +35,10 @@
 		F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0221D219280065A114 /* VideoListPage.swift */; };
 		F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AB1B0521D21B540065A114 /* VideoListCell.swift */; };
 		F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7AB1B0621D21B540065A114 /* VideoListCell.xib */; };
+		F7ADBFA021DF332200B2C9C4 /* String+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADBF9F21DF332200B2C9C4 /* String+Alert.swift */; };
+		F7ADBFA221DF34BD00B2C9C4 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADBFA121DF34BD00B2C9C4 /* ErrorHandler.swift */; };
+		F7ADBFA421DF353B00B2C9C4 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADBFA321DF353B00B2C9C4 /* AlertHelper.swift */; };
+		F7ADBFA621DF5E4400B2C9C4 /* GenWanMinTW-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7ADBFA521DF5E4000B2C9C4 /* GenWanMinTW-Regular.ttf */; };
 		F7AE583621DCC25900FBF718 /* NavigationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE583521DCC25900FBF718 /* NavigationPage.swift */; };
 		F7AE583821DCE13F00FBF718 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE583721DCE13F00FBF718 /* UINavigationBar_Extension.swift */; };
 		F7AE583A21DCE4B000FBF718 /* UIColor+RGBValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE583921DCE4B000FBF718 /* UIColor+RGBValue.swift */; };
@@ -64,10 +66,8 @@
 		04CF274ADD44F896F3902302 /* Pods_Livo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Livo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BFC7A0812E2B54EDEEFA68F /* Pods-Livo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.release.xcconfig"; sourceTree = "<group>"; };
 		90B73A640ACE2343805C493D /* Pods-Livo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Livo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Livo/Pods-Livo.debug.xcconfig"; sourceTree = "<group>"; };
-		F704A45D21D5F91400EBB83B /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		F704A46121D6608F00EBB83B /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
-		F70D9A3421DDB67600358025 /* TextfieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldManager.swift; sourceTree = "<group>"; };
 		F70D9A3621DDEA4800358025 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F70EA4D721DBC5B200A4F39F /* UIImageView+Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+Extension.swift"; sourceTree = "<group>"; };
@@ -100,6 +100,10 @@
 		F7AB1B0221D219280065A114 /* VideoListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListPage.swift; sourceTree = "<group>"; };
 		F7AB1B0521D21B540065A114 /* VideoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListCell.swift; sourceTree = "<group>"; };
 		F7AB1B0621D21B540065A114 /* VideoListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCell.xib; sourceTree = "<group>"; };
+		F7ADBF9F21DF332200B2C9C4 /* String+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Alert.swift"; sourceTree = "<group>"; };
+		F7ADBFA121DF34BD00B2C9C4 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		F7ADBFA321DF353B00B2C9C4 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		F7ADBFA521DF5E4000B2C9C4 /* GenWanMinTW-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GenWanMinTW-Regular.ttf"; sourceTree = "<group>"; };
 		F7AE583521DCC25900FBF718 /* NavigationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPage.swift; sourceTree = "<group>"; };
 		F7AE583721DCE13F00FBF718 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
 		F7AE583921DCE4B000FBF718 /* UIColor+RGBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBValue.swift"; sourceTree = "<group>"; };
@@ -165,6 +169,7 @@
 				F704A45F21D60CBF00EBB83B /* UIView+Extension.swift */,
 				F704A46121D6608F00EBB83B /* UIImage+Scale.swift */,
 				F7B7C37221CB11320050A3B6 /* Error+Extension.swift */,
+				F7ADBF9F21DF332200B2C9C4 /* String+Alert.swift */,
 				F7D900CE21CEAB4A002A0C6F /* Date+Extention.swift */,
 				F78750CB21DBA418004FFDBD /* UILabel+Extension.swift */,
 				F70EAC7121D3B9FC0048C6B5 /* UICollectionViewFlowLayout+Extension.swift */,
@@ -210,7 +215,8 @@
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
 				F75EC2A321CF750200E40252 /* MainTabbarPage.swift */,
 				F74E91D521C6C103006AFC03 /* LivoCredentials.swift */,
-				F704A45D21D5F91400EBB83B /* Helper.swift */,
+				F7ADBFA121DF34BD00B2C9C4 /* ErrorHandler.swift */,
+				F7ADBFA321DF353B00B2C9C4 /* AlertHelper.swift */,
 				F782733421D08BD700022E6B /* User Info Page */,
 				F7B2A6CA21CCE75800D3257A /* LiveStreaming */,
 				F7B8354721D32DC900BE8E84 /* LivePage */,
@@ -222,6 +228,7 @@
 				F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */,
 				F70D9A3621DDEA4800358025 /* Info.plist */,
 				F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */,
+				F7ADBFA521DF5E4000B2C9C4 /* GenWanMinTW-Regular.ttf */,
 				F7F0AEE321D36FD4009A3D85 /* GoogleService-Info.plist */,
 				F794C3C921C3520E00AE346B /* Livo-Bridging-Header.h */,
 				F7232AB621DE0B8C002B553D /* Localizable.strings */,
@@ -254,7 +261,6 @@
 		F782733421D08BD700022E6B /* User Info Page */ = {
 			isa = PBXGroup;
 			children = (
-				F70D9A3421DDB67600358025 /* TextfieldManager.swift */,
 				F782733721D0B33D00022E6B /* User.swift */,
 				F7A049F921D4AA6C001451A2 /* ProfilePage.swift */,
 				F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */,
@@ -400,6 +406,7 @@
 				F7AE583D21DCEE5000FBF718 /* Exo2-Light.otf in Resources */,
 				F743CB8D21C0AA5B001B88CA /* LaunchScreen.storyboard in Resources */,
 				F7AB1B0821D21B540065A114 /* VideoListCell.xib in Resources */,
+				F7ADBFA621DF5E4400B2C9C4 /* GenWanMinTW-Regular.ttf in Resources */,
 				F7F0AEF321D38DF1009A3D85 /* InsertVideoPageCell.xib in Resources */,
 				F7232AB421DE0B8C002B553D /* Localizable.strings in Resources */,
 				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
@@ -475,6 +482,7 @@
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
 				"${BUILT_PRODUCTS_DIR}/YTLiveStreaming/YTLiveStreaming.framework",
@@ -496,6 +504,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTLiveStreaming.framework",
@@ -539,11 +548,11 @@
 				F75EC2A421CF750200E40252 /* MainTabbarPage.swift in Sources */,
 				F7AE583A21DCE4B000FBF718 /* UIColor+RGBValue.swift in Sources */,
 				F75EC2A021CF514A00E40252 /* ListPageManager.swift in Sources */,
+				F7ADBFA421DF353B00B2C9C4 /* AlertHelper.swift in Sources */,
 				F7AB1B0721D21B540065A114 /* VideoListCell.swift in Sources */,
 				F704A46221D6608F00EBB83B /* UIImage+Scale.swift in Sources */,
 				F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */,
 				F782733821D0B33D00022E6B /* User.swift in Sources */,
-				F704A45E21D5F91400EBB83B /* Helper.swift in Sources */,
 				F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */,
 				F7AB1B0321D219280065A114 /* VideoListPage.swift in Sources */,
 				F743CB8521C0AA5A001B88CA /* LoginPage.swift in Sources */,
@@ -562,7 +571,7 @@
 				F7F0AEE621D38671009A3D85 /* VideoManager.swift in Sources */,
 				F70EA4D821DBC5B200A4F39F /* UIImageView+Animation.swift in Sources */,
 				F72EFC4421D50CF200DBB85F /* ChangePasswordPop.swift in Sources */,
-				F70D9A3521DDB67600358025 /* TextfieldManager.swift in Sources */,
+				F7ADBFA021DF332200B2C9C4 /* String+Alert.swift in Sources */,
 				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F72733D621CA1F9F002C1492 /* Message.swift in Sources */,
 				F7AE583621DCC25900FBF718 /* NavigationPage.swift in Sources */,
@@ -571,6 +580,7 @@
 				F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */,
 				F7D900CF21CEAB4A002A0C6F /* Date+Extention.swift in Sources */,
 				F7F0AEF221D38DF1009A3D85 /* InsertVideoPageCell.swift in Sources */,
+				F7ADBFA221DF34BD00B2C9C4 /* ErrorHandler.swift in Sources */,
 				F7B7C37A21CB513C0050A3B6 /* LiveBroadcastPage.swift in Sources */,
 				F782733621D08C0F00022E6B /* SignUpPage.swift in Sources */,
 			);

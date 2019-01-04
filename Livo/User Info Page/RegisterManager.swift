@@ -22,9 +22,15 @@ class RegisterManager {
 
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
 
-            guard result?.user.uid != nil else { return }
+            if let error = error {
 
-            self.delegate?.didEmailSignIn(manager: self)
+                AlertHelper.customerAlert.rawValue.alert(message: "\(error.localizedDescription)")
+            }
+
+            if result != nil {
+
+                self.delegate?.didEmailSignIn(manager: self)
+            }
         })
     }
 

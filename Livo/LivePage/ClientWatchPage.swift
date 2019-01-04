@@ -35,6 +35,8 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
             let videoID = self.videoID,
             let url = URL(string: "https://www.youtube.com/watch?v=\(videoID)")
         else {
+
+            LiveStreamError.getLiveStreamInfoError.alert(message: "can't get video info")
             return
         }
 
@@ -48,10 +50,6 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         view.sendSubviewToBack(displayView)
         conversationViewController.messagesCollectionView.backgroundColor = .clear
         conversationViewController.view.backgroundColor = .clear
-
-
-//        self.tabBarController?.tabBar.layer.zPosition = -1
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +74,9 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
                 appDelegate.window??.rootViewController = mainTabbarPage
             }
+        } else {
+
+            ViewControllerError.presentError.alert(message: "can't present to mainTabbarPage")
         }
 }
     // MARK: - Set Up InputBar

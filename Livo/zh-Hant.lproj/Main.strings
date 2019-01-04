@@ -1,90 +1,90 @@
 
 /* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "0l9-nD-Lo0"; */
-"0l9-nD-Lo0.normalTitle" = "Sign Up";
+"0l9-nD-Lo0.normalTitle" = "註冊";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "18v-7g-rle"; */
-"18v-7g-rle.text" = "Email";
+"18v-7g-rle.text" = "信箱";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "1Hq-FG-hZT"; */
-"1Hq-FG-hZT.text" = "Password";
+"1Hq-FG-hZT.text" = "密碼";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "2SY-aw-qfh"; */
-"2SY-aw-qfh.text" = "Name";
+"2SY-aw-qfh.text" = "姓名";
 
 /* Class = "UITextField"; placeholder = "your email"; ObjectID = "6Qe-0z-B4e"; */
-"6Qe-0z-B4e.placeholder" = "your email";
+"6Qe-0z-B4e.placeholder" = "你的信箱";
 
 /* Class = "UIButton"; normalTitle = "Change"; ObjectID = "7E0-TU-Rap"; */
-"7E0-TU-Rap.normalTitle" = "Change";
+"7E0-TU-Rap.normalTitle" = "更改";
 
 /* Class = "UIButton"; normalTitle = "X"; ObjectID = "81w-eq-DSB"; */
 "81w-eq-DSB.normalTitle" = "X";
 
 /* Class = "UIButton"; normalTitle = "Stop Live Broadcast"; ObjectID = "CKp-E4-jlA"; */
-"CKp-E4-jlA.normalTitle" = "Stop Live Broadcast";
+"CKp-E4-jlA.normalTitle" = "停止直播";
 
 /* Class = "UIButton"; normalTitle = "Disconnect"; ObjectID = "FWM-Jb-Dhn"; */
-"FWM-Jb-Dhn.normalTitle" = "Disconnect";
+"FWM-Jb-Dhn.normalTitle" = "解除連結";
 
 /* Class = "UIButton"; normalTitle = "X"; ObjectID = "HrQ-NK-mNC"; */
 "HrQ-NK-mNC.normalTitle" = "X";
 
 /* Class = "UIButton"; normalTitle = "Sign Out"; ObjectID = "IQf-Rn-Cqs"; */
-"IQf-Rn-Cqs.normalTitle" = "Sign Out";
+"IQf-Rn-Cqs.normalTitle" = "登出";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "JN0-Oa-7vh"; */
-"JN0-Oa-7vh.normalTitle" = "Submit";
+"JN0-Oa-7vh.normalTitle" = "送出";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "KgM-gY-hyw"; */
-"KgM-gY-hyw.normalTitle" = "Submit";
+"KgM-gY-hyw.normalTitle" = "送出";
 
 /* Class = "UILabel"; text = "Channel Title"; ObjectID = "OI4-Ye-ZVF"; */
-"OI4-Ye-ZVF.text" = "Channel Title";
+"OI4-Ye-ZVF.text" = "頻道名稱";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "PJT-DY-B8A"; */
-"PJT-DY-B8A.placeholder" = "Password";
+"PJT-DY-B8A.placeholder" = "密碼";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "QHh-1R-oiE"; */
-"QHh-1R-oiE.text" = "Password";
+"QHh-1R-oiE.text" = "密碼";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "UPM-Hy-xaL"; */
-"UPM-Hy-xaL.text" = "Email";
+"UPM-Hy-xaL.text" = "信箱";
 
 /* Class = "UILabel"; text = "Connected Youtube Acoount"; ObjectID = "UYZ-E3-TCm"; */
-"UYZ-E3-TCm.text" = "Connected Youtube Acoount";
+"UYZ-E3-TCm.text" = "連結的Youtube帳號";
 
 /* Class = "UILabel"; text = "Description"; ObjectID = "Ujb-wn-QNe"; */
-"Ujb-wn-QNe.text" = "Description";
+"Ujb-wn-QNe.text" = "描述";
 
 /* Class = "UILabel"; text = "Password"; ObjectID = "fgK-l5-Imq"; */
-"fgK-l5-Imq.text" = "Password";
+"fgK-l5-Imq.text" = "密碼";
 
 /* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "fmi-fX-yCz"; */
-"fmi-fX-yCz.title" = "Add";
+"fmi-fX-yCz.title" = "添加";
 
 /* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "jxC-PM-16c"; */
-"jxC-PM-16c.normalTitle" = "Sign Up";
+"jxC-PM-16c.normalTitle" = "註冊";
 
 /* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "kNj-7y-6DB"; */
-"kNj-7y-6DB.normalTitle" = "Sign In";
+"kNj-7y-6DB.normalTitle" = "登入";
 
 /* Class = "UILabel"; text = "LIVO"; ObjectID = "qLJ-8l-LkY"; */
 "qLJ-8l-LkY.text" = "LIVO";
 
 /* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "rno-mc-DxD"; */
-"rno-mc-DxD.normalTitle" = "Edit";
+"rno-mc-DxD.normalTitle" = "編輯";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "sKa-E0-3AR"; */
 "sKa-E0-3AR.text" = "Label";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "sUr-cR-wfB"; */
-"sUr-cR-wfB.text" = "Account";
+"sUr-cR-wfB.text" = "帳號";
 
 /* Class = "UITextField"; placeholder = "password"; ObjectID = "uUs-C1-5dz"; */
-"uUs-C1-5dz.placeholder" = "password";
+"uUs-C1-5dz.placeholder" = "密碼";
 
 /* Class = "UILabel"; text = "Account"; ObjectID = "xlC-09-7Rz"; */
-"xlC-09-7Rz.text" = "Account";
+"xlC-09-7Rz.text" = "帳號";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "yiW-Hh-ipK"; */
-"yiW-Hh-ipK.text" = "Name";
+"yiW-Hh-ipK.text" = "姓名";

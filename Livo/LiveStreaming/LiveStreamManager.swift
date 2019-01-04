@@ -13,6 +13,7 @@ import Firebase
 protocol LiveStreamManagerDelegate: class {
 
     func finishCreateLiveBroadcastStream(_ manager: LiveStreamManager)
+    func didStartLiveBroadcast(_ manager: LiveStreamManager)
 }
 
 class LiveStreamManager: YTLiveStreamingDelegate {
@@ -56,6 +57,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
             } else {
 
+                LiveStreamError.getLiveStreamInfoError.alert(message: "can't star live broadcast")
             }
         })
     }
@@ -69,6 +71,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
             })
         } else {
 
+            LiveStreamError.getLiveStreamInfoError.alert(message: "can't stop live broadcast")
         }
     }
 
@@ -82,6 +85,8 @@ class LiveStreamManager: YTLiveStreamingDelegate {
             let imageURL = self.liveBroadcastStreamModel?.snipped.thumbnails.medium.url,
             let description = self.liveBroadcastStreamModel?.snipped.description
         else {
+
+            LiveStreamError.getLiveStreamInfoError.alert()
             return
         }
 
@@ -95,5 +100,6 @@ class LiveStreamManager: YTLiveStreamingDelegate {
     // MARK: - YTLiveStreamingDelegate Method
     func didTransitionToLiveStatus() {
 
+        self.delegate?.didStartLiveBroadcast(self)
     }
 }

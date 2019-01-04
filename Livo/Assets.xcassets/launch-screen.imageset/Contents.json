@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "launch-screen.png",
       "scale" : "1x"
     },
     {

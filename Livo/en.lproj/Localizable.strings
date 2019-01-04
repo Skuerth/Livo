@@ -5,3 +5,8 @@
   Created by Skuerth on 2019/1/3.
   Copyright © 2019 Skuerth. All rights reserved.
 */
+
+"VideoList" = "Video List";
+"LiveVideo" = "Live Video";
+"Profile" = "Profile";
+"AddVideo" = "Add Video";

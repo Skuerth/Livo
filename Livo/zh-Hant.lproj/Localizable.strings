@@ -5,3 +5,9 @@
   Created by Skuerth on 2019/1/3.
   Copyright © 2019 Skuerth. All rights reserved.
 */
+
+"VideoList" = "影片清單";
+"LiveVideo" = "直播清單";
+"Profile" = "個人資料";
+"AddVideo" = "添加影片";
+"Youtube Video" = "Youtube影片";

@@ -11,22 +11,6 @@ import MessageKit
 import Firebase
 import MessageInputBar
 
-enum ChatMessageConnetError: Error {
-    case dbError
-    case convertError
-}
-
-extension ChatMessageConnetError: CustomStringConvertible {
-
-    var description: String {
-
-        switch self {
-        case .dbError: return "Connetion Error"
-        case .convertError: return "Convert Error"
-        }
-    }
-}
-
 class ChatRoomPage: MessagesViewController {
 
     var userUID: String?
@@ -54,31 +38,35 @@ class ChatRoomPage: MessagesViewController {
 
             var newMessages: [Message] = []
 
-            for child in dataSnapshot.children {
+            if dataSnapshot.childrenCount > 0 {
 
-                if let sanpshot = child as? DataSnapshot {
+                for child in dataSnapshot.children {
 
-                    let messageID = sanpshot.key
+                    if let sanpshot = child as? DataSnapshot {
 
-                    guard
-                        let value = sanpshot.value as? [String: Any],
-                        let content = value["content"] as? String,
-                        let userID = value["publish_userID"] as? String,
-                        let name = value["publish_userName"] as? String,
-                        let dateString = value["sentDate"] as? String,
-                        let date = self.stringConvertToDate(dateString: dateString)
-                    else {
-                        return
+                        let messageID = sanpshot.key
+
+                        guard
+                            let value = sanpshot.value as? [String: Any],
+                            let content = value["content"] as? String,
+                            let userID = value["publish_userID"] as? String,
+                            let name = value["publish_userName"] as? String,
+                            let dateString = value["sentDate"] as? String,
+                            let date = self.stringConvertToDate(dateString: dateString)
+                            else {
+                                DatabaseError.connectionError.alert()
+                                return
+                        }
+
+                        let sender = Sender(id: userID, displayName: name)
+
+                        let message = Message(sender: sender, messageId: messageID, sentDate: date, kind: .text(content))
+
+                        newMessages.append(message)
+
+                    } else {
+
                     }
-
-                    let sender = Sender(id: userID, displayName: name)
-
-                    let message = Message(sender: sender, messageId: messageID, sentDate: date, kind: .text(content))
-
-                    newMessages.append(message)
-
-                } else {
-
                 }
             }
 
@@ -284,6 +272,8 @@ extension ChatRoomPage: MessageInputBarDelegate {
             let emailLoginUID = Auth.auth().currentUser?.uid,
             let name = Auth.auth().currentUser?.displayName
         else {
+
+            DatabaseError.connectionError.alert(message: "can't get data from database")
             return
         }
 
@@ -294,8 +284,6 @@ extension ChatRoomPage: MessageInputBarDelegate {
         let ref = Database.database().reference(withPath: "chatChannel").child(channelID).child(messageID)
 
         ref.setValue(message.toAnyObject())
-
-//        self.insertNewMessage(message)
 
         inputBar.inputTextView.text = String()
         messagesCollectionView.scrollToBottom(animated: true)

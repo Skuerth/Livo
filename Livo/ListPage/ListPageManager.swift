@@ -32,6 +32,8 @@ class ListPageManager {
             let name = Auth.auth().currentUser?.displayName,
             let uid = Auth.auth().currentUser?.uid
         else {
+
+            UserInfoError.authorizationError.alert(message: "please resign in again")
             return
         }
 
@@ -89,6 +91,8 @@ class ListPageManager {
                         let snapshot = child as? DataSnapshot,
                         let liveStreamInfo = LiveStreamInfo(snapshot: snapshot)
                         else {
+
+                            DatabaseError.connectionError.alert(message: "fail to get \(statusString) broadcast")
                             return
                     }
 

@@ -27,6 +27,8 @@ class VideoManager {
             let name = Auth.auth().currentUser?.displayName,
             let uid = Auth.auth().currentUser?.uid
         else {
+
+            UserInfoError.authorizationError.alert()
             return
         }
 

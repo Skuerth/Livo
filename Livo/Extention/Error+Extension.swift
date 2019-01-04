@@ -8,15 +8,19 @@
 
 import Foundation
 import UIKit
+import StatusAlert
 
 extension Error {
 
-    func alert(with controller: UIViewController) {
+    func alert(message: String = "") {
 
-        let alertController = UIAlertController(title: "Oops!", message: "\(self)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-
-        controller.present(controller, animated: true, completion: nil)
+        let statusAlert = StatusAlert()
+        statusAlert.appearance.blurStyle = .regular
+        statusAlert.title = "\(self)"
+        statusAlert.message = message
+        statusAlert.appearance.titleFont = statusAlert.appearance.titleFont.withSize(16)
+        statusAlert.canBePickedOrDismissed = true
+        statusAlert.alertShowingDuration = 3
+        statusAlert.showInKeyWindow()
     }
 }
