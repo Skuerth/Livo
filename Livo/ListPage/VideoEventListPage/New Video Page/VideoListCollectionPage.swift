@@ -1,9 +1,9 @@
 //
-//  VideoListPage.swift
+//  VideoListCollectionPage.swift
 //  Livo
 //
-//  Created by Skuerth on 2018/12/25.
-//  Copyright © 2018 Skuerth. All rights reserved.
+//  Created by Skuerth on 2019/1/5.
+//  Copyright © 2019 Skuerth. All rights reserved.
 //
 
 import UIKit
@@ -11,10 +11,14 @@ import GoogleSignIn
 import YTLiveStreaming
 import Firebase
 
-class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+private let reuseIdentifier = "VideoListCollectionCell"
+
+class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var manager: ListPageManager?
     var liveStreamInfos: [LiveStreamInfo]?
+    let cellInset: CGFloat = 15
+    let spacing: CGFloat = 20
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +45,11 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         self.manager?.fetchStreamInfo(status: LiveStatus.completed)
         self.manager?.delegate = self
 
-        tableView.estimatedRowHeight = 120
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 75, bottom: 0, right: 0)
+        self.collectionView!.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
-        tableView.rowHeight = UITableView.automaticDimension
+        guard let layout = self.manager?.setUpLayout(spacing: self.spacing, cellInset: self.cellInset) else { return }
 
-        self.tableView.register(UINib(nibName: "VideoListCell", bundle: nil), forCellReuseIdentifier: "VideoListCell")
-
+        self.collectionView.collectionViewLayout = layout
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +79,8 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
 
             guard
                 let token = user.authentication.accessToken
-            else {
-                return
+                else {
+                    return
             }
 
             GoogleOAuth2.sharedInstance.accessToken = token
@@ -106,38 +108,31 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         UIGraphicsEndImageContext()
         return screenshotImage
     }
+    // MARK: UICollectionViewDataSource
 
-    // MARK: - Table view data source
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        if liveStreamInfos?.count == 0 {
-
-            AlertHelper.customerAlert.rawValue.alert(message: "There is no video")
-        }
-
-        return liveStreamInfos?.count ?? 0
+        return self.liveStreamInfos?.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoListCell", for: indexPath) as? VideoListCell else {
-
-            return UITableViewCell()
+        guard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? VideoListCollectionCell
+        else {
+            return UICollectionViewCell()
         }
 
         guard let liveStreamInfos = liveStreamInfos else { return  cell }
 
-        print("liveStreamInfos[indexPath.row]", liveStreamInfos[indexPath.row])
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
-        cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.longDateStringConvertToshort()
-        cell.selectionStyle = .none
+        cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.dateConvertToString().longDateStringConvertToshort()
 
         if let image = liveStreamInfos[indexPath.item].image {
 
@@ -147,7 +142,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if let clientWatchPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ClientWatchPage") as? ClientWatchPage,
             let liveStreamInfos = self.liveStreamInfos {
@@ -157,32 +152,9 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
             self.navigationController?.pushViewController(clientWatchPage, animated: true)
         }
     }
-
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        if editingStyle == .delete {
-//
-//            self.liveStreamInfos?.remove(at: indexPath.row)
-//
-//            guard
-//                let videoID = self.manager?.liveStreamInfos[indexPath.row].videoID
-//            else {
-//                DatabaseError.connectionError.alert()
-//                return
-//            }
-//
-//            self.manager?.liveStreamInfos.remove(at: indexPath.row)
-//
-//            self.tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//            let videoRef = Database.database().reference(withPath: "liveBroadcastStream")
-//
-//            videoRef.child(videoID).removeValue()
-//        }
-//    }
 }
 
-extension VideoListPage: ListPageManagerDelegate {
+extension VideoListCollectionPage: ListPageManagerDelegate {
 
     func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 
@@ -191,7 +163,7 @@ extension VideoListPage: ListPageManagerDelegate {
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 
         self.liveStreamInfos = liveStreamInfos
-        self.tableView.reloadData()
+        self.collectionView.reloadData()
 
         var indexPath = 0
 
@@ -208,6 +180,7 @@ extension VideoListPage: ListPageManagerDelegate {
         self.liveStreamInfos?[indexPath] = liveStreamInfo
 
         let indexPathForCell = IndexPath(row: indexPath, section: 0)
-        self.tableView.reloadRows(at: [indexPathForCell], with: .fade)
+        self.collectionView.reloadItems(at: [indexPathForCell])
     }
 }
+

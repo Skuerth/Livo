@@ -480,6 +480,38 @@
             </objects>
             <point key="canvasLocation" x="2710" y="510"/>
         </scene>
+        <!--Video List Collection Page-->
+        <scene sceneID="slM-DS-XAp">
+            <objects>
+                <collectionViewController id="dsD-dY-P5x" customClass="VideoListCollectionPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MY3-vK-kUM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="enp-eM-t1X">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="dsD-dY-P5x" id="cDT-m2-lOu"/>
+                            <outlet property="delegate" destination="dsD-dY-P5x" id="nRy-9d-zNQ"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="Cgl-eU-ftA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="p1k-vh-CUy">
+                            <connections>
+                                <action selector="insertVideo:" destination="dsD-dY-P5x" id="K8s-z1-zol"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOI-5o-1qP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1081" y="580"/>
+        </scene>
         <!--Live Event List Page-->
         <scene sceneID="Baj-5Q-AdX">
             <objects>
@@ -555,7 +587,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HuR-3h-9RX">
-                                <rect key="frame" x="40" y="84" width="295" height="494"/>
+                                <rect key="frame" x="40" y="40" width="295" height="587"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FvW-5W-Se3">
                                     <size key="itemSize" width="50" height="50"/>
@@ -908,7 +940,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="gvV-oU-yGf" kind="relationship" relationship="rootViewController" id="4om-zV-8QZ"/>
+                        <segue destination="dsD-dY-P5x" kind="relationship" relationship="rootViewController" id="Zfn-1m-UF6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJF-oo-V1a" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -138,7 +138,6 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
             cell.blurEffectView.isHidden = true
         }
 
-
         return cell
     }
 

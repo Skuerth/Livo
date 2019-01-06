@@ -13,6 +13,8 @@ class NavigationPage: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.setNeedsStatusBarAppearanceUpdate()
+
         self.navigationBar.barTintColor = UIColor.white
         self.navigationBar.tintColor = .white
         self.navigationBar.setValue(true, forKey: "hidesShadow")
@@ -46,6 +48,11 @@ class NavigationPage: UINavigationController {
         self.navigationBar.layer.shadowOpacity = 0.8
         self.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationBar.layer.shadowRadius = 2
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+
+        return .lightContent
     }
 
     func languageCode() -> String? {

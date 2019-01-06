@@ -92,7 +92,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         let videoID = liveBroadcastStreamModel.id
 
-        let liveStreamInfo = LiveStreamInfo(userID: userUID, userName: userName, imageURL: imageURL, title: liveBroadcastStreamModel.snipped.title, status: LiveStatus.live, videoID: videoID, startTime: startTime, description: description)
+        let liveStreamInfo = LiveStreamInfo(userID: userUID, userName: userName, imageURL: imageURL, title: liveBroadcastStreamModel.snipped.title, status: LiveStatus.live, videoID: videoID, startTime: startTime.stringConvertToDate(), description: description)
 
         liveBroadcastStreamRef.child(videoID).setValue(liveStreamInfo.toAnyObject())
     }

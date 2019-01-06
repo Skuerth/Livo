@@ -52,7 +52,7 @@ class ListPageManager {
                     title: liveBroadcastStreamModel.snipped.title,
                     status: LiveStatus.completed,
                     videoID: liveBroadcastStreamModel.id,
-                    startTime: liveBroadcastStreamModel.snipped.scheduledStartTime.dateConvertToString(),
+                    startTime: liveBroadcastStreamModel.snipped.scheduledStartTime,
                     description: liveBroadcastStreamModel.snipped.description
                     )
 
@@ -100,6 +100,8 @@ class ListPageManager {
                 }
             }
 
+            newLiveStreamInfos.sort(by: { $0.startTime.compare($1.startTime) == .orderedDescending })
+
             self.liveStreamInfos = newLiveStreamInfos
 
             DispatchQueue.main.async {
@@ -143,10 +145,62 @@ class ListPageManager {
 
                     var liveStreamInfo = self.liveStreamInfos[indexPath]
 
-                    liveStreamInfo.image = image
+//                    let size = CGSize(width: 130, height: 180)
+//                    image.crop(to: size)
+
+                    let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
+
+                    liveStreamInfo.image = croppingImage
+
                     self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
                 }
             }
         }
+    }
+
+    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = CGFloat(width)
+        var cgheight: CGFloat = CGFloat(height)
+
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - CGFloat(width)) / 2)
+            posY = 0
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+        }
+
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+
+        return image
+    }
+
+    func setUpLayout(spacing: CGFloat, cellInset: CGFloat) -> UICollectionViewFlowLayout {
+
+        let layout = UICollectionViewFlowLayout()
+
+        layout.sectionInset = UIEdgeInsets(
+            top: CGFloat(spacing),
+            left: CGFloat(spacing),
+            bottom: CGFloat(spacing),
+            right: CGFloat(spacing))
+
+        layout.minimumLineSpacing = CGFloat(cellInset)
+        layout.minimumInteritemSpacing = CGFloat(cellInset)
+
+        layout.estimatedItemSize = CGSize(width: CGFloat(160) ,
+                                          height: CGFloat(262))
+
+        return layout
     }
 }

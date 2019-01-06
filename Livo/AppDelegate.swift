@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance()?.clientID = LivoCredentials.oAuthClientID
 
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-
+        
         guard let gai = GAI.sharedInstance() else {
             assert(false, "Google Analytics not configured correctly")
         }

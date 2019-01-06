@@ -13,45 +13,47 @@ import GoogleSignIn
 
 class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
-    let liveEventListCellID = "LiveEventListCell"
-
     var liveBroadcastStreamRef: DatabaseReference?
     var liveStreamInfos: [LiveStreamInfo]?
-    var listPageManager: ListPageManager?
+    var manager: ListPageManager?
 
-    let spaceing: CGFloat = 18
-    let cellInset: CGFloat = 12
+    let reuseIdentifier = "VideoListCollectionCell"
+
+    let spacing: CGFloat = 20
+    let cellInset: CGFloat = 15
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.title = NSLocalizedString("LiveVideo", comment: "")
 
-        self.listPageManager = ListPageManager()
-        self.listPageManager?.delegate = self
+        self.manager = ListPageManager()
+        self.manager?.delegate = self
 
         self.liveBroadcastStreamRef = Database.database().reference(withPath: "liveBroadcastStream")
 
-        self.collectionView.register(UINib(nibName: liveEventListCellID, bundle: nil), forCellWithReuseIdentifier: liveEventListCellID)
+        self.collectionView.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
-        let layout = UICollectionViewFlowLayout()
+//        let layout = UICollectionViewFlowLayout()
+//
+//        layout.sectionInset = UIEdgeInsets(
+//                                        top: CGFloat(spaceing),
+//                                        left: CGFloat(spaceing),
+//                                        bottom: CGFloat(spaceing),
+//                                        right: CGFloat(spaceing))
+//
+//        layout.minimumLineSpacing = CGFloat(cellInset)
+//        layout.minimumInteritemSpacing = CGFloat(cellInset)
+//
+//        layout.estimatedItemSize = CGSize(width: CGFloat(157) ,
+//                                          height: CGFloat(151))
 
-        layout.sectionInset = UIEdgeInsets(
-                                        top: CGFloat(spaceing),
-                                        left: CGFloat(spaceing),
-                                        bottom: CGFloat(spaceing),
-                                        right: CGFloat(spaceing))
-
-        layout.minimumLineSpacing = CGFloat(cellInset)
-        layout.minimumInteritemSpacing = CGFloat(cellInset)
-
-        layout.estimatedItemSize = CGSize(width: CGFloat(157) ,
-                                          height: CGFloat(151))
+        guard let layout = self.manager?.setUpLayout(spacing: spacing, cellInset: cellInset) else { return }
 
         self.collectionView.collectionViewLayout = layout
 
-        self.listPageManager?.fetchStreamInfo(status: LiveStatus.live)
-
+        self.manager?.fetchStreamInfo(status: LiveStatus.live)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -106,19 +108,21 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: liveEventListCellID, for: indexPath) as? LiveEventListCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? VideoListCollectionCell
         else {
             return UICollectionViewCell()
         }
 
         guard let liveStreamInfos = self.liveStreamInfos else { return cell }
 
-        cell.broadcastTitle.text = liveStreamInfos[indexPath.row].title
-        cell.broadcasterName.text = liveStreamInfos[indexPath.row].userName
+        
+        cell.titleLabel.text = liveStreamInfos[indexPath.row].title
+        cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
+        cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.dateConvertToString().longDateStringConvertToshort()
 
         if let image = liveStreamInfos[indexPath.item].image {
 
-            cell.broadcastImage.image = image
+            cell.photoView.image = image
         }
 
         return cell

@@ -172,5 +172,6 @@ extension LiveBroadcastPage: LiveStreamManagerDelegate {
 
         self.blurEffectView.isHidden = true
         self.activityIndicator.stopAnimating()
+        AlertHelper.customerAlert.rawValue.alert(message: "Start Live Broadcast")
     }
 }

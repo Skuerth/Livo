@@ -70,10 +70,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         }
 
         self.checkIsConnectGoogleAcoount()
-
-//        makeCircleView(view: userPhoto)
-//        addShadow(view: photoView)
     }
+
 
     override func viewWillAppear(_ animated: Bool) {
 

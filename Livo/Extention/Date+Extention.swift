@@ -29,10 +29,20 @@ extension String {
 
         guard let date = dateFormatter.date(from: self) else { return  ""}
 
-        dateFormatter.dateFormat = "MMM-dd-yyyy HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm:ss MMM-dd-yyyy "
 
         let newDateString = dateFormatter.string(from: date)
 
         return newDateString
     }
+
+    func stringConvertToDate() -> Date {
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        let date = dateFormatter.date(from: self)!
+
+        return date
+    }
+
 }

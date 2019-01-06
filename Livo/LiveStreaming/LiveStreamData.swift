@@ -18,11 +18,11 @@ struct LiveStreamInfo {
     var title: String
     var status: LiveStatus
     var videoID: String
-    var startTime: String
+    var startTime: Date
     var description: String
     var isPressed: Bool = false
 
-    init(userID: String, userName: String, imageURL: String, title: String, status: LiveStatus, videoID: String, startTime: String, description: String) {
+    init(userID: String, userName: String, imageURL: String, title: String, status: LiveStatus, videoID: String, startTime: Date, description: String) {
 
         self.userID = userID
         self.userName = userName
@@ -43,18 +43,19 @@ struct LiveStreamInfo {
             let title = value["title"] as? String,
             let imageURL = value["imageURL"] as? String,
             let status = value["status"] as? String,
-            let startTime = value["startTime"] as? String,
+            let startTimeString = value["startTime"] as? String,
             let description = value["description"] as? String
         else {
             return nil
         }
 
+        let startTimeDate = startTimeString.stringConvertToDate()
         self.userID = userID
         self.userName = userName
         self.title = title
         self.imageURL = imageURL
         self.videoID = snapshot.key
-        self.startTime = startTime
+        self.startTime = startTimeDate
         self.description = description
 
         if status == "live" {
@@ -76,7 +77,7 @@ struct LiveStreamInfo {
                 "title": self.title,
                 "status": self.status.rawValue,
                 "videoID": self.videoID,
-                "startTime": self.startTime,
+                "startTime": self.startTime.dateConvertToString(),
                 "description": self.description
         ]
     }
