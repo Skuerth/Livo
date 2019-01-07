@@ -116,6 +116,25 @@
             </objects>
             <point key="canvasLocation" x="1900" y="-1574.6626686656673"/>
         </scene>
+        <!--Page-->
+        <scene sceneID="Xm4-1Z-qSa">
+            <objects>
+                <tableViewController id="uaE-hh-EWl" customClass="EULAPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dCb-kv-p4F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="uaE-hh-EWl" id="41g-a5-YhK"/>
+                            <outlet property="delegate" destination="uaE-hh-EWl" id="W3g-HL-Fs6"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q41-dY-Z0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2047.2" y="286.50674662668666"/>
+        </scene>
         <!--Login Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -132,7 +151,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-8l-LkY">
-                                <rect key="frame" x="112.5" y="110" width="150" height="74"/>
+                                <rect key="frame" x="112.5" y="110" width="150" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZsQ-7r-fxx"/>
                                 </constraints>
@@ -213,6 +232,31 @@
                                             <action selector="emailSignUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8zb-Yj-e1g"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jyG-nB-wji" userLabel="Rule View">
+                                        <rect key="frame" x="181.5" y="264" width="161" height="27"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLw-O1-JRd">
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                                <state key="normal" title="Terms of Use">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="uaE-hh-EWl" kind="show" id="2sU-Xi-YyJ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-Uv-ku5">
+                                                <rect key="frame" x="84" y="0.0" width="77" height="27"/>
+                                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                                <state key="normal" title="Privacy Policy">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="tIj-SX-7yV" kind="show" id="Cnr-Bs-8tK"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -223,7 +267,9 @@
                                     <constraint firstItem="yuE-7h-fls" firstAttribute="centerY" secondItem="z4K-PF-CBa" secondAttribute="centerY" id="VFw-HP-TUh"/>
                                     <constraint firstItem="yuE-7h-fls" firstAttribute="centerX" secondItem="paf-cv-4Sm" secondAttribute="centerX" constant="55" id="Z5M-dO-zxt"/>
                                     <constraint firstItem="z4K-PF-CBa" firstAttribute="top" secondItem="paf-cv-4Sm" secondAttribute="top" constant="110" id="aci-CF-Qps"/>
+                                    <constraint firstItem="jyG-nB-wji" firstAttribute="top" secondItem="kNj-7y-6DB" secondAttribute="bottom" constant="15" id="rfJ-7B-c2u"/>
                                     <constraint firstItem="6Qe-0z-B4e" firstAttribute="width" secondItem="paf-cv-4Sm" secondAttribute="width" multiplier="200:375" id="szi-ZS-gw3"/>
+                                    <constraint firstItem="jyG-nB-wji" firstAttribute="trailing" secondItem="kNj-7y-6DB" secondAttribute="trailing" id="vUa-rs-VRv"/>
                                     <constraint firstItem="z4K-PF-CBa" firstAttribute="centerX" secondItem="paf-cv-4Sm" secondAttribute="centerX" constant="-105" id="xLZ-RJ-HQw"/>
                                 </constraints>
                             </view>
@@ -388,7 +434,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67L-4J-aBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1039.2" y="61.619190404797607"/>
+            <point key="canvasLocation" x="-492" y="287"/>
+        </scene>
+        <!--Privacy Policy Page-->
+        <scene sceneID="kxL-L4-kGY">
+            <objects>
+                <viewController id="tIj-SX-7yV" customClass="PrivacyPolicyPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rdi-KF-N4h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-gL-p3F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-rZ-jTB">
+                                <rect key="frame" x="330" y="35" width="30" height="47"/>
+                                <fontDescription key="fontDescription" name="Exo2-Light" family="Exo 2" pointSize="30"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitButton:" destination="tIj-SX-7yV" eventType="touchUpInside" id="wh3-de-qr2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="LF0-Np-474" firstAttribute="trailing" secondItem="HM5-rZ-jTB" secondAttribute="trailing" constant="15" id="1MM-1Y-LBj"/>
+                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="trailing" secondItem="LF0-Np-474" secondAttribute="trailing" id="2Wz-kS-ftd"/>
+                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="bottom" secondItem="LF0-Np-474" secondAttribute="bottom" id="5vk-5v-rDJ"/>
+                            <constraint firstItem="HM5-rZ-jTB" firstAttribute="top" secondItem="LF0-Np-474" secondAttribute="top" constant="15" id="7S2-Wx-Ucf"/>
+                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="top" secondItem="Rdi-KF-N4h" secondAttribute="top" id="da3-QE-lrF"/>
+                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="leading" secondItem="LF0-Np-474" secondAttribute="leading" id="pQS-aH-GpG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LF0-Np-474"/>
+                    </view>
+                    <connections>
+                        <outlet property="exit" destination="HM5-rZ-jTB" id="DY6-De-ms6"/>
+                        <outlet property="webView" destination="Ckl-gL-p3F" id="iEp-1X-5V5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DC8-t7-nyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1274" y="287"/>
         </scene>
         <!--Main Tabbar Page-->
         <scene sceneID="f5M-BX-eYm">

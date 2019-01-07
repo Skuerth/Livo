@@ -27,6 +27,9 @@ class CreateNewSreamPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
+
         let activityIndicatorView = UIView()
         activityIndicatorView.frame = CGRect(x: 0, y: 0, width: presentingView.frame.width, height: presentingView.frame.height)
         presentingView.addSubview(activityIndicatorView)
@@ -147,6 +150,33 @@ extension CreateNewSreamPage: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         self.view.endEditing(true)
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        var maxLength = 0
+
+        if textField == self.titleTextField {
+
+            maxLength = 30
+
+        } else if textField == self.descriptionTextField {
+
+            maxLength = 50
+        }
+
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: string) as NSString
+
+        if newString.length > maxLength &&  maxLength == 10 {
+
+            AlertHelper.customerAlert.rawValue.alert(message: NSLocalizedString("Title Length to Long", comment: ""))
+        } else if newString.length > maxLength &&  maxLength == 20 {
+
+            AlertHelper.customerAlert.rawValue.alert(message: NSLocalizedString("Description Length to Long", comment: ""))
+        }
+        return newString.length <= maxLength
     }
 
 }

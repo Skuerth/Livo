@@ -72,7 +72,6 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         self.checkIsConnectGoogleAcoount()
     }
 
-
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true

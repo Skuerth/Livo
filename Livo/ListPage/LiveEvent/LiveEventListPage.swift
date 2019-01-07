@@ -115,7 +115,6 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
         guard let liveStreamInfos = self.liveStreamInfos else { return cell }
 
-        
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
         cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.dateConvertToString().longDateStringConvertToshort()

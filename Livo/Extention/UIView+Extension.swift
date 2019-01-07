@@ -22,7 +22,7 @@ extension UIView {
     func addBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.layer.opacity = 0.9
+        blurEffectView.layer.opacity = 1
         blurEffectView.frame = self.bounds
 
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

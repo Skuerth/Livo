@@ -17,6 +17,7 @@ class InsertVideoPage: UIViewController {
     let spacing: CGFloat = 10
     let cellInset: CGFloat = 10
     var preScreenShot: UIImage?
+    var addingNumberCount: Int = 0
 
     var manager: ListPageManager?
 
@@ -97,7 +98,7 @@ class InsertVideoPage: UIViewController {
         let collcollectionViewWidth = collectionView.frame.width
         let itemWidth = (collcollectionViewWidth - (spacing * 2) - cellInset) / 2
 
-        layout.setUpFlowLayout(spacing: spacing, cellInset: cellInset, itemWidth: itemWidth, itemHeight: itemWidth * 0.967)
+        layout.setUpFlowLayout(spacing: spacing, cellInset: cellInset, itemWidth: itemWidth, itemHeight: itemWidth * 1.6)
 
         collectionView.collectionViewLayout = layout
         collectionView.showsVerticalScrollIndicator = false
@@ -160,6 +161,11 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
             liveStreamInfos[indexPath.row].isPressed = false
             cell.blurEffectView.isHidden = true
 
+            if addingNumberCount > 0 {
+
+                addingNumberCount -= 1
+            }
+
         } else {
 
             selectedLiveStreams.append(indexPath.item)
@@ -169,8 +175,19 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
 
             liveStreamInfos[indexPath.row].isPressed = true
             cell.blurEffectView.isHidden = false
+
+            addingNumberCount += 1
         }
 
+        if addingNumberCount > 0 {
+
+            self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Add", comment: "") + "\(addingNumberCount)"
+        } else {
+
+//            self.navigationItem.title = NSLocalizedString("Profile", comment: "")
+
+            self.navigationItem.rightBarButtonItem?.title = NSLocalizedString("Add", comment: "")
+        }
         self.liveStreamInfos = liveStreamInfos
     }
 

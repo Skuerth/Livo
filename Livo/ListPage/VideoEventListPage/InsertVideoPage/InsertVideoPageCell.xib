@@ -13,26 +13,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InsertVideoPage" id="gTV-IL-0wX" customClass="InsertVideoPageCell" customModule="Livo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="155" height="231"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="155" height="231"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vOI-tt-xdZ" userLabel="Container View">
-                        <rect key="frame" x="0.0" y="0.0" width="155" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="155" height="231"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYB-JI-9I0">
-                                <rect key="frame" x="5" y="120" width="31" height="25"/>
+                                <rect key="frame" x="5" y="211" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64o-2V-4c4" userLabel="ImageContainerView">
-                                <rect key="frame" x="1" y="3" width="150" height="115"/>
+                                <rect key="frame" x="1" y="3" width="148" height="205"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="de9-Ur-5Ok">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="115"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148" height="205"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="57S-k8-dk3">
                                         <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -61,13 +61,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="115" id="3Wa-EH-zDu"/>
                                     <constraint firstItem="de9-Ur-5Ok" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="top" id="4UN-Be-Zgn"/>
                                     <constraint firstAttribute="trailing" secondItem="de9-Ur-5Ok" secondAttribute="trailing" id="Ie0-dU-YNH"/>
                                     <constraint firstItem="de9-Ur-5Ok" firstAttribute="leading" secondItem="64o-2V-4c4" secondAttribute="leading" id="KHf-DC-j3m"/>
                                     <constraint firstItem="57S-k8-dk3" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="top" constant="5" id="RIX-VM-qVg"/>
                                     <constraint firstItem="57S-k8-dk3" firstAttribute="leading" secondItem="64o-2V-4c4" secondAttribute="leading" constant="5" id="mtt-pU-g4g"/>
                                     <constraint firstAttribute="bottom" secondItem="de9-Ur-5Ok" secondAttribute="bottom" id="vIt-XY-kGl"/>
+                                    <constraint firstAttribute="width" secondItem="de9-Ur-5Ok" secondAttribute="height" multiplier="150:208" id="yfq-T9-ASd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -76,9 +76,9 @@
                             <constraint firstItem="64o-2V-4c4" firstAttribute="top" secondItem="vOI-tt-xdZ" secondAttribute="top" constant="3" id="7Uj-MQ-k3Y"/>
                             <constraint firstAttribute="bottom" secondItem="gYB-JI-9I0" secondAttribute="bottom" constant="5" id="ESm-b9-goP"/>
                             <constraint firstItem="gYB-JI-9I0" firstAttribute="leading" secondItem="vOI-tt-xdZ" secondAttribute="leading" constant="5" id="mCI-MR-Khh"/>
-                            <constraint firstItem="gYB-JI-9I0" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="bottom" constant="2" id="mVo-lr-jwt"/>
+                            <constraint firstItem="gYB-JI-9I0" firstAttribute="top" secondItem="64o-2V-4c4" secondAttribute="bottom" constant="3" id="mVo-lr-jwt"/>
                             <constraint firstItem="64o-2V-4c4" firstAttribute="leading" secondItem="vOI-tt-xdZ" secondAttribute="leading" constant="1" id="qfd-qY-2XL"/>
-                            <constraint firstAttribute="trailing" secondItem="64o-2V-4c4" secondAttribute="trailing" constant="4" id="z16-I7-SZY"/>
+                            <constraint firstAttribute="trailing" secondItem="64o-2V-4c4" secondAttribute="trailing" constant="6" id="z16-I7-SZY"/>
                         </constraints>
                     </view>
                 </subviews>

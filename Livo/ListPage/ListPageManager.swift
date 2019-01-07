@@ -81,8 +81,6 @@ class ListPageManager {
 
             var newLiveStreamInfos: [LiveStreamInfo] = []
 
-            print("snapshot.childrenCount", snapshot.childrenCount)
-
             if snapshot.childrenCount > 0 {
 
                 for child in snapshot.children {
@@ -189,6 +187,9 @@ class ListPageManager {
 
         let layout = UICollectionViewFlowLayout()
 
+
+        layout.setUpFlowLayout(spacing: spacing, cellInset: cellInset, itemWidth: 160, itemHeight: 270)
+
         layout.sectionInset = UIEdgeInsets(
             top: CGFloat(spacing),
             left: CGFloat(spacing),
@@ -199,7 +200,7 @@ class ListPageManager {
         layout.minimumInteritemSpacing = CGFloat(cellInset)
 
         layout.estimatedItemSize = CGSize(width: CGFloat(160) ,
-                                          height: CGFloat(262))
+                                          height: CGFloat(270))
 
         return layout
     }
