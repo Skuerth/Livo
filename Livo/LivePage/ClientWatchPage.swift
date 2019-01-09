@@ -106,14 +106,4 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
     override var inputAccessoryView: UIView? {
         return conversationViewController.inputAccessoryView
     }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-
-//        let displayViewHeight = displayView.frame.height
-//        let topMargin = view.layoutMargins.top
-//        let height = view.frame.height - displayViewHeight - topMargin
-//
-//         conversationViewController.view.frame = CGRect(x: 0, y: displayView.frame.height + topMargin, width: view.frame.width, height: height)
-    }
 }

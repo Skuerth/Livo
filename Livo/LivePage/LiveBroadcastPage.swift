@@ -13,6 +13,9 @@ import Firebase
 
 class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
+
+    @IBOutlet weak var cameraButton: UIButton!
+
     var manager: LiveStreamManager?
     var videoID: String?
     let conversationViewController = ChatRoomPage()
@@ -24,6 +27,10 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        cameraButton.setImage(UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        cameraButton.tintColor = .white
+
         self.conversationViewController.channelID = self.videoID
 
         conversationViewController.willMove(toParent: self)
@@ -60,6 +67,11 @@ class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
     override var inputAccessoryView: UIView? {
 
         return conversationViewController.inputAccessoryView
+    }
+
+    @IBAction func pressedRotateButton(_ sender: UIButton) {
+
+        lfView.changeCameraPosition()
     }
 
     @IBAction func stopPublish(_ sender: UIButton) {

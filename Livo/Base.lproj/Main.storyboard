@@ -151,7 +151,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-8l-LkY">
-                                <rect key="frame" x="112.5" y="110" width="150" height="72"/>
+                                <rect key="frame" x="112.5" y="110" width="150" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZsQ-7r-fxx"/>
                                 </constraints>
@@ -453,7 +453,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-rZ-jTB">
-                                <rect key="frame" x="330" y="35" width="30" height="47"/>
+                                <rect key="frame" x="330" y="35" width="30" height="48"/>
                                 <fontDescription key="fontDescription" name="Exo2-Light" family="Exo 2" pointSize="30"/>
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -522,19 +522,33 @@
                                     <action selector="stopPublish:" destination="cp3-9h-FI8" eventType="touchUpInside" id="DlM-Mj-aGu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcd-ZK-DZX">
+                                <rect key="frame" x="315" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="fox-fR-yLP"/>
+                                    <constraint firstAttribute="height" constant="30" id="tRO-v2-i47"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="pressedRotateButton:" destination="cp3-9h-FI8" eventType="touchUpInside" id="m3T-gi-UvQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="leading" secondItem="bY8-qi-GKI" secondAttribute="leading" id="CWc-ca-PbV"/>
                             <constraint firstItem="CKp-E4-jlA" firstAttribute="top" secondItem="nyW-p9-mUQ" secondAttribute="top" constant="20" id="E7j-XF-zUc"/>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="top" secondItem="bY8-qi-GKI" secondAttribute="top" id="ERw-tP-Mgi"/>
+                            <constraint firstAttribute="trailing" secondItem="Xcd-ZK-DZX" secondAttribute="trailing" constant="30" id="Hvs-EH-9YD"/>
                             <constraint firstItem="CKp-E4-jlA" firstAttribute="centerX" secondItem="bY8-qi-GKI" secondAttribute="centerX" id="Oeh-Ye-QQ0"/>
                             <constraint firstItem="qXp-M0-3iA" firstAttribute="trailing" secondItem="bY8-qi-GKI" secondAttribute="trailing" id="YcT-Oz-bI3"/>
                             <constraint firstItem="nyW-p9-mUQ" firstAttribute="bottom" secondItem="qXp-M0-3iA" secondAttribute="bottom" id="h56-2h-cEQ"/>
+                            <constraint firstItem="Xcd-ZK-DZX" firstAttribute="top" secondItem="bY8-qi-GKI" secondAttribute="top" constant="40" id="xvQ-a3-efR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nyW-p9-mUQ"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="Xcd-ZK-DZX" id="P0o-bd-30H"/>
                         <outlet property="lfView" destination="qXp-M0-3iA" id="UC0-2q-4pl"/>
                     </connections>
                 </viewController>

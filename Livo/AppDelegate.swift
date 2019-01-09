@@ -10,6 +10,9 @@ import UIKit
 import GoogleSignIn
 import YTLiveStreaming
 import Firebase
+import Fabric
+import Crashlytics
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         gai.tracker(withTrackingId: "UA-131669168-1")
         gai.trackUncaughtExceptions = true
 
+        Fabric.sharedSDK().debug = true
+        Fabric.with([Crashlytics.self])
         return true
     }
 
