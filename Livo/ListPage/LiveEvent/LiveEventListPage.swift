@@ -22,7 +22,6 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     let spacing: CGFloat = 20
     let cellInset: CGFloat = 15
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

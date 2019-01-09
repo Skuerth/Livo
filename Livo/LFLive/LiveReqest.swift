@@ -11,13 +11,13 @@ import Alamofire
 import SwiftyJSON
 
 class YTLiveRequest: NSObject {
-    
+
     // Set up broadcast on your Youtube account:
     // https://www.youtube.com/my_live_events
     // https://www.youtube.com/live_dashboard
     // Errors:
     // https://support.google.com/youtube/answer/3006768?hl=ru
-    
+
     // Developer console
     // https://console.developers.google.com/apis/credentials/key/0?project=fightnights-143711
 }
@@ -26,7 +26,7 @@ class YTLiveRequest: NSObject {
 // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts
 
 extension YTLiveRequest {
-    
+
     // Returns a list of YouTube broadcasts that match the API request parameters.
     // broadcastStatus:
     // Acceptable values are:
@@ -34,7 +34,7 @@ extension YTLiveRequest {
     // all – Return all broadcasts.
     // completed – Return broadcasts that have already ended.
     // upcoming – Return broadcasts that have not yet started.
-    
+
     class func listBroadcasts(_ status: YTLiveVideoState, completion: @escaping (LiveBroadcastListModel?) -> Void) {
         let parameters: [String: AnyObject] = [
             "part": "id,snippet,contentDetails,status" as AnyObject,
@@ -57,13 +57,13 @@ extension YTLiveRequest {
                         let broadcastList = LiveBroadcastListModel.decode(json)
                         let totalResults = broadcastList.pageInfo.totalResults
                         let resultsPerPage = broadcastList.pageInfo.resultsPerPage
-                        
+
                         print("Broadcasts total count = \(totalResults)")
-                        
+
                         if totalResults > resultsPerPage {
                             print("Need to read next page!")  // TODO: In this case you should send request with pageToken=nextPageToken or pageToken=prevPageToken parameter
                         }
-                        
+
                         completion(broadcastList)
                     }
                 } catch {
@@ -75,7 +75,7 @@ extension YTLiveRequest {
             }
         })
     }
-    
+
     class func getLiveBroadcast(broadcastId: String, completion: @escaping (LiveBroadcastStreamModel?) -> Void) {
         let parameters: [String: AnyObject] = [
             "part":"id,snippet,contentDetails,status" as AnyObject,
@@ -114,7 +114,7 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // https://developers.google.com/youtube/v3/live/docs/liveBroadcasts/insert
     // Creates a broadcast.
     class func createLiveBroadcast(_ title: String, startDateTime: Date, completion: @escaping (LiveBroadcastStreamModel?) -> Void) {
@@ -152,7 +152,7 @@ extension YTLiveRequest {
                             } catch {
                                 completion(nil)
                             }
-                            
+
                         case .failure(let error):
                             print("System Error: " + error.localizedDescription)
                             completion(nil)
@@ -169,7 +169,7 @@ extension YTLiveRequest {
     // PUT https://www.googleapis.com/youtube/v3/liveBroadcasts
     class func updateLiveBroadcast(_ broadcast: LiveBroadcastStreamModel, completion: @escaping (Bool) -> Void) {
         GoogleOAuth2.sharedInstance.requestToken() { token in
-            
+
             let broadcastId = broadcast.id
             let title = broadcast.snipped.title
             let startTime = broadcast.snipped.scheduledStartTime.toJSONformat()
@@ -181,7 +181,7 @@ extension YTLiveRequest {
             let enableEmbed = broadcast.contentDetails.enableEmbed
             let recordFromStart = broadcast.contentDetails.recordFromStart
             let startWithSlate = broadcast.contentDetails.startWithSlate
-            
+
             if let token = token {
                 let headers = merge(one: ["Content-Type": "application/json"], ["Authorization":"Bearer \(token)"])
                 let jsonBody = "{\"id\":\"\(broadcastId)\",\"snippet\":{\"title\":\"\(title)\",\"scheduledStartTime\":\"\(startTime)\"},\"status\":{\"privacyStatus\":\"\(privacyStatus)\"},\"contentDetails\": {\"monitorStream\":{\"enableMonitorStream\":\(enableMonitorStream),\"broadcastStreamDelayMs\":\"\(broadcastStreamDelayMs)\"},\"enableDvr\":\(enableDvr),\"enableContentEncryption\":\(enableContentEncryption),\"enableEmbed\":\(enableEmbed),\"recordFromStart\":\(recordFromStart),\"startWithSlate\":\(startWithSlate)}}"
@@ -221,14 +221,14 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // POST https://www.googleapis.com/youtube/v3/liveBroadcasts/transition
     // Changes the status of a YouTube live broadcast and initiates any processes associated with the new status. 
     // For example, when you transition a broadcast's status to testing, YouTube starts to transmit video 
     // to that broadcast's monitor stream. Before calling this method, you should confirm that the value of the
     // status.streamStatus property for the stream bound to your broadcast is active.
     class func transitionLiveBroadcast(_ boadcastId: String, broadcastStatus: String, completion: @escaping (LiveBroadcastStreamModel?) -> Void) {
-        
+
         let parameters: [String: AnyObject] = [
             "id":boadcastId as AnyObject,
             "broadcastStatus":broadcastStatus as AnyObject,
@@ -260,7 +260,7 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // Deletes a broadcast.
     // DELETE https://www.googleapis.com/youtube/v3/liveBroadcasts
     class func deleteLiveBroadcast(broadcastId: String, completion: @escaping (Bool) -> Void) {
@@ -290,7 +290,7 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream.
     // A broadcast can only be bound to one video stream, though a video stream may be bound to more than one broadcast.
     // POST https://www.googleapis.com/youtube/v3/liveBroadcasts/bind
@@ -334,7 +334,7 @@ extension YTLiveRequest {
 // Once created, a liveStream resource can be bound to one or more liveBroadcast resources.
 
 extension YTLiveRequest {
-    
+
     // Returns a list of video streams that match the API request parameters.
     // https://developers.google.com/youtube/v3/live/docs/liveStreams/list
     class func getLiveStream(_ liveStreamId: String, completion: @escaping (LiveStreamModel?) -> Void) {
@@ -375,12 +375,11 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // https://developers.google.com/youtube/v3/live/docs/liveStreams/insert
     // Creates a video stream. The stream enables you to send your video to YouTube,
     // which can then broadcast the video to your audience.
-    
-    
+
     //   Request
     //
     //   POST https://www.googleapis.com/youtube/v3/liveStreams?part=id%2Csnippet%2Ccdn%2Cstatus&key={YOUR_API_KEY}
@@ -397,7 +396,7 @@ extension YTLiveRequest {
     //   }
     //   }
     //   }
-    
+
     class func createLiveStream(_ title: String, description: String, streamName: String, completion: @escaping (LiveStreamModel?) -> Void) {
         GoogleOAuth2.sharedInstance.requestToken() { token in
             if let token = token {
@@ -441,11 +440,11 @@ extension YTLiveRequest {
                         }
                 }
             } else {
-                
+
             }
         }
     }
-    
+
     // Deletes a video stream
     // Request:
     // DELETE https://www.googleapis.com/youtube/v3/liveStreams
@@ -477,7 +476,7 @@ extension YTLiveRequest {
             }
         }
     }
-    
+
     // Updates a video stream. If the properties that you want to change cannot be updated, then you need to create a new stream with the proper settings.
     // Request:
     // PUT https://www.googleapis.com/youtube/v3/liveStreams
@@ -530,11 +529,11 @@ extension YTLiveRequest {
 
 struct JSONBodyStringEncoding: ParameterEncoding {
     private let jsonBody: String
-    
+
     init(jsonBody: String) {
         self.jsonBody = jsonBody
     }
-    
+
     func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
         var urlRequest = urlRequest.urlRequest
         let dataBody = (jsonBody as NSString).data(using: String.Encoding.utf8.rawValue)

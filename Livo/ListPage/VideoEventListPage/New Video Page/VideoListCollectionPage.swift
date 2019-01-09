@@ -183,4 +183,3 @@ extension VideoListCollectionPage: ListPageManagerDelegate {
         self.collectionView.reloadItems(at: [indexPathForCell])
     }
 }
-

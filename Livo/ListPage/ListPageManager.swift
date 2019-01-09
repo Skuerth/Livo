@@ -141,16 +141,16 @@ class ListPageManager {
 
                 DispatchQueue.main.async {
 
-                    var liveStreamInfo = self.liveStreamInfos[indexPath]
+                    if self.liveStreamInfos.count > 0{
 
-//                    let size = CGSize(width: 130, height: 180)
-//                    image.crop(to: size)
+                        var liveStreamInfo = self.liveStreamInfos[indexPath]
 
-                    let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
+                        let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
 
-                    liveStreamInfo.image = croppingImage
+                        liveStreamInfo.image = croppingImage
 
-                    self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
+                        self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
+                    }
                 }
             }
         }
@@ -186,7 +186,6 @@ class ListPageManager {
     func setUpLayout(spacing: CGFloat, cellInset: CGFloat) -> UICollectionViewFlowLayout {
 
         let layout = UICollectionViewFlowLayout()
-
 
         layout.setUpFlowLayout(spacing: spacing, cellInset: cellInset, itemWidth: 160, itemHeight: 270)
 
