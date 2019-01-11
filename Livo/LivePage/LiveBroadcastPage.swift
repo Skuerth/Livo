@@ -13,7 +13,6 @@ import Firebase
 
 class LiveBroadcastPage: UIViewController, LFLiveSessionDelegate {
 
-
     @IBOutlet weak var cameraButton: UIButton!
 
     var manager: LiveStreamManager?

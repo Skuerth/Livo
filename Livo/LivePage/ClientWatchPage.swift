@@ -11,7 +11,7 @@ import YouTubePlayer
 import Firebase
 import MessageKit
 
-class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelegate, UIGestureRecognizerDelegate {
+class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelegate, UIGestureRecognizerDelegate  {
 
     @IBOutlet weak var displayView: YouTubePlayerView!
 
@@ -30,6 +30,7 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         conversationViewController.didMove(toParent: self)
 
         displayView.delegate = self
+        displayView.delegate?.playerQualityChanged(displayView, playbackQuality: .Large)
 
         guard
             let videoID = self.videoID,
@@ -41,9 +42,10 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         }
 
         displayView.playerVars = [
-            "playsinline": "1",
-            "controls": "0",
-            "showinfo": "0"
+            "playsinline": "1"
+//            "controls": "0",
+//            "showinfo": "0",
+//            "autoplay": "0"
             ] as YouTubePlayerView.YouTubePlayerParameters
 
         displayView.loadVideoURL(url)
