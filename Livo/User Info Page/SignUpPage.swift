@@ -50,6 +50,16 @@ class SignUpPage: UIViewController {
 
             if let user = Auth.auth().currentUser {
 
+                guard
+                    let email = user.email,
+                    let name = user.displayName
+                    else {
+                        return
+                }
+                let uid = user.uid
+
+                UserShareInstance.sharedInstance().createUser(name: name, email: email, emailLogInUID: uid, photo: nil)
+
                 let changeRequest = user.createProfileChangeRequest()
 
                 changeRequest.displayName = name

@@ -16,6 +16,8 @@ class VideoListCollectionCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var radiusView: UIView!
+    @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var blurView: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +28,15 @@ class VideoListCollectionCell: UICollectionViewCell {
         shadowView.layer.shadowRadius = 3.0
         shadowView.layer.cornerRadius = 8
 
+        blurView.layer.cornerRadius = blurView.bounds.width / 2
+        blurView.clipsToBounds = true
+
         radiusView.clipsToBounds = true
         radiusView.layer.cornerRadius = 8
+
+        dislikeButton.setImage(UIImage(named: "dislike-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        dislikeButton.tintColor = UIColor.gray
+        dislikeButton.imageView?.contentMode = .scaleAspectFit
     }
 
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {

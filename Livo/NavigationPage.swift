@@ -23,6 +23,7 @@ class NavigationPage: UINavigationController {
         titleShadow.shadowBlurRadius = 4
         titleShadow.shadowOffset = CGSize(width: 1, height: 1)
         titleShadow.shadowColor = UIColor.black
+        
 
         let localizationFont = font(from: localizedFontName(), size: localizedFontSize())
         print("localizationFont", localizationFont)

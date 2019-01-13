@@ -11,7 +11,7 @@ import YouTubePlayer
 import Firebase
 import MessageKit
 
-class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelegate, UIGestureRecognizerDelegate  {
+class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var displayView: YouTubePlayerView!
 
@@ -54,6 +54,12 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         conversationViewController.view.backgroundColor = .clear
     }
 
+    deinit {
+
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            UIApplication.shared.isStatusBarHidden = false
+    }
+
     override func viewWillAppear(_ animated: Bool) {
 
         self.tabBarController?.tabBar.isHidden = true
@@ -91,13 +97,24 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         conversationViewController.view.addGestureRecognizer(tapGesture)
 
         videoPlayer.play()
+
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        UIApplication.shared.isStatusBarHidden = true
+
     }
 
     @objc func didPressDisplayView(_ sender: UITapGestureRecognizer) {
 
-        view.resignFirstResponder()
+//        view.resignFirstResponder()
         conversationViewController.becomeFirstResponder()
         conversationViewController.messageInputBar.inputTextViewDidBeginEditing()
+
+        if let isHidden = self.navigationController?.navigationBar.isHidden {
+
+            self.navigationController?.setNavigationBarHidden(!isHidden, animated: true)
+
+            UIApplication.shared.isStatusBarHidden = !isHidden
+        }
     }
 
     override var canBecomeFirstResponder: Bool {
@@ -107,5 +124,11 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
 
     override var inputAccessoryView: UIView? {
         return conversationViewController.inputAccessoryView
+    }
+
+    func playerStateChanged(_ videoPlayer: YouTubePlayerView, playerState: YouTubePlayerState) {
+        if playerState == .Paused {
+            videoPlayer.play()
+        }
     }
 }

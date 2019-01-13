@@ -47,6 +47,8 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
                 return
             }
 
+            UserShareInstance.sharedInstance().createUser(name: name, email: email, emailLogInUID: uid, photo: nil)
+
 //            let userProfile = User(name: name, email: email, emailLogInUID: uid, photo: nil)
 
             let main = UIStoryboard(name: "Main", bundle: nil)

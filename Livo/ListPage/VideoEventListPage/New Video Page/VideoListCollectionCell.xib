@@ -66,6 +66,43 @@
                                                     <constraint firstItem="oxH-eo-PJR" firstAttribute="top" secondItem="U6j-i4-yZu" secondAttribute="top" constant="3" id="yWJ-B9-NeE"/>
                                                 </constraints>
                                             </view>
+                                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77Q-PK-WY5">
+                                                <rect key="frame" x="111" y="165" width="25" height="25"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oRi-pl-V65">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sv4-PZ-wnS">
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CQY-3e-7r3">
+                                                                <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpk-Uf-bIk">
+                                                                        <rect key="frame" x="3" y="3" width="30" height="24"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="lpk-Uf-bIk" firstAttribute="leading" secondItem="CQY-3e-7r3" secondAttribute="leading" constant="3" id="Bmo-F8-43S"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="lpk-Uf-bIk" secondAttribute="trailing" constant="3" id="eBe-8X-rbt"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="lpk-Uf-bIk" secondAttribute="bottom" constant="3" id="vfG-Lm-vqq"/>
+                                                                    <constraint firstItem="lpk-Uf-bIk" firstAttribute="top" secondItem="CQY-3e-7r3" secondAttribute="top" constant="3" id="zpf-53-dHu"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <vibrancyEffect>
+                                                                <blurEffect style="light"/>
+                                                            </vibrancyEffect>
+                                                        </visualEffectView>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="eBF-YW-w7z"/>
+                                                    <constraint firstAttribute="height" constant="25" id="jVI-tY-NFC"/>
+                                                </constraints>
+                                                <blurEffect style="light"/>
+                                            </visualEffectView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -73,6 +110,8 @@
                                             <constraint firstItem="U6j-i4-yZu" firstAttribute="top" secondItem="9Ur-6F-Rhw" secondAttribute="bottom" id="RR6-F8-TPK"/>
                                             <constraint firstItem="U6j-i4-yZu" firstAttribute="leading" secondItem="kUh-7H-DzE" secondAttribute="leading" id="bDJ-do-syV"/>
                                             <constraint firstAttribute="trailing" secondItem="U6j-i4-yZu" secondAttribute="trailing" id="e9x-cY-h15"/>
+                                            <constraint firstAttribute="trailing" secondItem="77Q-PK-WY5" secondAttribute="trailing" constant="3" id="hqe-Sl-CnF"/>
+                                            <constraint firstItem="U6j-i4-yZu" firstAttribute="top" secondItem="77Q-PK-WY5" secondAttribute="bottom" constant="3" id="iE9-qP-rTu"/>
                                             <constraint firstItem="9Ur-6F-Rhw" firstAttribute="top" secondItem="kUh-7H-DzE" secondAttribute="top" id="pOV-5w-FCX"/>
                                             <constraint firstItem="9Ur-6F-Rhw" firstAttribute="leading" secondItem="kUh-7H-DzE" secondAttribute="leading" id="xBB-Nw-w3J"/>
                                             <constraint firstAttribute="bottom" secondItem="U6j-i4-yZu" secondAttribute="bottom" constant="3" id="zaS-gK-bHi"/>
@@ -106,14 +145,16 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="blurView" destination="77Q-PK-WY5" id="O1t-Dw-eus"/>
                 <outlet property="dateLabel" destination="rcz-XV-isU" id="Hsy-08-UDC"/>
+                <outlet property="dislikeButton" destination="lpk-Uf-bIk" id="xhX-w4-Xpp"/>
                 <outlet property="nameLabel" destination="MFz-Sj-9od" id="kWt-ZK-gle"/>
                 <outlet property="photoView" destination="9Ur-6F-Rhw" id="giv-B4-RM4"/>
                 <outlet property="radiusView" destination="kUh-7H-DzE" id="ant-7a-jEp"/>
                 <outlet property="shadowView" destination="jWx-TG-3dN" id="Cvg-SH-shj"/>
                 <outlet property="titleLabel" destination="oxH-eo-PJR" id="hEL-4W-FBP"/>
             </connections>
-            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.02398800599701"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -29,6 +29,18 @@ class RegisterManager {
 
             if result != nil {
 
+
+                guard
+                    let currentUser = Auth.auth().currentUser,
+                    let email = currentUser.email,
+                    let name = currentUser.displayName
+                else {
+                    return
+                }
+                let uid = currentUser.uid
+
+                UserShareInstance.sharedInstance().createUser(name: name, email: email, emailLogInUID: uid, photo: nil)
+
                 self.delegate?.didEmailSignIn(manager: self)
             }
         })

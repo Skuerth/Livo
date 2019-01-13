@@ -16,9 +16,17 @@ private let reuseIdentifier = "VideoListCollectionCell"
 class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
     var manager: ListPageManager?
+    var dislikeManager: DislikeListManager?
+    var currentUID: String?
+    var dislikeUsers: [String]?
+    var dislikeVideos: [String]?
+
     var liveStreamInfos: [LiveStreamInfo]?
     let cellInset: CGFloat = 15
     let spacing: CGFloat = 20
+    var dislikeIndexPath: IndexPath?
+
+    var popViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +50,16 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
         self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
 
         self.manager = ListPageManager()
-        self.manager?.fetchStreamInfo(status: LiveStatus.completed)
+        self.dislikeManager = DislikeListManager()
         self.manager?.delegate = self
+        self.dislikeManager?.delegate = self
+
+        if let uid = UserShareInstance.sharedInstance().currentUser?.emailLogInUID {
+
+            self.currentUID = uid
+
+            self.dislikeManager?.fetchDislikeUsersList(currentUID: uid)
+        }
 
         self.collectionView!.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -133,6 +149,7 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
         cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.dateConvertToString().longDateStringConvertToshort()
+        cell.dislikeButton.addTarget(self, action: #selector(didPressDislikeButton), for: .touchUpInside)
 
         if let image = liveStreamInfos[indexPath.item].image {
 
@@ -140,6 +157,151 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
         }
 
         return cell
+    }
+
+    @objc func didPressDislikeButton(button: UIButton) {
+
+        let buttonColor: UIColor = UIColor.init(red: 10, green: 96, blue: 254)
+
+        let dislikeVideoLabel = createLabel(title: "Hide this video", fontSize: 14)
+        let dislikeVideoButton = createButton(title: "Yes", fontSize: 14, buttonColor: buttonColor)
+        setupButtonArttribute(button: dislikeVideoButton, buttonColor: buttonColor)
+
+        dislikeVideoButton.addTarget(self, action: #selector(hideVideo), for: .touchUpInside)
+
+        let dislikeUserLabel = createLabel(title: "Hide all videos of this broadcaster", fontSize: 14)
+        let dislikeUserButton = createButton(title: "Yes", fontSize: 14, buttonColor: buttonColor)
+        setupButtonArttribute(button: dislikeUserButton, buttonColor: buttonColor)
+        dislikeUserButton.addTarget(self, action: #selector(hideAllVideoOfUser(sender:)), for: .touchUpInside)
+
+
+        let aPopViewController = UIViewController()
+        aPopViewController.modalPresentationStyle = .popover
+        aPopViewController.preferredContentSize = CGSize(width: 250, height: 120)
+
+        aPopViewController.view.addSubview(dislikeVideoLabel)
+        aPopViewController.view.addSubview(dislikeVideoButton)
+        aPopViewController.view.addSubview(dislikeUserLabel)
+        aPopViewController.view.addSubview(dislikeUserButton)
+
+        let popoverPresentationController = aPopViewController.popoverPresentationController
+        popoverPresentationController?.sourceView = button
+        popoverPresentationController?.sourceRect = button.bounds
+        popoverPresentationController?.permittedArrowDirections = .down
+        popoverPresentationController?.delegate = self
+
+        present(aPopViewController, animated: true, completion: nil)
+
+        dislikeVideoLabel.translatesAutoresizingMaskIntoConstraints = false
+        dislikeVideoButton.translatesAutoresizingMaskIntoConstraints = false
+        dislikeUserLabel.translatesAutoresizingMaskIntoConstraints = false
+        dislikeUserButton.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+
+            dislikeVideoLabel.topAnchor.constraint(equalTo: aPopViewController.view.topAnchor, constant: 15),
+            dislikeVideoLabel.leadingAnchor.constraint(equalTo: aPopViewController.view.leadingAnchor, constant: 15),
+
+            dislikeVideoButton.topAnchor.constraint(equalTo: dislikeVideoLabel.bottomAnchor, constant: 5),
+            dislikeVideoButton.leadingAnchor.constraint(equalTo: dislikeVideoLabel.leadingAnchor, constant: 0),
+            dislikeVideoButton.heightAnchor.constraint(equalToConstant: 20),
+
+            dislikeUserLabel.topAnchor.constraint(equalTo: dislikeVideoButton.bottomAnchor, constant: 10),
+            dislikeUserLabel.leadingAnchor.constraint(equalTo: aPopViewController.view.leadingAnchor, constant: 15),
+
+            dislikeUserButton.topAnchor.constraint(equalTo: dislikeUserLabel.bottomAnchor, constant: 5),
+            dislikeUserButton.leadingAnchor.constraint(equalTo: dislikeUserLabel.leadingAnchor, constant: 0),
+            dislikeUserButton.heightAnchor.constraint(equalToConstant: 20),
+        ])
+
+        self.popViewController = aPopViewController
+
+        let point: CGPoint = button.convert(.zero, to: self.collectionView)
+
+        guard
+            let indexPath = collectionView.indexPathForItem(at: point),
+            let liveStreamInfos = self.liveStreamInfos
+        else {
+            return
+        }
+
+        dislikeIndexPath = indexPath
+        print("indexPath",indexPath)
+
+        if let currentUser = UserShareInstance.sharedInstance().currentUser {
+
+            let currentUID = currentUser.emailLogInUID
+        }
+    }
+
+    @objc func hideVideo(sender: UIButton) {
+
+        guard
+            let indexPath = self.dislikeIndexPath,
+            let liveStreamInfos = liveStreamInfos,
+            let currentUser = UserShareInstance.sharedInstance().currentUser
+        else {
+                return
+        }
+
+        let videoID = liveStreamInfos[indexPath.row].videoID
+        let currentUID = currentUser.emailLogInUID
+
+        let userPreferRef = Database.database().reference(withPath: "user-prefer")
+        let videoRef = userPreferRef.child(currentUID).child("videoID").childByAutoId()
+
+        videoRef.setValue(videoID)
+
+        popViewController?.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func hideAllVideoOfUser(sender: UIButton) {
+
+        guard
+            let indexPath = self.dislikeIndexPath,
+            let liveStreamInfos = liveStreamInfos,
+            let currentUser = UserShareInstance.sharedInstance().currentUser
+            else {
+                return
+        }
+
+        let currentUID = currentUser.emailLogInUID
+
+        let dislikeUserID = liveStreamInfos[indexPath.row].userID
+
+        let userPreferRef = Database.database().reference(withPath: "user-prefer")
+        let dislikeUserRef = userPreferRef.child(currentUID).child("dislike-user").childByAutoId()
+
+        dislikeUserRef.setValue(dislikeUserID)
+
+        popViewController?.dismiss(animated: true, completion: nil)
+    }
+
+    func createLabel(title: String, fontSize: CGFloat) -> UILabel {
+
+        let label = UILabel()
+        label.text = title
+        label.font = label.font.withSize(14)
+        label.textColor = UIColor.gray
+
+        return label
+    }
+
+    func createButton(title: String, fontSize: CGFloat, buttonColor: UIColor) -> UIButton {
+
+        let button = UIButton()
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(buttonColor, for: .normal)
+        button.titleLabel?.font = button.titleLabel?.font.withSize(fontSize)
+
+        return button
+    }
+
+    func setupButtonArttribute(button: UIButton, buttonColor: UIColor) {
+
+        button.layer.borderColor = buttonColor.cgColor
+        button.layer.borderWidth = 0.5
+        button.layer.cornerRadius = 5
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -162,12 +324,19 @@ extension VideoListCollectionPage: ListPageManagerDelegate {
 
     func didFetchStreamInfo(manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 
-        self.liveStreamInfos = liveStreamInfos
+        let withoutDislikeUsersInfos =  hideDislikeUsers(liveStreamInfos: liveStreamInfos)
+
+        let withoutDislikeListInfos = hideDislikeVideos(liveStreamInfos: withoutDislikeUsersInfos)
+
+        self.liveStreamInfos = withoutDislikeListInfos
+
         self.collectionView.reloadData()
 
         var indexPath = 0
 
-        for liveStreamInfo in liveStreamInfos {
+        self.manager?.liveStreamInfos = withoutDislikeListInfos
+
+        for liveStreamInfo in withoutDislikeListInfos {
 
             manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: indexPath)
 
@@ -177,9 +346,93 @@ extension VideoListCollectionPage: ListPageManagerDelegate {
 
     func didLoadimage(manager: ListPageManager, liveStreamInfo: LiveStreamInfo, indexPath: Int) {
 
-        self.liveStreamInfos?[indexPath] = liveStreamInfo
+        guard var liveStreamInfos = liveStreamInfos else { return }
 
-        let indexPathForCell = IndexPath(row: indexPath, section: 0)
-        self.collectionView.reloadItems(at: [indexPathForCell])
+        if liveStreamInfos.count > 0 {
+
+            self.liveStreamInfos?[indexPath] = liveStreamInfo
+
+//            self.liveStreamInfos = liveStreamInfos
+
+            DispatchQueue.main.async {
+
+                let indexPathForCell = IndexPath(row: indexPath, section: 0)
+                self.collectionView.reloadItems(at: [indexPathForCell])
+            }
+        }
+    }
+
+    func hideDislikeUsers(liveStreamInfos: [LiveStreamInfo]) -> [LiveStreamInfo] {
+
+        guard let dislikeUsers = dislikeUsers else { return liveStreamInfos}
+
+        if dislikeUsers.count > 0 {
+
+            var newLiveStreamInfo = [LiveStreamInfo]()
+
+            newLiveStreamInfo = liveStreamInfos
+
+            for userID in dislikeUsers {
+
+                newLiveStreamInfo = newLiveStreamInfo.filter() { $0.userID != userID}
+            }
+
+            return newLiveStreamInfo
+
+        } else {
+
+            return liveStreamInfos
+        }
+    }
+
+    func hideDislikeVideos(liveStreamInfos: [LiveStreamInfo]) -> [LiveStreamInfo] {
+
+        guard let dislikeVideos = dislikeVideos else { return liveStreamInfos}
+
+        if dislikeVideos.count > 0 {
+
+            var newLiveStreamInfo = [LiveStreamInfo]()
+
+            newLiveStreamInfo = liveStreamInfos
+
+            for videoID in dislikeVideos {
+
+                newLiveStreamInfo = newLiveStreamInfo.filter() { $0.videoID != videoID}
+            }
+
+            return newLiveStreamInfo
+
+        } else {
+
+            return liveStreamInfos
+        }
+    }
+
+}
+
+extension VideoListCollectionPage: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+
+        return .none
+    }
+}
+
+extension VideoListCollectionPage: DislikeListManagerDelegate {
+
+    func didFetchDislikeUsersList(_ manger: DislikeListManager, dislikeUsers: [String]) {
+
+        self.dislikeUsers = dislikeUsers
+
+        guard let uid = self.currentUID else { return }
+
+        self.dislikeManager?.fetchDislikeVideoList(currentUID: uid)
+    }
+
+    func didFetchDislikeVideoList(_ manger: DislikeListManager, dislikeVideos: [String]) {
+
+        self.dislikeVideos = dislikeVideos
+
+        self.manager?.fetchStreamInfo(status: LiveStatus.completed)
     }
 }

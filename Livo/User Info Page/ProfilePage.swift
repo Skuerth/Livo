@@ -63,6 +63,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
                         if let image = UIImage(named: "user_placeholder") {
 
                             self.loadUserPhoto(image: image, uid: uid)
+
                         }
                     }
                 }
@@ -79,7 +80,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     override func viewWillLayoutSubviews() {
 
-        self.userPhoto.contentMode = .scaleAspectFit
+        self.userPhoto.contentMode = .scaleAspectFill
         makeCircleView(view: userPhoto)
         addShadow(view: photoView)
     }
@@ -160,6 +161,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
         makeCircleView(view: userPhoto)
         addShadow(view: photoView)
+        userPhoto.contentMode = .scaleAspectFill
 
         self.saveImageToLocal(image: image, uid: uid)
     }
@@ -184,7 +186,13 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 
-        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+        if
+            let cropRect = info[UIImagePickerController.InfoKey.cropRect] as? CGRect,
+            let originImg = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+            let croppingCgImg = originImg.cgImage?.cropping(to: cropRect)
+        {
+
+            let image = UIImage(cgImage: croppingCgImg)
 
             guard
                 let currentUser = Auth.auth().currentUser,
@@ -192,8 +200,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
                 let email = currentUser.email
             else {
 
-                UserInfoError.authorizationError.alert(message: "fail to get current user infomation")
-                return
+                    UserInfoError.authorizationError.alert(message: "fail to get current user infomation")
+                    return
             }
 
             let uid = currentUser.uid
@@ -213,6 +221,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
             DispatchQueue.main.async {
 
                 self.userPhoto.image = image
+                self.userPhoto.contentMode = .scaleAspectFill
             }
 
             let imageRef = Storage.storage().reference().child("photos").child("\(uid).jpg")
@@ -242,6 +251,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
                     }
                 })
             }
+
         }
 
         dismiss(animated: true, completion: nil)

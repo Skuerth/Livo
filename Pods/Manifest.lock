@@ -100,6 +100,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Popover (1.2.2)
   - Result (3.2.4)
   - StatusAlert (1.1.0)
   - SwiftLint (0.29.1)
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - GoogleAnalytics
   - GoogleSignIn
   - MessageKit (~> 2.0)
+  - Popover (~> 1.2)
   - StatusAlert (~> 1.1.0)
   - SwiftLint
   - XCDYouTubeKit (~> 2.5)
@@ -154,6 +156,7 @@ SPEC REPOS:
     - MessageKit
     - Moya
     - nanopb
+    - Popover
     - Result
     - StatusAlert
     - SwiftLint
@@ -187,6 +190,7 @@ SPEC CHECKSUMS:
   MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Popover: 21e357f86d45c8d9e29a41a4adbca3664d6e511f
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   StatusAlert: 4d6dadebf5f7abd5648fa774ef3062f2f95cc4aa
   SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
@@ -195,6 +199,6 @@ SPEC CHECKSUMS:
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
   YTLiveStreaming: 57b1643d204d5a2abfeb4ed8323dc32fd04513b3
 
-PODFILE CHECKSUM: 4115edcddb44ea12020da0d05937d2e85c5d2e6b
+PODFILE CHECKSUM: b5bed4c461bfc5ec3ce88da94083d3398656f985
 
 COCOAPODS: 1.5.3

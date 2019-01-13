@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE47F11E708D633621DB136BD3CD0034"
-               BlueprintName = "leveldb-library"
+               BlueprintIdentifier = "6AEAACE111923B17236A17E03AACA135"
+               BlueprintName = "Popover"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "leveldb-library.framework">
+               BuildableName = "Popover.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

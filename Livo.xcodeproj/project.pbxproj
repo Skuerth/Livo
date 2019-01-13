@@ -49,6 +49,7 @@
 		F7AE583D21DCEE5000FBF718 /* Exo2-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */; };
 		F7AE583F21DD073700FBF718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7AE583E21DD073700FBF718 /* Assets.xcassets */; };
 		F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */; };
+		F7B6292821EB1A560011FBFF /* DislikeListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6292721EB1A560011FBFF /* DislikeListManager.swift */; };
 		F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37221CB11320050A3B6 /* Error+Extension.swift */; };
 		F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */; };
 		F7B7C37721CB4EEA0050A3B6 /* LiveStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */; };
@@ -121,6 +122,7 @@
 		F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Light.otf"; sourceTree = "<group>"; };
 		F7AE583E21DD073700FBF718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamData.swift; sourceTree = "<group>"; };
+		F7B6292721EB1A560011FBFF /* DislikeListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DislikeListManager.swift; sourceTree = "<group>"; };
 		F7B7C37221CB11320050A3B6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSreamPage.swift; sourceTree = "<group>"; };
 		F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamManager.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				F75EC29F21CF514A00E40252 /* ListPageManager.swift */,
+				F7B6292721EB1A560011FBFF /* DislikeListManager.swift */,
 				F75EC2A221CF517800E40252 /* VideoEventListPage */,
 				F7C741F721C8EE1600427873 /* LiveEvent */,
 			);
@@ -280,8 +283,8 @@
 				F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */,
 				F7909A4821D0D56900E73062 /* RegisterManager.swift */,
 				F743CB8421C0AA5A001B88CA /* LoginPage.swift */,
-				F796B20021E33D75002F6C79 /* EULA */,
 				F782733521D08C0F00022E6B /* SignUpPage.swift */,
+				F796B20021E33D75002F6C79 /* EULA */,
 			);
 			path = "User Info Page";
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Popover/Popover.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -551,6 +555,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Popover.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -645,6 +650,7 @@
 				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F72733D621CA1F9F002C1492 /* Message.swift in Sources */,
 				F7DC45B321E0656800A61A6E /* VideoListCollectionPage.swift in Sources */,
+				F7B6292821EB1A560011FBFF /* DislikeListManager.swift in Sources */,
 				F7AE583621DCC25900FBF718 /* NavigationPage.swift in Sources */,
 				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,
 				F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */,
