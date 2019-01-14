@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alertift
 
 protocol RegisterManagerDelegate: class{
 
@@ -29,7 +30,6 @@ class RegisterManager {
 
             if result != nil {
 
-
                 guard
                     let currentUser = Auth.auth().currentUser,
                     let email = currentUser.email,
@@ -46,4 +46,36 @@ class RegisterManager {
         })
     }
 
+    func presentToMainTabPage(viewController: UIViewController) {
+
+        Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
+
+            .action(.cancel("Disagree"))
+
+            .action(.default("Agree")) { (_, _, _) in
+
+                if let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
+
+                    viewController.present(mainTabbarPage, animated: true, completion: nil)
+                }
+            }
+
+            .show()
+    }
+
+    func agreement() {
+
+        Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
+
+            .action(.default("Agree")) { (_, _, _) in
+
+            }
+
+            .action(.cancel("Disagree"), handler: { (_, _, _) in
+
+                return
+            })
+
+            .show()
+    }
 }

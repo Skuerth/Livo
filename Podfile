@@ -20,5 +20,5 @@ target 'Livo' do
   pod 'Crashlytics', '~> 3.12.0'
   pod 'GoogleAnalytics'
   pod 'StatusAlert', '~> 1.1.0'
-  pod 'Popover', '~> 1.2'
+  pod 'Alertift', '~> 4.0'
 end

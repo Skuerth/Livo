@@ -65,28 +65,17 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         self.tabBarController?.tabBar.isHidden = true
     }
 
-    @IBAction func playButton(_ sender: UIButton) {
-    }
+    @IBAction func reportButton(_ sender: UIBarButtonItem) {
 
-    @IBAction func pauseButton(_ sender: Any) {
-    }
+        if let reportPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReportPage") as? ReportPage {
 
-    @IBAction func exit(_ sender: UIButton) {
-
-        if
-            let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage,
-            let appDelegate = UIApplication.shared.delegate
-        {
-
-            dismiss(animated: true) {
-
-                appDelegate.window??.rootViewController = mainTabbarPage
-            }
-        } else {
-
-            ViewControllerError.presentError.alert(message: "can't present to mainTabbarPage")
+            reportPage.videoID = self.videoID
+            addChild(reportPage)
+            self.view.addSubview(reportPage.view)
+            reportPage.didMove(toParent: self)
         }
-}
+    }
+
     // MARK: - Set Up InputBar
     func playerReady(_ videoPlayer: YouTubePlayerView) {
 
@@ -130,5 +119,13 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         if playerState == .Paused {
             videoPlayer.play()
         }
+    }
+}
+
+extension ClientWatchPage: UIPopoverPresentationControllerDelegate {
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+
+        return .none
     }
 }

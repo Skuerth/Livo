@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PopoverVersionNumber;
-FOUNDATION_EXPORT const unsigned char PopoverVersionString[];
+FOUNDATION_EXPORT double AlertiftVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlertiftVersionString[];
 

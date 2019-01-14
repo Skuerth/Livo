@@ -10,6 +10,7 @@ import UIKit
 import YTLiveStreaming
 import GoogleSignIn
 import Firebase
+import Alertift
 
 class LoginPage: UIViewController, GIDSignInUIDelegate {
 
@@ -37,30 +38,30 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
         self.manager = RegisterManager()
 
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        if let currentUser = Auth.auth().currentUser {
 
             guard
-                let uid = user?.uid,
-                let email = user?.email,
-                let name = user?.displayName
-            else {
-                return
+                let email = currentUser.email,
+                let name = currentUser.displayName
+                else {
+                    return
             }
+
+            let uid = currentUser.uid
 
             UserShareInstance.sharedInstance().createUser(name: name, email: email, emailLogInUID: uid, photo: nil)
 
-//            let userProfile = User(name: name, email: email, emailLogInUID: uid, photo: nil)
-
-            let main = UIStoryboard(name: "Main", bundle: nil)
-
-            if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
+            if let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
                 self.present(mainTabbarPage, animated: true, completion: nil)
-
-            } else {
-
-                print("can't present mainTabbarPage")
             }
+
+        } else {
+
         }
     }
 
@@ -87,13 +88,22 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
     @IBAction func emailSignUpButton(_ sender: UIButton) {
 
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        if let signUpPage = mainStoryBoard.instantiateViewController(withIdentifier: "SignUpPage") as? SignUpPage {
+        Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
 
-            addChild(signUpPage)
-            self.view.addSubview(signUpPage.view)
-            signUpPage.didMove(toParent: self)
-        }
+            .action(.default("Agree")) { (_, _, _) in
+
+                if let signUpPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpPage") as? SignUpPage {
+
+                    self.addChild(signUpPage)
+                    self.view.addSubview(signUpPage.view)
+                    signUpPage.didMove(toParent: self)
+                }
+            }
+
+            .action(.cancel("Disagree"))
+
+            .show()
+
     }
 
     func setupButtonStyle(button: UIButton) {
@@ -113,12 +123,7 @@ extension LoginPage: RegisterManagerDelegate {
 
     func didEmailSignIn(manager: RegisterManager) {
 
-        let main = UIStoryboard(name: "Main", bundle: nil)
-
-        if let mainTabbarPage = main.instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
-
-            self.present(mainTabbarPage, animated: true, completion: nil)
-        }
+        self.manager?.presentToMainTabPage(viewController: self)
     }
 }
 

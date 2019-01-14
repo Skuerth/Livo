@@ -9,7 +9,7 @@
 import Foundation
 
 enum UserInfoError: Error {
-    
+
     case infoError
     case authorizationError
     case saveImageError

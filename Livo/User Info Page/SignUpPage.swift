@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Alertift
 
 class SignUpPage: UIViewController {
 
@@ -16,8 +17,12 @@ class SignUpPage: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var presentingView: UIView!
 
+    var manager: RegisterManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        manager = RegisterManager()
 
         passwordTextField.isSecureTextEntry = true
 
@@ -50,16 +55,6 @@ class SignUpPage: UIViewController {
 
             if let user = Auth.auth().currentUser {
 
-                guard
-                    let email = user.email,
-                    let name = user.displayName
-                    else {
-                        return
-                }
-                let uid = user.uid
-
-                UserShareInstance.sharedInstance().createUser(name: name, email: email, emailLogInUID: uid, photo: nil)
-
                 let changeRequest = user.createProfileChangeRequest()
 
                 changeRequest.displayName = name
@@ -73,8 +68,10 @@ class SignUpPage: UIViewController {
                         self.emailSignIn(email: email, password: password)
                     }
                 })
-            }
+            } else {
 
+                UserInfoError.authorizationError.alert(message: "Fail to Sign up")
+            }
         }
     }
 

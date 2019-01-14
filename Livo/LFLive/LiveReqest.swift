@@ -477,12 +477,6 @@ extension YTLiveRequest {
         }
     }
 
-    // Updates a video stream. If the properties that you want to change cannot be updated, then you need to create a new stream with the proper settings.
-    // Request:
-    // PUT https://www.googleapis.com/youtube/v3/liveStreams
-    // format = 1080p 1440p 240p 360p 480p 720p
-    // ingestionType = dash rtmp
-    
     class func updateLiveStream(_ liveStreamId: String, title: String, format: String, ingestionType: String, completion: @escaping (Bool) -> Void) {
         GoogleOAuth2.sharedInstance.requestToken() { token in
             if let token = token {

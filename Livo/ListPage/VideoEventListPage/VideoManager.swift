@@ -19,7 +19,7 @@ class VideoManager {
 
     var input = YTLiveStreaming()
     var liveStreamInfos: [LiveStreamInfo] = []
-    var delegate: VideoManagerDelegate?
+    weak var delegate: VideoManagerDelegate?
 
     func fetchAllVideo() {
 

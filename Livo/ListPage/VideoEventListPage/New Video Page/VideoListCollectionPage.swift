@@ -124,8 +124,8 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
         UIGraphicsEndImageContext()
         return screenshotImage
     }
-    // MARK: UICollectionViewDataSource
 
+    // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
 
         return 1
@@ -149,7 +149,7 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
         cell.titleLabel.text = liveStreamInfos[indexPath.row].title
         cell.nameLabel.text = liveStreamInfos[indexPath.row].userName
         cell.dateLabel.text = liveStreamInfos[indexPath.row].startTime.dateConvertToString().longDateStringConvertToshort()
-        cell.dislikeButton.addTarget(self, action: #selector(didPressDislikeButton), for: .touchUpInside)
+        cell.dislikeButton.addTarget(self, action: #selector(didPressDislikeButton(button:)), for: .touchUpInside)
 
         if let image = liveStreamInfos[indexPath.item].image {
 
@@ -161,77 +161,9 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
 
     @objc func didPressDislikeButton(button: UIButton) {
 
-        let buttonColor: UIColor = UIColor.init(red: 10, green: 96, blue: 254)
+        dislikeManager?.liveStreamInfos = self.liveStreamInfos
 
-        let dislikeVideoLabel = createLabel(title: "Hide this video", fontSize: 14)
-        let dislikeVideoButton = createButton(title: "Yes", fontSize: 14, buttonColor: buttonColor)
-        setupButtonArttribute(button: dislikeVideoButton, buttonColor: buttonColor)
-
-        dislikeVideoButton.addTarget(self, action: #selector(hideVideo), for: .touchUpInside)
-
-        let dislikeUserLabel = createLabel(title: "Hide all videos of this broadcaster", fontSize: 14)
-        let dislikeUserButton = createButton(title: "Yes", fontSize: 14, buttonColor: buttonColor)
-        setupButtonArttribute(button: dislikeUserButton, buttonColor: buttonColor)
-        dislikeUserButton.addTarget(self, action: #selector(hideAllVideoOfUser(sender:)), for: .touchUpInside)
-
-
-        let aPopViewController = UIViewController()
-        aPopViewController.modalPresentationStyle = .popover
-        aPopViewController.preferredContentSize = CGSize(width: 250, height: 120)
-
-        aPopViewController.view.addSubview(dislikeVideoLabel)
-        aPopViewController.view.addSubview(dislikeVideoButton)
-        aPopViewController.view.addSubview(dislikeUserLabel)
-        aPopViewController.view.addSubview(dislikeUserButton)
-
-        let popoverPresentationController = aPopViewController.popoverPresentationController
-        popoverPresentationController?.sourceView = button
-        popoverPresentationController?.sourceRect = button.bounds
-        popoverPresentationController?.permittedArrowDirections = .down
-        popoverPresentationController?.delegate = self
-
-        present(aPopViewController, animated: true, completion: nil)
-
-        dislikeVideoLabel.translatesAutoresizingMaskIntoConstraints = false
-        dislikeVideoButton.translatesAutoresizingMaskIntoConstraints = false
-        dislikeUserLabel.translatesAutoresizingMaskIntoConstraints = false
-        dislikeUserButton.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-
-            dislikeVideoLabel.topAnchor.constraint(equalTo: aPopViewController.view.topAnchor, constant: 15),
-            dislikeVideoLabel.leadingAnchor.constraint(equalTo: aPopViewController.view.leadingAnchor, constant: 15),
-
-            dislikeVideoButton.topAnchor.constraint(equalTo: dislikeVideoLabel.bottomAnchor, constant: 5),
-            dislikeVideoButton.leadingAnchor.constraint(equalTo: dislikeVideoLabel.leadingAnchor, constant: 0),
-            dislikeVideoButton.heightAnchor.constraint(equalToConstant: 20),
-
-            dislikeUserLabel.topAnchor.constraint(equalTo: dislikeVideoButton.bottomAnchor, constant: 10),
-            dislikeUserLabel.leadingAnchor.constraint(equalTo: aPopViewController.view.leadingAnchor, constant: 15),
-
-            dislikeUserButton.topAnchor.constraint(equalTo: dislikeUserLabel.bottomAnchor, constant: 5),
-            dislikeUserButton.leadingAnchor.constraint(equalTo: dislikeUserLabel.leadingAnchor, constant: 0),
-            dislikeUserButton.heightAnchor.constraint(equalToConstant: 20),
-        ])
-
-        self.popViewController = aPopViewController
-
-        let point: CGPoint = button.convert(.zero, to: self.collectionView)
-
-        guard
-            let indexPath = collectionView.indexPathForItem(at: point),
-            let liveStreamInfos = self.liveStreamInfos
-        else {
-            return
-        }
-
-        dislikeIndexPath = indexPath
-        print("indexPath",indexPath)
-
-        if let currentUser = UserShareInstance.sharedInstance().currentUser {
-
-            let currentUID = currentUser.emailLogInUID
-        }
+        dislikeManager?.didPressDislikeButton(button: button, viewController: self)
     }
 
     @objc func hideVideo(sender: UIButton) {
@@ -434,5 +366,27 @@ extension VideoListCollectionPage: DislikeListManagerDelegate {
         self.dislikeVideos = dislikeVideos
 
         self.manager?.fetchStreamInfo(status: LiveStatus.completed)
+    }
+
+    func finishPresentedDislikePage(_ manger: DislikeListManager, button: UIButton) {
+
+        let point: CGPoint = button.convert(.zero, to: self.collectionView)
+
+        guard
+            let indexPath = self.collectionView.indexPathForItem(at: point),
+            let dislikeManager = self.dislikeManager,
+            let popViewController = dislikeManager.popViewController
+        else {
+            return
+        }
+
+        dislikeManager.popoverPresentationController?.delegate = self
+        self.present(popViewController, animated: true, completion: nil)
+
+        dislikeManager.dislikeIndexPath = indexPath
+
+//        dislikeManager?.popoverPresentationController?.sourceView = button
+//        dislikeManager?.popoverPresentationController?.sourceRect = button.bounds
+//        dislikeManager?.popoverPresentationController?.permittedArrowDirections = .down
     }
 }

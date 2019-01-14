@@ -13,7 +13,6 @@ class EULAPageCell: UITableViewCell {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var termLabel: UILabel!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
 

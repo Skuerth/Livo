@@ -26,6 +26,9 @@
 /* Class = "UIButton"; normalTitle = "Privacy Policy"; ObjectID = "Cnt-Uv-ku5"; */
 "Cnt-Uv-ku5.normalTitle" = "隱私權條款";
 
+/* Class = "UIButton"; normalTitle = "Term of Use"; ObjectID = "SLw-O1-JRd"; */
+"SLw-O1-JRd.normalTitle" = "使用者條款";
+
 /* Class = "UIButton"; normalTitle = "Disconnect"; ObjectID = "FWM-Jb-Dhn"; */
 "FWM-Jb-Dhn.normalTitle" = "解除連結";
 

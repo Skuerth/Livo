@@ -151,7 +151,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-8l-LkY">
-                                <rect key="frame" x="112.5" y="110" width="150" height="74"/>
+                                <rect key="frame" x="112.5" y="110" width="150" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZsQ-7r-fxx"/>
                                 </constraints>
@@ -453,7 +453,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-rZ-jTB">
-                                <rect key="frame" x="330" y="35" width="30" height="48"/>
+                                <rect key="frame" x="330" y="35" width="30" height="47"/>
                                 <fontDescription key="fontDescription" name="Exo2-Light" family="Exo 2" pointSize="30"/>
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -565,7 +565,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-Fr-o2l" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -578,14 +578,115 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="U3w-2U-D6i"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0hK-hh-WaE"/>
+                    <navigationItem key="navigationItem" id="0hK-hh-WaE">
+                        <barButtonItem key="rightBarButtonItem" title="Report" id="UHz-HK-nNG">
+                            <connections>
+                                <action selector="reportButton:" destination="kDa-xo-CA8" id="iKX-f2-0kV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="displayView" destination="KdE-Fr-o2l" id="2QN-jy-sde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i2-fm-5eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="510"/>
+            <point key="canvasLocation" x="1081" y="1325"/>
+        </scene>
+        <!--Report Page-->
+        <scene sceneID="gsc-ml-7cN">
+            <objects>
+                <viewController storyboardIdentifier="ReportPage" id="ogs-k2-Suq" customClass="ReportPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AQY-ik-MPI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QW6-7a-oss">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qCn-ze-pDx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jvl-K3-PFv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="MNS-o9-UQZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmJ-Ih-PRK" userLabel="Picker Box">
+                                                        <rect key="frame" x="37" y="250" width="300" height="180"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhH-5t-GYE">
+                                                                <rect key="frame" x="241" y="145" width="49" height="30"/>
+                                                                <state key="normal" title="Submit"/>
+                                                                <connections>
+                                                                    <action selector="submitButton:" destination="ogs-k2-Suq" eventType="touchUpInside" id="QQJ-3N-BtN"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="UhH-5t-GYE" secondAttribute="trailing" constant="10" id="2sS-dQ-g6T"/>
+                                                            <constraint firstAttribute="width" secondItem="mmJ-Ih-PRK" secondAttribute="height" multiplier="300:180" id="jWE-hi-E70"/>
+                                                            <constraint firstAttribute="bottom" secondItem="UhH-5t-GYE" secondAttribute="bottom" constant="5" id="tJc-2E-bc5"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rch-qM-ch0">
+                                                        <rect key="frame" x="37" y="243" width="300" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="r3I-4B-s51"/>
+                                                        </constraints>
+                                                    </pickerView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpo-1y-0u4">
+                                                        <rect key="frame" x="334" y="10" width="30" height="39"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <state key="normal" title="X">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="didPreddExitButton:" destination="ogs-k2-Suq" eventType="touchUpInside" id="SBC-hz-jf6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="mmJ-Ih-PRK" firstAttribute="leading" secondItem="MNS-o9-UQZ" secondAttribute="leading" constant="37" id="1sk-O6-SNF"/>
+                                                    <constraint firstItem="mmJ-Ih-PRK" firstAttribute="top" secondItem="MNS-o9-UQZ" secondAttribute="top" constant="250" id="E2O-Xh-F5V"/>
+                                                    <constraint firstItem="mmJ-Ih-PRK" firstAttribute="centerX" secondItem="MNS-o9-UQZ" secondAttribute="centerX" id="F9Y-1j-oQI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xpo-1y-0u4" secondAttribute="trailing" constant="10" id="MSF-6d-3DK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Rch-qM-ch0" secondAttribute="trailing" constant="38" id="X60-3K-cRW"/>
+                                                    <constraint firstItem="Rch-qM-ch0" firstAttribute="leading" secondItem="MNS-o9-UQZ" secondAttribute="leading" constant="37" id="bmo-CA-VYB"/>
+                                                    <constraint firstItem="Rch-qM-ch0" firstAttribute="top" secondItem="MNS-o9-UQZ" secondAttribute="top" constant="243" id="d5p-Ix-btY"/>
+                                                    <constraint firstItem="xpo-1y-0u4" firstAttribute="top" secondItem="MNS-o9-UQZ" secondAttribute="top" constant="10" id="e1J-9N-8If"/>
+                                                </constraints>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="light"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="mmJ-Ih-PRK" firstAttribute="width" secondItem="QW6-7a-oss" secondAttribute="width" multiplier="300:375" id="uFP-Vi-frd"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="QW6-7a-oss" firstAttribute="trailing" secondItem="gf4-w3-xL7" secondAttribute="trailing" id="3KZ-ga-I59"/>
+                            <constraint firstItem="QW6-7a-oss" firstAttribute="bottom" secondItem="gf4-w3-xL7" secondAttribute="bottom" id="3kl-J2-7KS"/>
+                            <constraint firstItem="QW6-7a-oss" firstAttribute="leading" secondItem="gf4-w3-xL7" secondAttribute="leading" id="DiL-o4-qjt"/>
+                            <constraint firstItem="QW6-7a-oss" firstAttribute="top" secondItem="AQY-ik-MPI" secondAttribute="top" id="eQJ-qT-qzC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gf4-w3-xL7"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerBox" destination="mmJ-Ih-PRK" id="jwu-GB-xUw"/>
+                        <outlet property="pickerView" destination="Rch-qM-ch0" id="wem-dy-FrK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Za-fG-W7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1850.4000000000001" y="1547.6761619190406"/>
         </scene>
         <!--Video List Collection Page-->
         <scene sceneID="slM-DS-XAp">
@@ -614,6 +715,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="kDa-xo-CA8" kind="push" id="7ye-WC-s3j"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOI-5o-1qP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
