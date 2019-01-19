@@ -6,6 +6,16 @@
   Copyright © 2019 Skuerth. All rights reserved.
 */
 
+// MARK - Report Page
+"Sexual Content" = "Sexual Content";
+"Violent or repulsive content" = "Violent or repulsive content";
+"Hateful or abusive content" = "Hateful or abusive content";
+"Child abuse" = "Child abuse";
+"Spam or misleading" = "Spam or misleading";
+"Other objectionable content" = "Other objectionable content";
+"can't stop live broadcast" = "can't stop live broadcast";
+
+
 "VideoList" = "Video List";
 "LiveVideo" = "Live Video";
 "Profile" = "Profile";

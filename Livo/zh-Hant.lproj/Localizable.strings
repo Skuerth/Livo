@@ -6,6 +6,15 @@
   Copyright © 2019 Skuerth. All rights reserved.
 */
 
+// MARK - Report Page
+"Sexual Content" = "色情的內容";
+"Violent or repulsive content" = "暴力或令人反感的內容";
+"Hateful or abusive content" = "令人討厭或辱罵的內容";
+"Child abuse" = "兒童不宜的內容";
+"Spam or misleading" = "廣告或誤導內容";
+"Other objectionable content" = "其他不當內容";
+"can't stop live broadcast" = "無法開啟直播";
+
 "VideoList" = "影片清單";
 "LiveVideo" = "直播清單";
 "Profile" = "個人資料";

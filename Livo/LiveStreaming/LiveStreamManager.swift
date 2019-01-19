@@ -46,8 +46,6 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         guard let liveBroadcastStreamModel = self.liveBroadcastStreamModel else { return }
 
-//        lfView.startPublishing(withStreamURL: "https://www.youtube.com/watch?v=mbbFAjp2tmc")
-
         self.input.startBroadcast(liveBroadcastStreamModel, delegate: self, completion: { streamName, streamUrl, scheduledStartTime in
 
             if let streamURL = streamUrl, let streamName = streamName {
@@ -71,7 +69,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
             })
         } else {
 
-            LiveStreamError.getLiveStreamInfoError.alert(message: "can't stop live broadcast")
+            LiveStreamError.getLiveStreamInfoError.alert(message: NSLocalizedString("can't stop live broadcast", comment: ""))
         }
     }
 

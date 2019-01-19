@@ -42,11 +42,10 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         }
 
         displayView.playerVars = [
+
             "playsinline": "1"
-//            "controls": "0",
-//            "showinfo": "0",
-//            "autoplay": "0"
-            ] as YouTubePlayerView.YouTubePlayerParameters
+
+        ] as YouTubePlayerView.YouTubePlayerParameters
 
         displayView.loadVideoURL(url)
         view.sendSubviewToBack(displayView)
@@ -86,15 +85,10 @@ class ClientWatchPage: UIViewController, UITextViewDelegate, YouTubePlayerDelega
         conversationViewController.view.addGestureRecognizer(tapGesture)
 
         videoPlayer.play()
-
-//        self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        UIApplication.shared.isStatusBarHidden = true
-
     }
 
     @objc func didPressDisplayView(_ sender: UITapGestureRecognizer) {
 
-//        view.resignFirstResponder()
         conversationViewController.becomeFirstResponder()
         conversationViewController.messageInputBar.inputTextViewDidBeginEditing()
 

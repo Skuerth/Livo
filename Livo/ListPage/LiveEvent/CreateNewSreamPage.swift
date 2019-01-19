@@ -172,10 +172,12 @@ extension CreateNewSreamPage: UITextFieldDelegate {
         if newString.length > maxLength &&  maxLength == 10 {
 
             AlertHelper.customerAlert.rawValue.alert(message: NSLocalizedString("Title Length to Long", comment: ""))
+
         } else if newString.length > maxLength &&  maxLength == 20 {
 
             AlertHelper.customerAlert.rawValue.alert(message: NSLocalizedString("Description Length to Long", comment: ""))
         }
+
         return newString.length <= maxLength
     }
 
@@ -208,6 +210,7 @@ extension CreateNewSreamPage: LiveStreamManagerDelegate {
             liveBroadcastPage.videoID = manager.liveBroadcastStreamModel?.id
 
             DispatchQueue.main.async {
+
                 self.activityIndicator.stopAnimating()
                 self.activityIndicatorView?.isHidden = true
                 self.present(liveBroadcastPage, animated: true, completion: nil)
@@ -227,6 +230,7 @@ extension CreateNewSreamPage: GIDSignInDelegate {
         if user != nil {
 
             GoogleOAuth2.sharedInstance.accessToken = user.authentication.accessToken
+
         } else {
 
             UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
