@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import YTLiveStreaming
 import Firebase
+import FirebaseDatabase
 
 private let reuseIdentifier = "VideoListCollectionCell"
 
@@ -26,28 +27,34 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
     let spacing: CGFloat = 20
     var dislikeIndexPath: IndexPath?
 
+    var profileButton: UIButton?
+
     var popViewController: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        button.setImage(UIImage(named: "profile-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.imageView?.tintColor = UIColor.white
-        button.imageView?.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
+        profileButton = UIButton(type: .custom)
+        profileButton?.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        profileButton?.setImage(UIImage(named: "profile-icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        profileButton?.imageView?.tintColor = UIColor.white
+        profileButton?.imageView?.contentMode = .scaleAspectFit
+        profileButton?.addTarget(self, action: #selector(didTouchProfileButton), for: .touchUpInside)
 
         self.navigationItem.title = NSLocalizedString("VideoList", comment: "")
 
-        let barButton = UIBarButtonItem(customView: button)
+        if let profileButton = profileButton {
 
-        let currWidth = barButton.customView?.widthAnchor.constraint(equalToConstant: 25)
-        currWidth?.isActive = true
-        let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 25)
-        currHeight?.isActive = true
+            let barButton = UIBarButtonItem(customView: profileButton)
+            let currWidth = barButton.customView?.widthAnchor.constraint(equalToConstant: 25)
+            currWidth?.isActive = true
+            let currHeight = barButton.customView?.heightAnchor.constraint(equalToConstant: 25)
+            currHeight?.isActive = true
 
-        self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
+            self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
+        }
+
+
 
         self.manager = ListPageManager()
         self.dislikeManager = DislikeListManager()
@@ -75,6 +82,14 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
 
     @objc func didTouchProfileButton() {
 
+        profileButton?.isEnabled = false
+
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (timer) in
+
+            self.profileButton?.isEnabled = true
+            timer.invalidate()
+        }
+
         guard let profilePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfilePage") as? ProfilePage else { return }
 
         self.navigationController?.pushViewController(profilePage, animated: true)
@@ -101,14 +116,19 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
 
             GoogleOAuth2.sharedInstance.accessToken = token
 
-            guard let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage else { return }
+            guard
+                let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage
+            else {
+                return
+            }
 
             insertVideoPage.preScreenShot = takeScreenshot()
 
             self.navigationController?.pushViewController(insertVideoPage, animated: true)
+
         } else {
 
-            UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
+            UserInfoError.authorizationError.alert(message: NSLocalizedString("You have to log in your YouTube Account", comment: ""))
         }
     }
 
@@ -284,8 +304,6 @@ extension VideoListCollectionPage: ListPageManagerDelegate {
 
             self.liveStreamInfos?[indexPath] = liveStreamInfo
 
-//            self.liveStreamInfos = liveStreamInfos
-
             DispatchQueue.main.async {
 
                 let indexPathForCell = IndexPath(row: indexPath, section: 0)
@@ -384,9 +402,5 @@ extension VideoListCollectionPage: DislikeListManagerDelegate {
         self.present(popViewController, animated: true, completion: nil)
 
         dislikeManager.dislikeIndexPath = indexPath
-
-//        dislikeManager?.popoverPresentationController?.sourceView = button
-//        dislikeManager?.popoverPresentationController?.sourceRect = button.bounds
-//        dislikeManager?.popoverPresentationController?.permittedArrowDirections = .down
     }
 }

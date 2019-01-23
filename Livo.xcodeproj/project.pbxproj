@@ -52,9 +52,10 @@
 		F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */; };
 		F7B6292821EB1A560011FBFF /* DislikeListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6292721EB1A560011FBFF /* DislikeListManager.swift */; };
 		F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37221CB11320050A3B6 /* Error+Extension.swift */; };
-		F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */; };
+		F7B7C37521CB4A8D0050A3B6 /* CreateNewStreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37421CB4A8D0050A3B6 /* CreateNewStreamPage.swift */; };
 		F7B7C37721CB4EEA0050A3B6 /* LiveStreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */; };
 		F7B7C37A21CB513C0050A3B6 /* LiveBroadcastPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37821CB51120050A3B6 /* LiveBroadcastPage.swift */; };
+		F7C6CA5721F83EA3006CE643 /* EnableYouTubeStreamPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C6CA5621F83EA3006CE643 /* EnableYouTubeStreamPage.swift */; };
 		F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F521C8EE0600427873 /* LiveEventListPage.swift */; };
 		F7C741FA21C8EEB400427873 /* LiveEventListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C741F821C8EEB400427873 /* LiveEventListCell.swift */; };
 		F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7C741F921C8EEB400427873 /* LiveEventListCell.xib */; };
@@ -126,9 +127,10 @@
 		F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamData.swift; sourceTree = "<group>"; };
 		F7B6292721EB1A560011FBFF /* DislikeListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DislikeListManager.swift; sourceTree = "<group>"; };
 		F7B7C37221CB11320050A3B6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
-		F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewSreamPage.swift; sourceTree = "<group>"; };
+		F7B7C37421CB4A8D0050A3B6 /* CreateNewStreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewStreamPage.swift; sourceTree = "<group>"; };
 		F7B7C37621CB4EEA0050A3B6 /* LiveStreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamManager.swift; sourceTree = "<group>"; };
 		F7B7C37821CB51120050A3B6 /* LiveBroadcastPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveBroadcastPage.swift; sourceTree = "<group>"; };
+		F7C6CA5621F83EA3006CE643 /* EnableYouTubeStreamPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableYouTubeStreamPage.swift; sourceTree = "<group>"; };
 		F7C741F521C8EE0600427873 /* LiveEventListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListPage.swift; sourceTree = "<group>"; };
 		F7C741F821C8EEB400427873 /* LiveEventListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventListCell.swift; sourceTree = "<group>"; };
 		F7C741F921C8EEB400427873 /* LiveEventListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveEventListCell.xib; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */,
 				F743CB8621C0AA5A001B88CA /* Main.storyboard */,
+				F7C6CA5621F83EA3006CE643 /* EnableYouTubeStreamPage.swift */,
 				F7AE583521DCC25900FBF718 /* NavigationPage.swift */,
 				F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */,
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
@@ -324,7 +327,7 @@
 		F7C741F721C8EE1600427873 /* LiveEvent */ = {
 			isa = PBXGroup;
 			children = (
-				F7B7C37421CB4A8D0050A3B6 /* CreateNewSreamPage.swift */,
+				F7B7C37421CB4A8D0050A3B6 /* CreateNewStreamPage.swift */,
 				F7C741F521C8EE0600427873 /* LiveEventListPage.swift */,
 				F7C741F821C8EEB400427873 /* LiveEventListCell.swift */,
 				F7C741F921C8EEB400427873 /* LiveEventListCell.xib */,
@@ -657,13 +660,14 @@
 				F7B6292821EB1A560011FBFF /* DislikeListManager.swift in Sources */,
 				F7AE583621DCC25900FBF718 /* NavigationPage.swift in Sources */,
 				F794C3CC21C3520F00AE346B /* LFLivePreview.m in Sources */,
-				F7B7C37521CB4A8D0050A3B6 /* CreateNewSreamPage.swift in Sources */,
+				F7B7C37521CB4A8D0050A3B6 /* CreateNewStreamPage.swift in Sources */,
 				F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */,
 				F7D900CF21CEAB4A002A0C6F /* Date+Extention.swift in Sources */,
 				F7F0AEF221D38DF1009A3D85 /* InsertVideoPageCell.swift in Sources */,
 				F7ADBFA221DF34BD00B2C9C4 /* ErrorHandler.swift in Sources */,
 				F7B7C37A21CB513C0050A3B6 /* LiveBroadcastPage.swift in Sources */,
 				F782733621D08C0F00022E6B /* SignUpPage.swift in Sources */,
+				F7C6CA5721F83EA3006CE643 /* EnableYouTubeStreamPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

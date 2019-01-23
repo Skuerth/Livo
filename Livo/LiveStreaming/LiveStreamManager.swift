@@ -9,6 +9,8 @@
 import Foundation
 import YTLiveStreaming
 import Firebase
+import FirebaseDatabase
+import GoogleSignIn
 
 protocol LiveStreamManagerDelegate: class {
 
@@ -16,7 +18,7 @@ protocol LiveStreamManagerDelegate: class {
     func didStartLiveBroadcast(_ manager: LiveStreamManager)
 }
 
-class LiveStreamManager: YTLiveStreamingDelegate {
+class LiveStreamManager {
 
     let input = YTLiveStreaming()
     var liveBroadcastStreamModel: LiveBroadcastStreamModel?
@@ -24,7 +26,7 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
     weak var delegate: LiveStreamManagerDelegate?
 
-    func createLiveBroadcast(title: String, description: String) {
+    func createLiveBroadcast(title: String, description: String, viewController: UIViewController) {
 
         let date = Date.init(timeIntervalSinceNow: 0)
 
@@ -38,6 +40,13 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
             } else {
 
+                viewController.willMove(toParent: nil)
+                viewController.view.removeFromSuperview()
+                viewController.removeFromParent()
+
+//                GIDSignIn.sharedInstance()?.signOut()
+
+                AlertHelper.customerAlert.rawValue.alert(message: "createBroadcast fail")
             }
         })
     }
@@ -94,8 +103,10 @@ class LiveStreamManager: YTLiveStreamingDelegate {
 
         liveBroadcastStreamRef.child(videoID).setValue(liveStreamInfo.toAnyObject())
     }
+}
 
-    // MARK: - YTLiveStreamingDelegate Method
+extension LiveStreamManager: LiveStreamTransitioning {
+
     func didTransitionToLiveStatus() {
 
         self.delegate?.didStartLiveBroadcast(self)

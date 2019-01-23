@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="612-3q-3dd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Create New Sream Page-->
+        <!--Create New Stream Page-->
         <scene sceneID="Wof-Tw-opU">
             <objects>
-                <viewController storyboardIdentifier="CreateNewSreamPage" id="bEw-9F-vgv" customClass="CreateNewSreamPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateNewSreamPage" id="bEw-9F-vgv" customClass="CreateNewStreamPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YDQ-88-gjG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,6 +116,52 @@
             </objects>
             <point key="canvasLocation" x="1900" y="-1574.6626686656673"/>
         </scene>
+        <!--Enable You Tube Stream Page-->
+        <scene sceneID="urB-GN-VH1">
+            <objects>
+                <viewController storyboardIdentifier="EnableYouTubeStreamPage" id="612-3q-3dd" customClass="EnableYouTubeStreamPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OJe-1T-VOE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f2X-jZ-oOI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="SXl-uY-kMe">
+                                <rect key="frame" x="152" y="620" width="71" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="pageControl:" destination="612-3q-3dd" eventType="valueChanged" id="hrp-8H-hjh"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SXl-uY-kMe" firstAttribute="centerX" secondItem="OJe-1T-VOE" secondAttribute="centerX" id="L52-BA-eOP"/>
+                            <constraint firstItem="f2X-jZ-oOI" firstAttribute="bottom" secondItem="OJe-1T-VOE" secondAttribute="bottom" id="VsU-uG-ko1"/>
+                            <constraint firstItem="d6x-Lw-t2g" firstAttribute="bottom" secondItem="SXl-uY-kMe" secondAttribute="bottom" constant="10" id="YNG-TK-Dbb"/>
+                            <constraint firstItem="f2X-jZ-oOI" firstAttribute="top" secondItem="OJe-1T-VOE" secondAttribute="top" id="fjx-iD-KUQ"/>
+                            <constraint firstItem="f2X-jZ-oOI" firstAttribute="leading" secondItem="OJe-1T-VOE" secondAttribute="leading" id="mx5-JO-38F"/>
+                            <constraint firstItem="f2X-jZ-oOI" firstAttribute="trailing" secondItem="OJe-1T-VOE" secondAttribute="trailing" id="w3H-3c-8av"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d6x-Lw-t2g"/>
+                    </view>
+                    <connections>
+                        <outlet property="photo" destination="f2X-jZ-oOI" id="ZuI-wS-zmC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qmb-mc-1OA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2709.5999999999999" y="-1575.5622188905547"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="AGu-GS-nA9">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="rXC-ND-HKl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Gc-5E-JYI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3452" y="-1575"/>
+        </scene>
         <!--Page-->
         <scene sceneID="Xm4-1Z-qSa">
             <objects>
@@ -151,7 +197,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-8l-LkY">
-                                <rect key="frame" x="112.5" y="110" width="150" height="72"/>
+                                <rect key="frame" x="112.5" y="110" width="150" height="74"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZsQ-7r-fxx"/>
                                 </constraints>
@@ -453,7 +499,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-rZ-jTB">
-                                <rect key="frame" x="330" y="35" width="30" height="47"/>
+                                <rect key="frame" x="330" y="35" width="30" height="48"/>
                                 <fontDescription key="fontDescription" name="Exo2-Light" family="Exo 2" pointSize="30"/>
                                 <state key="normal" title="X">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

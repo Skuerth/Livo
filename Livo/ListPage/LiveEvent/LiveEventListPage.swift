@@ -8,8 +8,9 @@
 
 import UIKit
 import YTLiveStreaming
-import Firebase
 import GoogleSignIn
+import Firebase
+import FirebaseDatabase
 
 class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
@@ -22,7 +23,6 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     var liveBroadcastStreamRef: DatabaseReference?
     var liveStreamInfos: [LiveStreamInfo]?
     var manager: ListPageManager?
-
 
     let reuseIdentifier = "VideoListCollectionCell"
 
@@ -55,7 +55,6 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
 
         self.collectionView.collectionViewLayout = layout
 
-//        self.manager?.fetchStreamInfo(status: LiveStatus.live)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -66,19 +65,12 @@ class LiveEventListPage: UICollectionViewController, GIDSignInUIDelegate {
     // MARK: - IBAction Method
     @IBAction func createNewLiveBroadcast(_ sender: UIBarButtonItem) {
 
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance()?.scopes = [
             "https://www.googleapis.com/auth/youtube",
             "https://www.googleapis.com/auth/youtube.force-ssl"]
         GIDSignIn.sharedInstance()?.signIn()
-
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        if let createNewSreamPage = mainStoryBoard.instantiateViewController(withIdentifier: "CreateNewSreamPage") as? CreateNewSreamPage {
-
-            addChild(createNewSreamPage)
-            self.view.addSubview(createNewSreamPage.view)
-            createNewSreamPage.didMove(toParent: self)
-        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -158,20 +150,6 @@ extension LiveEventListPage: ListPageManagerDelegate {
 
             indexPath += 1
         }
-//
-//
-//
-//        self.liveStreamInfos = liveStreamInfos
-//        self.collectionView.reloadData()
-//
-//        var indexPath = 0
-//
-//        for liveStreamInfo in liveStreamInfos {
-//
-//            manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: indexPath)
-//
-//            indexPath += 1
-//        }
     }
 
     func didLoadimage(manager: ListPageManager, liveStreamInfo: LiveStreamInfo, indexPath: Int) {
@@ -282,5 +260,27 @@ extension LiveEventListPage: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
 
         return .none
+    }
+}
+
+extension LiveEventListPage: GIDSignInDelegate {
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+
+        guard let currentUser = GIDSignIn.sharedInstance()?.currentUser else {
+
+            AlertHelper.customerAlert.rawValue.alert(message: NSLocalizedString("You have to log in your YouTube Account", comment: ""))
+
+            return
+        }
+
+        GoogleOAuth2.sharedInstance.accessToken = currentUser.authentication.accessToken
+
+        if let createNewSreamPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateNewSreamPage") as? CreateNewStreamPage {
+
+            addChild(createNewSreamPage)
+            self.view.addSubview(createNewSreamPage.view)
+            createNewSreamPage.didMove(toParent: self)
+        }
     }
 }

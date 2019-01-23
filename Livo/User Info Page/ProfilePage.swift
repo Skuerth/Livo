@@ -187,12 +187,12 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 
         if
-            let cropRect = info[UIImagePickerController.InfoKey.cropRect] as? CGRect,
-            let originImg = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let croppingCgImg = originImg.cgImage?.cropping(to: cropRect)
+//            let cropRect = info[UIImagePickerController.InfoKey.cropRect] as? CGRect,
+            let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+//            let croppingCgImg = originImg.cgImage?.cropping(to: cropRect)
         {
 
-            let image = UIImage(cgImage: croppingCgImg)
+//            let image = UIImage(cgImage: originImg)
 
             guard
                 let currentUser = Auth.auth().currentUser,
@@ -207,26 +207,27 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
             let uid = currentUser.uid
             let share = UserShareInstance.sharedInstance()
 
-            self.saveImageToLocal(image: image, uid: uid)
+            self.saveImageToLocal(image: editedImage, uid: uid)
 
             if share.currentUser != nil {
 
-                share.currentUser?.photo = image
+                share.currentUser?.photo = editedImage
 
             } else {
 
-                share.currentUser = CurrentUser(name: name, emailLogInUID: uid, email: email, photo: image)
+                share.currentUser = CurrentUser(name: name, emailLogInUID: uid, email: email, photo: editedImage)
             }
 
             DispatchQueue.main.async {
 
-                self.userPhoto.image = image
+                self.userPhoto.image = editedImage
                 self.userPhoto.contentMode = .scaleAspectFill
+
             }
 
             let imageRef = Storage.storage().reference().child("photos").child("\(uid).jpg")
 
-            let scaleImage = image.scale(newWidth: 640.0)
+            let scaleImage = editedImage.scale(newWidth: 640.0)
             guard let imageData = scaleImage.jpegData(compressionQuality: 0.9) else { return }
 
             let metadata = StorageMetadata()

@@ -21,7 +21,7 @@ extension UserInfoError: CustomStringConvertible {
 
         switch self {
 
-        case .infoError: return "Lsot Required Information"
+        case .infoError: return "Lost Required Information"
         case .authorizationError: return "Authorization Failure"
         case .saveImageError: return "Fail to Save Photo"
         }
