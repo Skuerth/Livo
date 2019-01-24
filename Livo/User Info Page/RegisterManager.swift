@@ -50,31 +50,27 @@ class RegisterManager {
 
         Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
 
-            .action(.cancel("Disagree"))
+//            .action(.cancel(NSLocalizedString("Disagree", comment: "")))
 
-            .action(.default("Agree")) { (_, _, _) in
+            .action(.cancel(NSLocalizedString("Disagree", comment: "")), handler: { (_, _, _) in
+
+                do {
+
+                    try Auth.auth().signOut()
+
+                } catch let error {
+
+                    AlertHelper.customerAlert.rawValue.alert(message: error.localizedDescription)
+                }
+            })
+
+            .action(.default(NSLocalizedString("Agree", comment: ""))) { (_, _, _) in
 
                 if let mainTabbarPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabbarPage") as? MainTabbarPage {
 
                     viewController.present(mainTabbarPage, animated: true, completion: nil)
                 }
             }
-
-            .show()
-    }
-
-    func agreement() {
-
-        Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
-
-            .action(.default("Agree")) { (_, _, _) in
-
-            }
-
-            .action(.cancel("Disagree"), handler: { (_, _, _) in
-
-                return
-            })
 
             .show()
     }

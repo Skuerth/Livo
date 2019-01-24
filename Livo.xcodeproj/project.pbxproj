@@ -232,7 +232,6 @@
 				F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */,
 				F743CB8621C0AA5A001B88CA /* Main.storyboard */,
 				F7AE583521DCC25900FBF718 /* NavigationPage.swift */,
-				F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */,
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
 				F75EC2A321CF750200E40252 /* MainTabbarPage.swift */,
 				F74E91D521C6C103006AFC03 /* LivoCredentials.swift */,
@@ -296,6 +295,7 @@
 		F796B20021E33D75002F6C79 /* EULA */ = {
 			isa = PBXGroup;
 			children = (
+				F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */,
 				F771768421E3286F00AFC123 /* EULAPage.swift */,
 				F796B1FE21E33AD0002F6C79 /* EULAPageCell.swift */,
 				F796B20221E342D5002F6C79 /* EULAPageCell.xib */,

@@ -22,6 +22,9 @@ class SignUpPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.keyboardWillShowObserve()
+        self.keyboardWillHideObserve()
+
         manager = RegisterManager()
 
         passwordTextField.isSecureTextEntry = true
@@ -30,6 +33,11 @@ class SignUpPage: UIViewController {
         self.presentingView.layer.cornerRadius = 10
 
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+    }
+
+    deinit {
+
+        NotificationCenter.default.removeObserver(self)
     }
 
     @IBAction func signUpButton(_ sender: UIButton) {
@@ -103,6 +111,36 @@ class SignUpPage: UIViewController {
 }
 
 extension SignUpPage: UITextFieldDelegate {
+
+    func keyboardWillShowObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+    }
+
+    func keyboardWillHideObserve() {
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+
+        presentingView.transform = CGAffineTransform(translationX: 0, y: -80)
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+
+        presentingView.transform = CGAffineTransform.identity
+    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 

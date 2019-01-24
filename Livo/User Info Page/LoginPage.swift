@@ -90,7 +90,9 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
 
         Alertift.alert(title: NSLocalizedString("agreemnt question", comment: ""), message: NSLocalizedString("agreemnt content", comment: ""))
 
-            .action(.default("Agree")) { (_, _, _) in
+            .action(.cancel(NSLocalizedString("Disagree", comment: "")))
+
+            .action(.default(NSLocalizedString("Agree", comment: ""))) { (_, _, _) in
 
                 if let signUpPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignUpPage") as? SignUpPage {
 
@@ -100,10 +102,7 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
                 }
             }
 
-            .action(.cancel("Disagree"))
-
             .show()
-
     }
 
     func setupButtonStyle(button: UIButton) {

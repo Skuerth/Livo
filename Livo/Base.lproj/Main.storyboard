@@ -472,44 +472,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ckl-gL-p3F">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-rZ-jTB">
-                                <rect key="frame" x="330" y="35" width="30" height="48"/>
-                                <fontDescription key="fontDescription" name="Exo2-Light" family="Exo 2" pointSize="30"/>
-                                <state key="normal" title="X">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="exitButton:" destination="tIj-SX-7yV" eventType="touchUpInside" id="wh3-de-qr2"/>
-                                </connections>
-                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NCT-x6-kbm">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LF0-Np-474" firstAttribute="trailing" secondItem="HM5-rZ-jTB" secondAttribute="trailing" constant="15" id="1MM-1Y-LBj"/>
-                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="trailing" secondItem="LF0-Np-474" secondAttribute="trailing" id="2Wz-kS-ftd"/>
-                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="bottom" secondItem="LF0-Np-474" secondAttribute="bottom" id="5vk-5v-rDJ"/>
-                            <constraint firstItem="HM5-rZ-jTB" firstAttribute="top" secondItem="LF0-Np-474" secondAttribute="top" constant="15" id="7S2-Wx-Ucf"/>
-                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="top" secondItem="Rdi-KF-N4h" secondAttribute="top" id="da3-QE-lrF"/>
-                            <constraint firstItem="Ckl-gL-p3F" firstAttribute="leading" secondItem="LF0-Np-474" secondAttribute="leading" id="pQS-aH-GpG"/>
+                            <constraint firstItem="NCT-x6-kbm" firstAttribute="bottom" secondItem="Rdi-KF-N4h" secondAttribute="bottom" id="7mM-gx-hfB"/>
+                            <constraint firstItem="NCT-x6-kbm" firstAttribute="top" secondItem="Rdi-KF-N4h" secondAttribute="topMargin" constant="30" id="8gr-T8-TsQ"/>
+                            <constraint firstItem="NCT-x6-kbm" firstAttribute="leading" secondItem="Rdi-KF-N4h" secondAttribute="leading" id="EcT-6C-si3"/>
+                            <constraint firstItem="NCT-x6-kbm" firstAttribute="trailing" secondItem="Rdi-KF-N4h" secondAttribute="trailing" id="Ob1-tp-Rgw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LF0-Np-474"/>
                     </view>
                     <connections>
-                        <outlet property="exit" destination="HM5-rZ-jTB" id="DY6-De-ms6"/>
-                        <outlet property="webView" destination="Ckl-gL-p3F" id="iEp-1X-5V5"/>
+                        <outlet property="displayView" destination="NCT-x6-kbm" id="vne-Ad-0Zj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DC8-t7-nyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1274" y="287"/>
+            <point key="canvasLocation" x="-1274.4000000000001" y="286.50674662668666"/>
         </scene>
         <!--Main Tabbar Page-->
         <scene sceneID="f5M-BX-eYm">
@@ -1019,7 +1005,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cx-Zm-MOf" userLabel="Photo View">
                                         <rect key="frame" x="87.5" y="50" width="200" height="200"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="dVU-Z3-aaa">
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="dVU-Z3-aaa">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpP-fJ-V8Y" userLabel="Change Photo Box">
@@ -1189,8 +1175,8 @@
     </scenes>
     <resources>
         <image name="live-icon" width="28" height="28"/>
-        <image name="profile-placeholder" width="128" height="128"/>
         <image name="sea" width="5470" height="3646"/>
+        <image name="user_placeholder" width="200" height="200"/>
         <image name="video-icon" width="28" height="28"/>
     </resources>
 </document>

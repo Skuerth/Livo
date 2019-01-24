@@ -135,7 +135,7 @@ extension CreateNewStreamPage: UITextFieldDelegate {
 
     @objc func keyboardWillShow(_ notification: Notification) {
 
-        presentingView.transform = CGAffineTransform(translationX: 0, y: -50)
+        presentingView.transform = CGAffineTransform(translationX: 0, y: -80)
     }
 
     @objc func keyboardWillHide(_ notification: Notification) {
