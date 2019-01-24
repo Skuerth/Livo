@@ -23,6 +23,7 @@ class CreateNewStreamPage: UIViewController {
     var authCredential: AuthCredential?
     var activityIndicatorView: UIView?
     var activityIndicator = UIActivityIndicatorView()
+    var createNewStreamPageSuperview: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()

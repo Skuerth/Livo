@@ -21,4 +21,5 @@ target 'Livo' do
   pod 'GoogleAnalytics'
   pod 'StatusAlert', '~> 1.1.0'
   pod 'Alertift', '~> 4.0'
+  pod 'SnapKit', '~> 4.2'
 end

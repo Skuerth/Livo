@@ -278,6 +278,8 @@ extension LiveEventListPage: GIDSignInDelegate {
 
         if let createNewSreamPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateNewSreamPage") as? CreateNewStreamPage {
 
+            createNewSreamPage.createNewStreamPageSuperview = self
+
             addChild(createNewSreamPage)
             self.view.addSubview(createNewSreamPage.view)
             createNewSreamPage.didMove(toParent: self)

@@ -26,7 +26,7 @@ class LiveStreamManager {
 
     weak var delegate: LiveStreamManagerDelegate?
 
-    func createLiveBroadcast(title: String, description: String, viewController: UIViewController) {
+    func createLiveBroadcast(title: String, description: String, viewController: CreateNewStreamPage) {
 
         let date = Date.init(timeIntervalSinceNow: 0)
 
@@ -40,11 +40,20 @@ class LiveStreamManager {
 
             } else {
 
-                viewController.willMove(toParent: nil)
-                viewController.view.removeFromSuperview()
-                viewController.removeFromParent()
+                if
+                    let enableYouTubeStreamPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EnableYouTubeStreamPage") as? EnableYouTubeStreamPage,
+                    let presentingViewController = viewController.createNewStreamPageSuperview
 
-//                GIDSignIn.sharedInstance()?.signOut()
+                {
+
+                    viewController.willMove(toParent: nil)
+                    viewController.view.removeFromSuperview()
+                    viewController.removeFromParent()
+
+                    presentingViewController.addChild(enableYouTubeStreamPage)
+                    presentingViewController.view.addSubview(enableYouTubeStreamPage.view)
+                    enableYouTubeStreamPage.didMove(toParent: presentingViewController)
+                }
 
                 AlertHelper.customerAlert.rawValue.alert(message: "createBroadcast fail")
             }

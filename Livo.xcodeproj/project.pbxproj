@@ -231,7 +231,6 @@
 			children = (
 				F7F3F9AC21C3B10300CF39DA /* Livo.entitlements */,
 				F743CB8621C0AA5A001B88CA /* Main.storyboard */,
-				F7C6CA5621F83EA3006CE643 /* EnableYouTubeStreamPage.swift */,
 				F7AE583521DCC25900FBF718 /* NavigationPage.swift */,
 				F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */,
 				F743CB8221C0AA5A001B88CA /* AppDelegate.swift */,
@@ -328,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B7C37421CB4A8D0050A3B6 /* CreateNewStreamPage.swift */,
+				F7C6CA5621F83EA3006CE643 /* EnableYouTubeStreamPage.swift */,
 				F7C741F521C8EE0600427873 /* LiveEventListPage.swift */,
 				F7C741F821C8EEB400427873 /* LiveEventListCell.swift */,
 				F7C741F921C8EEB400427873 /* LiveEventListCell.xib */,
@@ -540,6 +540,7 @@
 				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/XCDYouTubeKit/XCDYouTubeKit.framework",
@@ -563,6 +564,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StatusAlert.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCDYouTubeKit.framework",
@@ -833,6 +835,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q5VJGX4R94;
 				INFOPLIST_FILE = Livo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -857,6 +860,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Q5VJGX4R94;
 				INFOPLIST_FILE = Livo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
