@@ -101,6 +101,7 @@ class CreateNewStreamPage: UIViewController {
         self.submitButton.isEnabled = false
 
         self.liveStreamManager?.createLiveBroadcast(title: title, description: description, viewController: self)
+
     }
 
     deinit {

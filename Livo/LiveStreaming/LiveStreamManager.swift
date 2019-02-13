@@ -24,6 +24,7 @@ class LiveStreamManager {
     var liveBroadcastStreamModel: LiveBroadcastStreamModel?
     var userProfile: [String: String]?
 
+
     weak var delegate: LiveStreamManagerDelegate?
 
     func createLiveBroadcast(title: String, description: String, viewController: CreateNewStreamPage) {
@@ -43,21 +44,30 @@ class LiveStreamManager {
                 if
                     let enableYouTubeStreamPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EnableYouTubeStreamPage") as? EnableYouTubeStreamPage,
                     let presentingViewController = viewController.createNewStreamPageSuperview
-
                 {
 
-                    viewController.willMove(toParent: nil)
-                    viewController.view.removeFromSuperview()
-                    viewController.removeFromParent()
+                    self.removeViewOfViewController(viewController: viewController)
 
-                    presentingViewController.addChild(enableYouTubeStreamPage)
-                    presentingViewController.view.addSubview(enableYouTubeStreamPage.view)
-                    enableYouTubeStreamPage.didMove(toParent: presentingViewController)
+                    self.addViewOfViewController(addingViewController: enableYouTubeStreamPage, superViewController: presentingViewController)
                 }
 
                 AlertHelper.customerAlert.rawValue.alert(message: "createBroadcast fail")
             }
         })
+    }
+
+    func removeViewOfViewController(viewController: UIViewController) {
+
+        viewController.willMove(toParent: nil)
+        viewController.view.removeFromSuperview()
+        viewController.removeFromParent()
+    }
+
+    func addViewOfViewController(addingViewController: UIViewController, superViewController: UIViewController) {
+
+        superViewController.addChild(addingViewController)
+        superViewController.view.addSubview(addingViewController.view)
+        addingViewController.didMove(toParent: superViewController)
     }
 
     func startBroadcast(lfView: LFLivePreview) {

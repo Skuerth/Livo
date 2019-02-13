@@ -28,6 +28,7 @@
 		F74E91E921C6C330006AFC03 /* YTLiveStreaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */; };
 		F75EC2A021CF514A00E40252 /* ListPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75EC29F21CF514A00E40252 /* ListPageManager.swift */; };
 		F75EC2A421CF750200E40252 /* MainTabbarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75EC2A321CF750200E40252 /* MainTabbarPage.swift */; };
+		F76822F921F9AB6B001913A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76822F821F9AB6B001913A8 /* Assets.xcassets */; };
 		F771768521E3286F00AFC123 /* EULAPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F771768421E3286F00AFC123 /* EULAPage.swift */; };
 		F782733621D08C0F00022E6B /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733521D08C0F00022E6B /* SignUpPage.swift */; };
 		F782733821D0B33D00022E6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F782733721D0B33D00022E6B /* User.swift */; };
@@ -48,7 +49,6 @@
 		F7AE583821DCE13F00FBF718 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE583721DCE13F00FBF718 /* UINavigationBar_Extension.swift */; };
 		F7AE583A21DCE4B000FBF718 /* UIColor+RGBValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AE583921DCE4B000FBF718 /* UIColor+RGBValue.swift */; };
 		F7AE583D21DCEE5000FBF718 /* Exo2-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */; };
-		F7AE583F21DD073700FBF718 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7AE583E21DD073700FBF718 /* Assets.xcassets */; };
 		F7B2A6C921CCC90300D3257A /* LiveStreamData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */; };
 		F7B6292821EB1A560011FBFF /* DislikeListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B6292721EB1A560011FBFF /* DislikeListManager.swift */; };
 		F7B7C37321CB11320050A3B6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B7C37221CB11320050A3B6 /* Error+Extension.swift */; };
@@ -100,6 +100,7 @@
 		F74E91E821C6C330006AFC03 /* YTLiveStreaming.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YTLiveStreaming.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75EC29F21CF514A00E40252 /* ListPageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPageManager.swift; sourceTree = "<group>"; };
 		F75EC2A321CF750200E40252 /* MainTabbarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarPage.swift; sourceTree = "<group>"; };
+		F76822F821F9AB6B001913A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F771768121E313CC00AFC123 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		F771768421E3286F00AFC123 /* EULAPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAPage.swift; sourceTree = "<group>"; };
 		F782733521D08C0F00022E6B /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
@@ -123,7 +124,6 @@
 		F7AE583721DCE13F00FBF718 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
 		F7AE583921DCE4B000FBF718 /* UIColor+RGBValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBValue.swift"; sourceTree = "<group>"; };
 		F7AE583C21DCEE4200FBF718 /* Exo2-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Light.otf"; sourceTree = "<group>"; };
-		F7AE583E21DD073700FBF718 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7B2A6C821CCC90300D3257A /* LiveStreamData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamData.swift; sourceTree = "<group>"; };
 		F7B6292721EB1A560011FBFF /* DislikeListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DislikeListManager.swift; sourceTree = "<group>"; };
 		F7B7C37221CB11320050A3B6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 				F7B8354721D32DC900BE8E84 /* LivePage */,
 				F75EC2A121CF515B00E40252 /* ListPage */,
 				F7F3F99E21C352CC00CF39DA /* LFLive */,
+				F76822F821F9AB6B001913A8 /* Assets.xcassets */,
 				F72733D721CA2018002C1492 /* Extention */,
-				F7AE583E21DD073700FBF718 /* Assets.xcassets */,
 				F7F3F9A721C3540500CF39DA /* category */,
 				F743CB8B21C0AA5B001B88CA /* LaunchScreen.storyboard */,
 				F70D9A3621DDEA4800358025 /* Info.plist */,
@@ -467,8 +467,8 @@
 				F7232AB421DE0B8C002B553D /* Localizable.strings in Resources */,
 				F743CB8821C0AA5A001B88CA /* Main.storyboard in Resources */,
 				F7C741FB21C8EEB400427873 /* LiveEventListCell.xib in Resources */,
+				F76822F921F9AB6B001913A8 /* Assets.xcassets in Resources */,
 				F7DC45B921E066D100A61A6E /* VideoListCollectionCell.xib in Resources */,
-				F7AE583F21DD073700FBF718 /* Assets.xcassets in Resources */,
 				F7F0AEE421D36FD4009A3D85 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

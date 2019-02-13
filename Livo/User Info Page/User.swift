@@ -21,12 +21,19 @@ class UserShareInstance {
         return share!
     }
 
+//    private var _currentUser: CurrentUser?
+
     var currentUser: CurrentUser?
+
+//    var currentUser: CurrentUser?
+
+
 
     func createUser(name: String, email: String, emailLogInUID: String, photo: UIImage?) {
 
         let currentUser = CurrentUser(name: name, emailLogInUID: emailLogInUID, email: email, photo: nil)
         self.currentUser = currentUser
+//        self.currentUser = currentUser
     }
 }
 

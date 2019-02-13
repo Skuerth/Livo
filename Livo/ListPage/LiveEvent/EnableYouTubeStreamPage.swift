@@ -52,10 +52,6 @@ class EnableYouTubeStreamPage: UIViewController {
 
             switch launguageCode {
 
-            case "en":
-                guard let image = UIImage(named: "enable-live-stream-en-\(index)") else { return }
-                imageArray.append(image)
-
             case "zh":
                 guard let image = UIImage(named: "enable-live-stream-zh-\(index)") else { return }
                 imageArray.append(image)
@@ -112,8 +108,6 @@ class EnableYouTubeStreamPage: UIViewController {
             let xPosition = UIScreen.main.bounds.width * CGFloat(index)
             imageView.frame = CGRect(x: xPosition, y: imageHeight * 0.05, width: width, height: imageHeight * 0.9)
             imageView.contentMode = .scaleAspectFit
-            imageView.layer.cornerRadius = 15
-            imageView.clipsToBounds = true
 
             scrollView.contentSize.width = scrollView.frame.width * CGFloat( index + 1)
             scrollView.addSubview(imageView)
@@ -139,6 +133,5 @@ extension EnableYouTubeStreamPage: UIScrollViewDelegate {
         let page = Int(round(scrollView.contentOffset.x / width))
 
         pageControl.currentPage = page
-
     }
 }

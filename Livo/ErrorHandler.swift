@@ -24,6 +24,7 @@ extension UserInfoError: CustomStringConvertible {
         case .infoError: return "Lost Required Information"
         case .authorizationError: return "Authorization Failure"
         case .saveImageError: return "Fail to Save Photo"
+            
         }
     }
 }
@@ -40,6 +41,7 @@ extension LiveStreamError: CustomStringConvertible {
         switch self {
 
         case .getLiveStreamInfoError: return "Fail to Get Live Stream Infomation"
+
         }
     }
 }
@@ -56,6 +58,7 @@ extension ViewControllerError: CustomStringConvertible {
         switch self {
 
         case .presentError: return "Fail to present ViewController"
+
         }
     }
 }
@@ -72,6 +75,7 @@ extension DatabaseError: CustomStringConvertible {
         switch self {
 
         case .connectionError: return "Fail to Connect to Database"
+
         }
     }
 }

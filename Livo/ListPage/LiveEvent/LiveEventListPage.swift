@@ -280,6 +280,16 @@ extension LiveEventListPage: GIDSignInDelegate {
 
             createNewSreamPage.createNewStreamPageSuperview = self
 
+            if self.children.count > 0 {
+
+                for child in self.children {
+
+                    child.willMove(toParent: nil)
+                    child.view.removeFromSuperview()
+                    child.removeFromParent()
+                }
+            }
+
             addChild(createNewSreamPage)
             self.view.addSubview(createNewSreamPage.view)
             createNewSreamPage.didMove(toParent: self)

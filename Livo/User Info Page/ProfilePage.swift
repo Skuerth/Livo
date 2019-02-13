@@ -286,7 +286,6 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 
     func makeCircleView(view: UIView) {
 
-//        view.layer.masksToBounds = true
         view.layer.cornerRadius = view.frame.width / 2.0
         view.clipsToBounds = true
     }
