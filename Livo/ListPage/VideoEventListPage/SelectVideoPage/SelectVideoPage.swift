@@ -1,5 +1,5 @@
 //
-//  InsertVideoPage.swift
+//  SelectVideoPage.swift
 //  Livo
 //
 //  Created by Skuerth on 2018/12/26.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class InsertVideoPage: UIViewController {
+class SelectVideoPage: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var background: UIView!
@@ -19,18 +19,24 @@ class InsertVideoPage: UIViewController {
     var preScreenShot: UIImage?
     var addingNumberCount: Int = 0
 
+    let width = UIScreen.main.bounds.size.width
+    let height = UIScreen.main.bounds.size.height
+
     var manager: ListPageManager?
 
     var liveStreamInfos: [LiveStreamInfo]?
     var selectedLiveStreams: [Int] = []
+    var previousPageType: ReasonType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = NSLocalizedString("Youtube Video", comment: "")
+        guard
+            let previousPageType = previousPageType,
+            let uid = Auth.auth().currentUser?.uid
+        else { return }
 
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
+        setUpNavigationTile(previousPageType: previousPageType)
 
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -51,7 +57,30 @@ class InsertVideoPage: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
-        self.manager?.fetchAllVideo()
+        switch previousPageType {
+
+        case .insertVideo:
+
+            self.manager?.fetchAllVideo()
+
+        case .deleteVideo:
+
+            manager?.fetchMyUploadedVideos(uid: uid, completionHandler: { (myVideo) in
+
+                if let myVideo = myVideo {
+
+                    self.liveStreamInfos = myVideo
+
+                    DispatchQueue.main.async {
+
+                        self.collectionView.reloadData()
+                    }
+
+                } else {
+
+                }
+            })
+        }
 
         self.collectionView.register(UINib(nibName: "InsertVideoPageCell", bundle: nil), forCellWithReuseIdentifier: "InsertVideoPageCell")
 
@@ -103,9 +132,23 @@ class InsertVideoPage: UIViewController {
         collectionView.collectionViewLayout = layout
         collectionView.showsVerticalScrollIndicator = false
    }
+
+    func setUpNavigationTile(previousPageType: ReasonType) {
+
+        switch previousPageType {
+
+        case .insertVideo:
+
+            self.navigationItem.title = NSLocalizedString("Youtube Video", comment: "")
+
+        case .deleteVideo:
+
+            self.navigationItem.title = "My Videos"
+        }
+    }
 }
 
-extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SelectVideoPage: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
@@ -205,7 +248,7 @@ extension InsertVideoPage: UICollectionViewDelegate, UICollectionViewDataSource 
     }
 }
 
-extension InsertVideoPage: ListPageManagerDelegate {
+extension SelectVideoPage: ListPageManagerDelegate {
 
     func didFetchAllVideo(_ manager: ListPageManager, liveStreamInfos: [LiveStreamInfo]) {
 

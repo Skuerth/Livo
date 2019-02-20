@@ -20,8 +20,12 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     @IBOutlet weak var changePassword: UIButton!
     @IBOutlet weak var changeName: UIButton!
 
+    var fetchManager: ListPageManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        fetchManager = ListPageManager()
 
         self.navigationItem.title = NSLocalizedString("Profile", comment: "")
 
@@ -125,10 +129,31 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         return UIModalPresentationStyle.none
     }
 
-//    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
-//
-//        return true
-//    }
+// MARK: - IBAction Methods
+    @IBAction func deleteMyVideo(_ sender: UIButton) {
+
+        guard
+            let manager = fetchManager,
+            let uid = Auth.auth().currentUser?.uid
+        else { return }
+
+        manager.fetchMyUploadedVideos(uid: uid) { (myVideos) in
+
+            if let myVideos = myVideos {
+
+                guard let selectVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectVideoPage") as? SelectVideoPage else { return }
+
+                selectVideoPage.liveStreamInfos = myVideos
+                selectVideoPage.previousPageType = ReasonType.deleteVideo
+
+                self.navigationController?.present(selectVideoPage, animated: true, completion: nil)
+
+            } else {
+
+                print("myVideos = nil")
+            }
+        }
+    }
 
     @IBAction func changeEmailSignInPassword(_ sender: UIButton) {
 

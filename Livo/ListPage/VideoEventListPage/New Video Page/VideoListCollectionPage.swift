@@ -115,14 +115,15 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
             GoogleOAuth2.sharedInstance.accessToken = token
 
             guard
-                let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage
+                let selectVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectVideoPage") as? SelectVideoPage
             else {
                 return
             }
 
-            insertVideoPage.preScreenShot = takeScreenshot()
+            selectVideoPage.preScreenShot = takeScreenshot()
+            selectVideoPage.previousPageType = ReasonType.insertVideo
 
-            self.navigationController?.pushViewController(insertVideoPage, animated: true)
+            self.navigationController?.pushViewController(selectVideoPage, animated: true)
 
         } else {
 

@@ -83,7 +83,7 @@ class VideoListPage: UITableViewController, GIDSignInUIDelegate, GIDSignInDelega
 
             GoogleOAuth2.sharedInstance.accessToken = token
 
-            guard let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? InsertVideoPage else { return }
+            guard let insertVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InsertVideoPage") as? SelectVideoPage else { return }
 
             insertVideoPage.preScreenShot = takeScreenshot()
 

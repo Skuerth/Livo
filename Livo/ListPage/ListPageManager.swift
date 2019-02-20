@@ -109,6 +109,37 @@ class ListPageManager {
         })
     }
 
+    func fetchMyUploadedVideos(uid: String, completionHandler: @escaping ([LiveStreamInfo]?) -> Void) {
+
+        liveBroadcastStreamRef.queryOrdered(byChild: "userID").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+
+            var myVideoList: [LiveStreamInfo] = []
+
+            if snapshot.childrenCount > 0 {
+
+                for child in snapshot.children {
+
+                    guard
+                        let snapshot = child as? DataSnapshot,
+                        let myVideo = LiveStreamInfo(snapshot: snapshot)
+                    else {
+
+                        DatabaseError.connectionError.alert(message: "Fail to get my video list")
+                        return
+                    }
+
+                    myVideoList.append(myVideo)
+                }
+
+                completionHandler(myVideoList)
+
+            } else {
+
+                completionHandler(nil)
+            }
+        }
+    }
+
     func sendSelectedLiveStreamToFirebase(uid: String, name: String, index: Int) {
 
         if (liveStreamInfos.count - 1) >= index {

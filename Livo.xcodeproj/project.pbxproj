@@ -65,7 +65,7 @@
 		F7DC45B921E066D100A61A6E /* VideoListCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7DC45B721E066D100A61A6E /* VideoListCollectionCell.xib */; };
 		F7F0AEE421D36FD4009A3D85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7F0AEE321D36FD4009A3D85 /* GoogleService-Info.plist */; };
 		F7F0AEE621D38671009A3D85 /* VideoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F0AEE521D38671009A3D85 /* VideoManager.swift */; };
-		F7F0AEE821D38C73009A3D85 /* InsertVideoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F0AEE721D38C73009A3D85 /* InsertVideoPage.swift */; };
+		F7F0AEE821D38C73009A3D85 /* SelectVideoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F0AEE721D38C73009A3D85 /* SelectVideoPage.swift */; };
 		F7F0AEF221D38DF1009A3D85 /* InsertVideoPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F0AEF021D38DF1009A3D85 /* InsertVideoPageCell.swift */; };
 		F7F0AEF321D38DF1009A3D85 /* InsertVideoPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7F0AEF121D38DF1009A3D85 /* InsertVideoPageCell.xib */; };
 		F7F3F9A521C353EB00CF39DA /* UIControl+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F3F9A221C353EB00CF39DA /* UIControl+YYAdd.m */; };
@@ -140,7 +140,7 @@
 		F7DC45B721E066D100A61A6E /* VideoListCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListCollectionCell.xib; sourceTree = "<group>"; };
 		F7F0AEE321D36FD4009A3D85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F7F0AEE521D38671009A3D85 /* VideoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoManager.swift; sourceTree = "<group>"; };
-		F7F0AEE721D38C73009A3D85 /* InsertVideoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertVideoPage.swift; sourceTree = "<group>"; };
+		F7F0AEE721D38C73009A3D85 /* SelectVideoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectVideoPage.swift; sourceTree = "<group>"; };
 		F7F0AEF021D38DF1009A3D85 /* InsertVideoPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertVideoPageCell.swift; sourceTree = "<group>"; };
 		F7F0AEF121D38DF1009A3D85 /* InsertVideoPageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InsertVideoPageCell.xib; sourceTree = "<group>"; };
 		F7F3F9A121C353EB00CF39DA /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				F7F0AEE521D38671009A3D85 /* VideoManager.swift */,
-				F7F0AEE921D38D0E009A3D85 /* InsertVideoPage */,
+				F7F0AEE921D38D0E009A3D85 /* SelectVideoPage */,
 				F7DC45B521E0669700A61A6E /* New Video Page */,
 				F7DC45B421E0667C00A61A6E /* Old Video Page */,
 			);
@@ -355,14 +355,14 @@
 			path = "New Video Page";
 			sourceTree = "<group>";
 		};
-		F7F0AEE921D38D0E009A3D85 /* InsertVideoPage */ = {
+		F7F0AEE921D38D0E009A3D85 /* SelectVideoPage */ = {
 			isa = PBXGroup;
 			children = (
-				F7F0AEE721D38C73009A3D85 /* InsertVideoPage.swift */,
+				F7F0AEE721D38C73009A3D85 /* SelectVideoPage.swift */,
 				F7F0AEF021D38DF1009A3D85 /* InsertVideoPageCell.swift */,
 				F7F0AEF121D38DF1009A3D85 /* InsertVideoPageCell.xib */,
 			);
-			path = InsertVideoPage;
+			path = SelectVideoPage;
 			sourceTree = "<group>";
 		};
 		F7F3F99E21C352CC00CF39DA /* LFLive */ = {
@@ -645,7 +645,7 @@
 				F7AE583821DCE13F00FBF718 /* UINavigationBar_Extension.swift in Sources */,
 				F78750CC21DBA418004FFDBD /* UILabel+Extension.swift in Sources */,
 				F74E91D621C6C104006AFC03 /* LivoCredentials.swift in Sources */,
-				F7F0AEE821D38C73009A3D85 /* InsertVideoPage.swift in Sources */,
+				F7F0AEE821D38C73009A3D85 /* SelectVideoPage.swift in Sources */,
 				F7C741FA21C8EEB400427873 /* LiveEventListCell.swift in Sources */,
 				F7F3F9A621C353EB00CF39DA /* UIView+YYAdd.m in Sources */,
 				F771768521E3286F00AFC123 /* EULAPage.swift in Sources */,

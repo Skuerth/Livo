@@ -605,7 +605,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3i2-fm-5eY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="1325"/>
+            <point key="canvasLocation" x="2710" y="-170"/>
         </scene>
         <!--Report Page-->
         <scene sceneID="gsc-ml-7cN">
@@ -700,7 +700,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Za-fG-W7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850.4000000000001" y="1547.6761619190406"/>
+            <point key="canvasLocation" x="3447" y="-170"/>
         </scene>
         <!--Video List Collection Page-->
         <scene sceneID="slM-DS-XAp">
@@ -735,7 +735,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOI-5o-1qP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="580"/>
+            <point key="canvasLocation" x="1900" y="-170"/>
         </scene>
         <!--Live Event List Page-->
         <scene sceneID="Baj-5Q-AdX">
@@ -770,39 +770,10 @@
             </objects>
             <point key="canvasLocation" x="1900" y="-886"/>
         </scene>
-        <!--Video List Page-->
-        <scene sceneID="qx9-yl-Fy8">
-            <objects>
-                <tableViewController storyboardIdentifier="VideoListPage" id="gvV-oU-yGf" customClass="VideoListPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z0n-lH-ALp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="gvV-oU-yGf" id="u7M-GE-yG4"/>
-                            <outlet property="delegate" destination="gvV-oU-yGf" id="5V3-JR-VzD"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Z1m-on-UO7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RBG-7o-TIK">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="insertVideo:" destination="gvV-oU-yGf" id="wAW-C1-smQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="ayV-wh-3QN" kind="push" id="4Zk-OK-PjA"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gwp-gw-iPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1900" y="128"/>
-        </scene>
-        <!--Insert Video Page-->
+        <!--Select Video Page-->
         <scene sceneID="9JH-5X-YMg">
             <objects>
-                <viewController storyboardIdentifier="InsertVideoPage" id="ayV-wh-3QN" customClass="InsertVideoPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectVideoPage" id="ayV-wh-3QN" customClass="SelectVideoPage" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KlL-kR-WwP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -850,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbF-dq-lhc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="840.62968515742136"/>
+            <point key="canvasLocation" x="1599" y="578"/>
         </scene>
         <!--Profile Page-->
         <scene sceneID="Odw-O7-7fO">
@@ -998,6 +969,13 @@
                                             <action selector="signOutAccount:" destination="P24-aV-GR7" eventType="touchUpInside" id="ket-te-p4q"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nc5-Me-9D3">
+                                        <rect key="frame" x="155" y="284" width="65" height="30"/>
+                                        <state key="normal" title="My Video"/>
+                                        <connections>
+                                            <action selector="deleteMyVideo:" destination="P24-aV-GR7" eventType="touchUpInside" id="Ra9-Nc-GgQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1008,9 +986,11 @@
                                     <constraint firstItem="rSB-jz-6WH" firstAttribute="top" secondItem="5oa-AD-oOg" secondAttribute="top" constant="20" id="90m-pz-vha"/>
                                     <constraint firstItem="rSB-jz-6WH" firstAttribute="height" secondItem="5oa-AD-oOg" secondAttribute="height" multiplier="100:367" id="Ia9-ne-fxl"/>
                                     <constraint firstItem="E2v-tN-PtZ" firstAttribute="top" secondItem="rSB-jz-6WH" secondAttribute="bottom" constant="20" id="LTK-oG-W7K"/>
+                                    <constraint firstItem="nc5-Me-9D3" firstAttribute="centerX" secondItem="E2v-tN-PtZ" secondAttribute="centerX" id="MFu-3K-qcf"/>
                                     <constraint firstItem="IQf-Rn-Cqs" firstAttribute="centerX" secondItem="5oa-AD-oOg" secondAttribute="centerX" id="XUQ-ey-aBS"/>
                                     <constraint firstAttribute="bottom" secondItem="IQf-Rn-Cqs" secondAttribute="bottom" constant="15" id="bvd-SQ-Ahi"/>
                                     <constraint firstItem="E2v-tN-PtZ" firstAttribute="height" secondItem="5oa-AD-oOg" secondAttribute="height" multiplier="130:367" id="gym-fR-jlh"/>
+                                    <constraint firstItem="IQf-Rn-Cqs" firstAttribute="top" secondItem="nc5-Me-9D3" secondAttribute="bottom" constant="8" symbolic="YES" id="yN2-QP-2bz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyC-gn-2Tm" userLabel="Photo Container">
@@ -1088,7 +1068,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1E-Vt-4Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2709.5999999999999" y="-169.56521739130437"/>
+            <point key="canvasLocation" x="2350" y="578"/>
         </scene>
         <!--Change Profile Data Pop-->
         <scene sceneID="Qq6-rd-3Su">
@@ -1139,7 +1119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbB-8S-bDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3594" y="-170"/>
+            <point key="canvasLocation" x="2350" y="1279"/>
         </scene>
         <!--Navigation Page-->
         <scene sceneID="anD-dh-kUF">

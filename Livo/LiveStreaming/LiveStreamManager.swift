@@ -24,7 +24,6 @@ class LiveStreamManager {
     var liveBroadcastStreamModel: LiveBroadcastStreamModel?
     var userProfile: [String: String]?
 
-
     weak var delegate: LiveStreamManagerDelegate?
 
     func createLiveBroadcast(title: String, description: String, viewController: CreateNewStreamPage) {

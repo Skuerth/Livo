@@ -50,6 +50,7 @@ struct LiveStreamInfo {
         }
 
         let startTimeDate = startTimeString.stringConvertToDate()
+
         self.userID = userID
         self.userName = userName
         self.title = title
@@ -87,4 +88,10 @@ enum LiveStatus: String {
 
     case live
     case completed
+}
+
+enum ReasonType {
+
+    case deleteVideo
+    case insertVideo
 }
