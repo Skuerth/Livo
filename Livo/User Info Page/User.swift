@@ -100,3 +100,9 @@ struct ChatrRoomSender {
         self.imageURL = imageURL
     }
 }
+
+enum ProfileDataChangeType {
+    
+    case name
+    case password
+}

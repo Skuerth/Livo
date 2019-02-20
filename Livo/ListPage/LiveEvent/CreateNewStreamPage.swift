@@ -200,8 +200,8 @@ extension CreateNewStreamPage: LiveStreamManagerDelegate {
             liveBroadcastPage.manager = manager
 
             guard
-                let uid = GIDSignIn.sharedInstance()?.currentUser.userID,
-                let name = GIDSignIn.sharedInstance()?.currentUser.profile.name
+                let uid = Auth.auth().currentUser?.uid,
+                let name = Auth.auth().currentUser?.displayName
             else {
 
                 UserInfoError.authorizationError.alert(message: "google sign in problem")

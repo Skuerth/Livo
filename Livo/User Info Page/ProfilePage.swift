@@ -17,6 +17,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var googleAccount: UILabel!
     @IBOutlet weak var photoView: UIView!
+    @IBOutlet weak var changePassword: UIButton!
+    @IBOutlet weak var changeName: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,22 +87,37 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         addShadow(view: photoView)
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func showPopover(sender: UIButton) {
 
-        if segue.identifier == "showChangePasswordView" {
+        guard
+            let changeProfileDataPop = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChangeProfileDataPop") as? ChangeProfileDataPop
+        else { return }
 
-            let popover = segue.destination as? ChangePasswordPop
-            popover?.preferredContentSize = CGSize(width: 200, height: 100)
-            popover?.delegate = self
+        changeProfileDataPop.modalPresentationStyle = .popover
+        changeProfileDataPop.preferredContentSize = CGSize(width: 200, height: 100)
+        changeProfileDataPop.delegate = self
 
-            let controller = popover?.popoverPresentationController
+        guard
+            let controller = changeProfileDataPop.popoverPresentationController
+        else { return }
 
-            if controller != nil {
+        if sender == changeName {
 
-                controller?.delegate = self
+            changeProfileDataPop.changeDayatype = ProfileDataChangeType.name
 
-            }
+        } else if sender == changePassword {
+
+            changeProfileDataPop.changeDayatype = ProfileDataChangeType.password
         }
+
+        controller.delegate = self
+
+        controller.sourceView = sender
+        controller.sourceRect = sender.bounds
+
+        controller.permittedArrowDirections = [.up, .down]
+
+        self.present(changeProfileDataPop, animated: true, completion: nil)
     }
 
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -108,10 +125,19 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         return UIModalPresentationStyle.none
     }
 
+//    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+//
+//        return true
+//    }
+
     @IBAction func changeEmailSignInPassword(_ sender: UIButton) {
 
-        performSegue(withIdentifier: "showChangePasswordView", sender: nil)
+        showPopover(sender: sender)
+    }
 
+    @IBAction func changeUserName(_ sender: UIButton) {
+
+        showPopover(sender: sender)
     }
 
     @IBAction func signOutAccount(_ sender: UIButton) {
@@ -291,7 +317,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     }
 }
 
-extension ProfilePage: ChangePasswordPopDelegate {
+extension ProfilePage: ChangeProfileDataPopDelegate {
 
     func didChangePassword(password: String) {
 
@@ -304,8 +330,35 @@ extension ProfilePage: ChangePasswordPopDelegate {
                     UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
                 }
 
-                AlertHelper.customerAlert.rawValue.alert(message: "Successful password change")
+                AlertHelper.customerAlert.rawValue.alert(message: "Successful change password")
             })
+        }
+    }
+
+    func didChangeUserName(name: String) {
+
+        if let user = Auth.auth().currentUser {
+
+            let changeRequest = user.createProfileChangeRequest()
+
+            changeRequest.displayName = name
+
+            changeRequest.commitChanges { (error) in
+
+                if let error = error {
+
+                    UserInfoError.authorizationError.alert(message: "\(error.localizedDescription)")
+
+                } else {
+
+                    DispatchQueue.main.async {
+
+                        self.nameLabel.text = name
+                    }
+
+                    AlertHelper.customerAlert.rawValue.alert(message: "Successful change name")
+                }
+            }
         }
     }
 }

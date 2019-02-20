@@ -17,7 +17,7 @@
 		F72733D421CA1B01002C1492 /* ChatRoomPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D321CA1B01002C1492 /* ChatRoomPage.swift */; };
 		F72733D621CA1F9F002C1492 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D521CA1F9F002C1492 /* Message.swift */; };
 		F72733D921CA2025002C1492 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */; };
-		F72EFC4421D50CF200DBB85F /* ChangePasswordPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */; };
+		F72EFC4421D50CF200DBB85F /* ChangeProfileDataPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72EFC4321D50CF200DBB85F /* ChangeProfileDataPop.swift */; };
 		F730C6A021E2451F006805FA /* PrivacyPolicyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */; };
 		F73F30F421C903280065F67B /* ClientWatchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73F30F321C903280065F67B /* ClientWatchPage.swift */; };
 		F743CB8321C0AA5A001B88CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F743CB8221C0AA5A001B88CA /* AppDelegate.swift */; };
@@ -88,7 +88,7 @@
 		F72733D321CA1B01002C1492 /* ChatRoomPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomPage.swift; sourceTree = "<group>"; };
 		F72733D521CA1F9F002C1492 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F72733D821CA2025002C1492 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
-		F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPop.swift; sourceTree = "<group>"; };
+		F72EFC4321D50CF200DBB85F /* ChangeProfileDataPop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileDataPop.swift; sourceTree = "<group>"; };
 		F730C69F21E2451F006805FA /* PrivacyPolicyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyPage.swift; sourceTree = "<group>"; };
 		F73F30F321C903280065F67B /* ClientWatchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientWatchPage.swift; sourceTree = "<group>"; };
 		F743CB7F21C0AA5A001B88CA /* Livo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Livo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,7 +283,7 @@
 			children = (
 				F782733721D0B33D00022E6B /* User.swift */,
 				F7A049F921D4AA6C001451A2 /* ProfilePage.swift */,
-				F72EFC4321D50CF200DBB85F /* ChangePasswordPop.swift */,
+				F72EFC4321D50CF200DBB85F /* ChangeProfileDataPop.swift */,
 				F7909A4821D0D56900E73062 /* RegisterManager.swift */,
 				F743CB8421C0AA5A001B88CA /* LoginPage.swift */,
 				F782733521D08C0F00022E6B /* SignUpPage.swift */,
@@ -654,7 +654,7 @@
 				F7B7C37721CB4EEA0050A3B6 /* LiveStreamManager.swift in Sources */,
 				F7F0AEE621D38671009A3D85 /* VideoManager.swift in Sources */,
 				F70EA4D821DBC5B200A4F39F /* UIImageView+Animation.swift in Sources */,
-				F72EFC4421D50CF200DBB85F /* ChangePasswordPop.swift in Sources */,
+				F72EFC4421D50CF200DBB85F /* ChangeProfileDataPop.swift in Sources */,
 				F7ADBFA021DF332200B2C9C4 /* String+Alert.swift in Sources */,
 				F7C741F621C8EE0600427873 /* LiveEventListPage.swift in Sources */,
 				F72733D621CA1F9F002C1492 /* Message.swift in Sources */,

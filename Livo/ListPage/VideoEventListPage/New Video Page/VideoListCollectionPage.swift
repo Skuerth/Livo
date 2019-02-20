@@ -54,8 +54,6 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
             self.navigationItem.rightBarButtonItems?.insert(barButton, at: 0)
         }
 
-
-
         self.manager = ListPageManager()
         self.dislikeManager = DislikeListManager()
         self.manager?.delegate = self

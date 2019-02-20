@@ -179,7 +179,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIVO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLJ-8l-LkY">
-                                <rect key="frame" x="112.5" y="110" width="150" height="74"/>
+                                <rect key="frame" x="112.5" y="110" width="150" height="72"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="ZsQ-7r-fxx"/>
                                 </constraints>
@@ -270,7 +270,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="uaE-hh-EWl" kind="show" id="2sU-Xi-YyJ"/>
+                                                    <segue destination="uaE-hh-EWl" kind="show" identifier="goToTermPage" id="2sU-Xi-YyJ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnt-Uv-ku5">
@@ -280,7 +280,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="tIj-SX-7yV" kind="show" id="Cnr-Bs-8tK"/>
+                                                    <segue destination="tIj-SX-7yV" kind="show" identifier="goToPrivacyPage" id="Cnr-Bs-8tK"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -891,20 +891,36 @@
                                                     <constraint firstAttribute="width" constant="75" id="xT6-Sw-wJd"/>
                                                 </constraints>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="FjX-Nb-msw">
-                                                <rect key="frame" x="130" y="38" width="150" height="58.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-Xd-DWM">
+                                                <rect key="frame" x="130" y="38" width="89" height="58.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKa-E0-3AR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="20.5"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JNy-bB-SCa" userLabel="Name Stack">
+                                                        <rect key="frame" x="0.0" y="0.0" width="89" height="24.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKa-E0-3AR">
+                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="24.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AnB-7q-IY5">
+                                                                <rect key="frame" x="52" y="0.5" width="37" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                <state key="normal" title="Change">
+                                                                    <color key="titleColor" red="0.0" green="0.062745098040000002" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="changeUserName:" destination="P24-aV-GR7" eventType="touchUpInside" id="UYZ-Sx-vRh"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="150" id="l9x-sp-usT"/>
+                                                            <constraint firstItem="AnB-7q-IY5" firstAttribute="bottom" secondItem="sKa-E0-3AR" secondAttribute="bottom" id="owo-M6-3eD"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7E0-TU-Rap">
-                                                        <rect key="frame" x="0.0" y="26.5" width="150" height="32"/>
+                                                        <rect key="frame" x="0.0" y="26.5" width="50" height="32"/>
                                                         <fontDescription key="fontDescription" name="AlNile" family="Al Nile" pointSize="14"/>
                                                         <state key="normal" title="Change">
                                                             <color key="titleColor" red="0.0" green="0.062745098040000002" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -928,8 +944,6 @@
                                             <constraint firstItem="sUr-cR-wfB" firstAttribute="leading" secondItem="rSB-jz-6WH" secondAttribute="leading" constant="30" id="SbQ-uU-Dk5"/>
                                             <constraint firstItem="xIR-TS-77t" firstAttribute="leading" secondItem="rSB-jz-6WH" secondAttribute="leading" constant="30" id="YVf-5z-xPX"/>
                                             <constraint firstItem="xIR-TS-77t" firstAttribute="top" secondItem="sUr-cR-wfB" secondAttribute="bottom" constant="10" id="dFG-oY-fjI"/>
-                                            <constraint firstItem="FjX-Nb-msw" firstAttribute="top" secondItem="xIR-TS-77t" secondAttribute="top" id="eaQ-Gs-KMH"/>
-                                            <constraint firstItem="FjX-Nb-msw" firstAttribute="leading" secondItem="xIR-TS-77t" secondAttribute="trailing" constant="25" id="n0Y-wg-HuD"/>
                                             <constraint firstAttribute="width" secondItem="rSB-jz-6WH" secondAttribute="height" multiplier="15:4" id="otg-5a-aag"/>
                                         </constraints>
                                     </view>
@@ -1064,23 +1078,22 @@
                         <viewLayoutGuide key="safeArea" id="XRZ-eR-sZz"/>
                     </view>
                     <connections>
+                        <outlet property="changeName" destination="AnB-7q-IY5" id="AP8-9o-skj"/>
+                        <outlet property="changePassword" destination="7E0-TU-Rap" id="pnf-QH-GvG"/>
                         <outlet property="googleAccount" destination="xlC-09-7Rz" id="NB2-x7-oTe"/>
                         <outlet property="nameLabel" destination="sKa-E0-3AR" id="LNz-uP-IiO"/>
                         <outlet property="photoView" destination="8cx-Zm-MOf" id="2ab-qB-sg6"/>
                         <outlet property="userPhoto" destination="dVU-Z3-aaa" id="H4Y-dG-SFr"/>
-                        <segue destination="gkx-tV-DIb" kind="popoverPresentation" identifier="showChangePasswordView" popoverAnchorView="7E0-TU-Rap" id="E0M-fw-VUD">
-                            <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
-                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1E-Vt-4Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2709.5999999999999" y="-169.56521739130437"/>
         </scene>
-        <!--Change Password Pop-->
+        <!--Change Profile Data Pop-->
         <scene sceneID="Qq6-rd-3Su">
             <objects>
-                <viewController storyboardIdentifier="ChangePasswordPop" id="gkx-tV-DIb" customClass="ChangePasswordPop" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangeProfileDataPop" id="gkx-tV-DIb" customClass="ChangeProfileDataPop" customModule="Livo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1wQ-2l-Ib6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1121,12 +1134,12 @@
                         <viewLayoutGuide key="safeArea" id="mlo-yC-rsg"/>
                     </view>
                     <connections>
-                        <outlet property="passwordTextField" destination="PJT-DY-B8A" id="z75-To-L7u"/>
+                        <outlet property="inputTextField" destination="PJT-DY-B8A" id="1sO-J1-qMk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbB-8S-bDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3420" y="-169.56521739130437"/>
+            <point key="canvasLocation" x="3594" y="-170"/>
         </scene>
         <!--Navigation Page-->
         <scene sceneID="anD-dh-kUF">

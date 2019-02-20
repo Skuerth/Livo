@@ -97,3 +97,7 @@
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "yiW-Hh-ipK"; */
 "yiW-Hh-ipK.text" = "姓名";
+
+/* Class = "UIButton"; normalTitle = "Edit"; ObjectID = "AnB-7q-IY5"; */
+"AnB-7q-IY5.normalTitle" = "變更";
+
