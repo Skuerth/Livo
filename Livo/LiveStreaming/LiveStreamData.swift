@@ -90,7 +90,7 @@ enum LiveStatus: String {
     case completed
 }
 
-enum ReasonType {
+enum LoadVideoType {
 
     case deleteVideo
     case insertVideo

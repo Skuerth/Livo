@@ -22,7 +22,7 @@ class LoginPage: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var labelTextFieldContainer: UIView!
 
     var manager: RegisterManager?
-    var userProfile: User?
+    var userProfile: LivoUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()

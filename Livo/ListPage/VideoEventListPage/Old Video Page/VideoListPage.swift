@@ -173,7 +173,7 @@ extension VideoListPage: ListPageManagerDelegate {
 
         for liveStreamInfo in liveStreamInfos {
 
-            manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: indexPath)
+//            manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: indexPath, loadVideoType: lo)
 
             indexPath += 1
         }

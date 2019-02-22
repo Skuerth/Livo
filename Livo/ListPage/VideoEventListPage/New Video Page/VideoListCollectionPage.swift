@@ -121,7 +121,7 @@ class VideoListCollectionPage: UICollectionViewController, GIDSignInUIDelegate, 
             }
 
             selectVideoPage.preScreenShot = takeScreenshot()
-            selectVideoPage.previousPageType = ReasonType.insertVideo
+            selectVideoPage.loadVideoType = LoadVideoType.insertVideo
 
             self.navigationController?.pushViewController(selectVideoPage, animated: true)
 

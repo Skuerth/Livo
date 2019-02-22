@@ -160,6 +160,20 @@ class ListPageManager {
         }
     }
 
+    func loadImageByClosure(imageURL: UIImage, indexPath: IndexPath, loadVideoType: LoadVideoType, completionHandler: (LiveStreamInfo, IndexPath) -> Void) {
+
+        switch loadVideoType {
+
+        case .insertVideo:
+
+            completionHandler(liveStreamInfo, indexPath)
+
+        case .deleteVideo:
+
+            self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
+        }
+    }
+
     func loadImage(imageURL: String, indexPath: Int) {
 
         DispatchQueue.global().async {
@@ -172,7 +186,7 @@ class ListPageManager {
 
                 DispatchQueue.main.async {
 
-                    if self.liveStreamInfos.count > 0{
+                    if self.liveStreamInfos.count > 0 {
 
                         var liveStreamInfo = self.liveStreamInfos[indexPath]
 
@@ -181,6 +195,7 @@ class ListPageManager {
                         liveStreamInfo.image = croppingImage
 
                         self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
+
                     }
                 }
             }

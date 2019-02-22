@@ -20,16 +20,24 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
     @IBOutlet weak var changePassword: UIButton!
     @IBOutlet weak var changeName: UIButton!
 
-    var fetchManager: ListPageManager?
+    var fetchManager: ListPageManager {
+
+        return ListPageManager()
+    }
+
+    var currentUser: User? {
+
+        return Auth.auth().currentUser
+    }
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchManager = ListPageManager()
-
         self.navigationItem.title = NSLocalizedString("Profile", comment: "")
 
-        if let currentUser = Auth.auth().currentUser {
+        if let currentUser = currentUser {
 
             nameLabel.text = currentUser.displayName
 
@@ -115,10 +123,8 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
         }
 
         controller.delegate = self
-
         controller.sourceView = sender
         controller.sourceRect = sender.bounds
-
         controller.permittedArrowDirections = [.up, .down]
 
         self.present(changeProfileDataPop, animated: true, completion: nil)
@@ -132,27 +138,11 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 // MARK: - IBAction Methods
     @IBAction func deleteMyVideo(_ sender: UIButton) {
 
-        guard
-            let manager = fetchManager,
-            let uid = Auth.auth().currentUser?.uid
-        else { return }
+        guard let selectVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectVideoPage") as? SelectVideoPage else { return }
 
-        manager.fetchMyUploadedVideos(uid: uid) { (myVideos) in
+        selectVideoPage.loadVideoType = LoadVideoType.deleteVideo
 
-            if let myVideos = myVideos {
-
-                guard let selectVideoPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectVideoPage") as? SelectVideoPage else { return }
-
-                selectVideoPage.liveStreamInfos = myVideos
-                selectVideoPage.previousPageType = ReasonType.deleteVideo
-
-                self.navigationController?.present(selectVideoPage, animated: true, completion: nil)
-
-            } else {
-
-                print("myVideos = nil")
-            }
-        }
+        self.navigationController?.present(selectVideoPage, animated: true, completion: nil)
     }
 
     @IBAction func changeEmailSignInPassword(_ sender: UIButton) {
@@ -246,7 +236,7 @@ class ProfilePage: UIViewController, GIDSignInUIDelegate, UIImagePickerControlle
 //            let image = UIImage(cgImage: originImg)
 
             guard
-                let currentUser = Auth.auth().currentUser,
+                let currentUser = currentUser,
                 let name = currentUser.displayName,
                 let email = currentUser.email
             else {

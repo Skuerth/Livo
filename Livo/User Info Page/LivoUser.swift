@@ -37,7 +37,7 @@ class UserShareInstance {
     }
 }
 
-struct User {
+struct LivoUser {
 
     var name: String
     var emailLogInUID: String

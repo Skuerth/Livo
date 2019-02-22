@@ -22,21 +22,37 @@ class SelectVideoPage: UIViewController {
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
 
-    var manager: ListPageManager?
+//    var manager: ListPageManager?
 
     var liveStreamInfos: [LiveStreamInfo]?
     var selectedLiveStreams: [Int] = []
-    var previousPageType: ReasonType?
+    var loadVideoType: LoadVideoType?
+    let cellID = "InsertVideoPageCell"
+
+    var manager: ListPageManager {
+
+        let manager = ListPageManager()
+        manager.delegate = self
+
+        return manager
+    }
+
+    var uid: String? {
+
+            let uid = Auth.auth().currentUser?.uid
+            return uid
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         guard
-            let previousPageType = previousPageType,
-            let uid = Auth.auth().currentUser?.uid
+            let loadVideoType = loadVideoType
         else { return }
 
-        setUpNavigationTile(previousPageType: previousPageType)
+        setUpNavigationTile(previousPageType: loadVideoType)
+
+        fetchVideos(loadVideoType: loadVideoType)
 
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
@@ -51,38 +67,10 @@ class SelectVideoPage: UIViewController {
 
         view.sendSubviewToBack(imageView)
 
-        self.manager = ListPageManager()
-        self.manager?.delegate = self
-
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
-        switch previousPageType {
-
-        case .insertVideo:
-
-            self.manager?.fetchAllVideo()
-
-        case .deleteVideo:
-
-            manager?.fetchMyUploadedVideos(uid: uid, completionHandler: { (myVideo) in
-
-                if let myVideo = myVideo {
-
-                    self.liveStreamInfos = myVideo
-
-                    DispatchQueue.main.async {
-
-                        self.collectionView.reloadData()
-                    }
-
-                } else {
-
-                }
-            })
-        }
-
-        self.collectionView.register(UINib(nibName: "InsertVideoPageCell", bundle: nil), forCellWithReuseIdentifier: "InsertVideoPageCell")
+        self.collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
 
         setUpCollectionLayout()
     }
@@ -93,23 +81,25 @@ class SelectVideoPage: UIViewController {
 
     }
 
+// MARK: - IBAction Methods
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
 
         if selectedLiveStreams.count > 0,
+
             let liveStreamInfos = liveStreamInfos {
 
             for selectedLiveStreamIndex in selectedLiveStreams {
 
                 guard
                     let name = Auth.auth().currentUser?.displayName,
-                    let uid = Auth.auth().currentUser?.uid
+                    let uid = uid
                 else {
 
                     UserInfoError.authorizationError.alert()
                     return
                 }
 
-                self.manager?.sendSelectedLiveStreamToFirebase(uid: uid, name: name, index: selectedLiveStreamIndex)
+                self.manager.sendSelectedLiveStreamToFirebase(uid: uid, name: name, index: selectedLiveStreamIndex)
             }
 
         } else if selectedLiveStreams.count == 0 {
@@ -120,10 +110,54 @@ class SelectVideoPage: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+    func fetchVideos(loadVideoType: LoadVideoType) {
+
+        switch loadVideoType {
+
+        case .insertVideo:
+
+            manager.fetchAllVideo()
+
+        case .deleteVideo:
+
+            guard let uid = uid else { return }
+
+            manager.fetchMyUploadedVideos(uid: uid, completionHandler: { (myVideos) in
+
+                if let myVideos = myVideos {
+
+                    self.liveStreamInfos = myVideos
+
+                    DispatchQueue.main.async {
+
+                        self.collectionView.reloadData()
+
+                        for (index, myVideo) in myVideos.enumerated() {
+
+
+                            self.manager.loadImage(imageURL: myVideo.imageURL, indexPath: index, loadVideoType: loadVideoType, completionHandler: { (liveStreamInfo, index) in
+
+                                if let image = liveStreamInfo.image {
+
+                                    let indexPath = IndexPath(item: index, section: 0)
+
+
+                                    self.collectionView.reloadItems(at: [indexPath])
+                                }
+                            })
+                        }
+                    }
+
+                } else {
+
+                }
+            })
+        }
+    }
+
     func setUpCollectionLayout() {
 
         let layout = UICollectionViewFlowLayout()
-
         let collcollectionViewWidth = collectionView.frame.width
         let itemWidth = (collcollectionViewWidth - (spacing * 2) - cellInset) / 2
 
@@ -133,7 +167,7 @@ class SelectVideoPage: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
    }
 
-    func setUpNavigationTile(previousPageType: ReasonType) {
+    func setUpNavigationTile(previousPageType: LoadVideoType) {
 
         switch previousPageType {
 
@@ -259,7 +293,7 @@ extension SelectVideoPage: ListPageManagerDelegate {
 
         for liveStreamInfo in liveStreamInfos {
 
-            self.manager?.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: index)
+            manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: index, loadVideoType: loadVideoType)
 
             index += 1
         }
