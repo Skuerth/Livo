@@ -29,19 +29,17 @@ class SelectVideoPage: UIViewController {
     var loadVideoType: LoadVideoType?
     let cellID = "InsertVideoPageCell"
 
-    var manager: ListPageManager {
+    let manager: ListPageManager = {
 
         let manager = ListPageManager()
-        manager.delegate = self
-
         return manager
-    }
+    }()
 
-    var uid: String? {
+    let uid: String? = {
 
-            let uid = Auth.auth().currentUser?.uid
-            return uid
-    }
+        let uid = Auth.auth().currentUser?.uid
+        return uid
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,22 +132,27 @@ class SelectVideoPage: UIViewController {
 
                         for (index, myVideo) in myVideos.enumerated() {
 
+                            self.manager.loadImageByClosure(imageURL: myVideo.imageURL, index: index, loadVideoType: loadVideoType) { (liveStreamInfo, index) in
 
-                            self.manager.loadImage(imageURL: myVideo.imageURL, indexPath: index, loadVideoType: loadVideoType, completionHandler: { (liveStreamInfo, index) in
+                                if
+                                    let image = liveStreamInfo.image,
+                                    var liveStreamInfos = self.liveStreamInfos {
 
-                                if let image = liveStreamInfo.image {
+                                    liveStreamInfos[index].image = image
+
+                                    self.liveStreamInfos = liveStreamInfos
 
                                     let indexPath = IndexPath(item: index, section: 0)
 
-
                                     self.collectionView.reloadItems(at: [indexPath])
+
+                                } else {
+
+                                    print("fail to loadImageByClosure")
                                 }
-                            })
+                            }
                         }
                     }
-
-                } else {
-
                 }
             })
         }
@@ -289,13 +292,12 @@ extension SelectVideoPage: ListPageManagerDelegate {
         self.liveStreamInfos = liveStreamInfos
         self.collectionView.reloadData()
 
-        var index = 0
+        guard let loadVideoType = loadVideoType else { return }
 
-        for liveStreamInfo in liveStreamInfos {
+        for (index, liveStreamInfo) in liveStreamInfos.enumerated() {
 
-            manager.loadImage(imageURL: liveStreamInfo.imageURL, indexPath: index, loadVideoType: loadVideoType)
-
-            index += 1
+            manager.loadImageByClosure(imageURL: liveStreamInfo.imageURL, index: index, loadVideoType: loadVideoType) { (_, _) in
+            }
         }
     }
 

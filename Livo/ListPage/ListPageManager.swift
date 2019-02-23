@@ -111,7 +111,7 @@ class ListPageManager {
 
     func fetchMyUploadedVideos(uid: String, completionHandler: @escaping ([LiveStreamInfo]?) -> Void) {
 
-        liveBroadcastStreamRef.queryOrdered(byChild: "userID").queryEqual(toValue: uid).observeSingleEvent(of: .value) { (snapshot) in
+        liveBroadcastStreamRef.queryOrdered(byChild: "userID").queryEqual(toValue: uid).observe( .value) { (snapshot) in
 
             var myVideoList: [LiveStreamInfo] = []
 
@@ -131,6 +131,7 @@ class ListPageManager {
                     myVideoList.append(myVideo)
                 }
 
+                self.liveStreamInfos = myVideoList
                 completionHandler(myVideoList)
 
             } else {
@@ -160,17 +161,42 @@ class ListPageManager {
         }
     }
 
-    func loadImageByClosure(imageURL: UIImage, indexPath: IndexPath, loadVideoType: LoadVideoType, completionHandler: (LiveStreamInfo, IndexPath) -> Void) {
+    func loadImageByClosure(imageURL: String, index: Int, loadVideoType: LoadVideoType, completionHandler: @escaping (LiveStreamInfo, Int) -> Void) {
 
-        switch loadVideoType {
+        DispatchQueue.global().async {
 
-        case .insertVideo:
+            guard let url = URL(string: imageURL) else { return }
 
-            completionHandler(liveStreamInfo, indexPath)
+            if let data = try? Data(contentsOf: url) {
 
-        case .deleteVideo:
+                guard let image = UIImage(data: data) else { return }
 
-            self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
+                if self.liveStreamInfos.count > 0 {
+
+                    var liveStreamInfo = self.liveStreamInfos[index]
+
+                    let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
+
+                    liveStreamInfo.image = croppingImage
+
+                    DispatchQueue.main.async {
+
+                        switch loadVideoType {
+
+                        case .insertVideo:
+
+                            self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: index)
+
+                        case .deleteVideo:
+
+                            completionHandler(liveStreamInfo, index)
+                        }
+                    }
+                } else {
+
+                    print("liveStreamInfos is empty")
+                }
+            }
         }
     }
 
@@ -184,18 +210,17 @@ class ListPageManager {
 
                 guard let image = UIImage(data: data) else { return }
 
-                DispatchQueue.main.async {
+                if self.liveStreamInfos.count > 0 {
 
-                    if self.liveStreamInfos.count > 0 {
+                    var liveStreamInfo = self.liveStreamInfos[indexPath]
 
-                        var liveStreamInfo = self.liveStreamInfos[indexPath]
+                    let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
 
-                        let croppingImage = self.cropToBounds(image: image, width: 130, height: 180)
+                    DispatchQueue.main.async {
 
                         liveStreamInfo.image = croppingImage
 
                         self.delegate?.didLoadimage(manager: self, liveStreamInfo: liveStreamInfo, indexPath: indexPath)
-
                     }
                 }
             }
